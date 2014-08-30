@@ -1,76 +1,102 @@
 package eu.bibl.updaterimpl.rev170.analysers;
 
 import eu.bibl.banalysis.analyse.single.SingleAnalyser;
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.bytetools.analysis.storage.hooks.MethodHook;
-import eu.bibl.bytetools.util.Access;
-import org.objectweb.asm.tree.*;
+import eu.bibl.banalysis.asm.ClassNode;
+import eu.bibl.banalysis.filter.MethodFilter;
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.FieldMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.MappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.LdcInsnNode;
+import org.objectweb.asm.tree.MethodNode;
 
+import java.util.List;
 import java.util.ListIterator;
 
 public class MinecraftAnalyser extends SingleAnalyser {
 
+    private FieldMappingData[] hooks;
+    private MappingData methodHooks;
+
 	public MinecraftAnalyser() {
 		super("Minecraft");
-		hooks = new FieldHook[] {
-				new FieldHook("getLocalPlayer", "L" + INTERFACES + "entity/IEntityClientPlayerMP;"),
-				new FieldHook("getMemoryReserve", "[B", "[B"),
-				new FieldHook("getWorldTypes", "[L" + INTERFACES + "world/IWorldType;"),
-				new FieldHook("getDefaultWorldType", "L" + INTERFACES + "world/IWorldType;"),
-				new FieldHook("getFlatWorldType", "L" + INTERFACES + "world/IWorldType;"),
-				new FieldHook("getLargeBiomesWorldType", "L" + INTERFACES + "world/IWorldType;"),
-				new FieldHook("getAmplifiedWorldType", "L" + INTERFACES + "world/IWorldType;"),
-				new FieldHook("getDefault1_1WorldType", "L" + INTERFACES + "world/IWorldType;"),
-				new FieldHook("getUseEntityActions", "[L" + INTERFACES + "entity/IUseEntityAction;"),
-				new FieldHook("getChatVisibilityTypes", "[L" + INTERFACES + "chat/IChatVisibility;"),
-				new FieldHook("getDifficultyModes", "[L" + INTERFACES + "world/IDifficulty;"),
-				new FieldHook("getClientStates", "[L" + INTERFACES + "client/IClientState;"),
-				new FieldHook("getServerStatusInfoGson", "Lcom/google/gson/Gson;", "Lcom/google/gson/Gson;"),
-				new FieldHook("inFireDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("onFireDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("lavaDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("inWallDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("drowningDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("starvingDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("cactusDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("fallingDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("outOfWorldDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("genericDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("magicDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("witherDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("anvilDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("fallingBlockDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
-				new FieldHook("getMCProfiler", "L" + INTERFACES + "client/profiler/IProfiler;") };
+		hooks = new FieldMappingData[] {
+				new FieldMappingData("getLocalPlayer", "L" + INTERFACES + "entity/IEntityClientPlayerMP;"),
+				new FieldMappingData("getMemoryReserve", "[B", "[B"),
+				new FieldMappingData("getWorldTypes", "[L" + INTERFACES + "world/IWorldType;"),
+				new FieldMappingData("getDefaultWorldType", "L" + INTERFACES + "world/IWorldType;"),
+				new FieldMappingData("getFlatWorldType", "L" + INTERFACES + "world/IWorldType;"),
+				new FieldMappingData("getLargeBiomesWorldType", "L" + INTERFACES + "world/IWorldType;"),
+				new FieldMappingData("getAmplifiedWorldType", "L" + INTERFACES + "world/IWorldType;"),
+				new FieldMappingData("getDefault1_1WorldType", "L" + INTERFACES + "world/IWorldType;"),
+				new FieldMappingData("getUseEntityActions", "[L" + INTERFACES + "entity/IUseEntityAction;"),
+				new FieldMappingData("getChatVisibilityTypes", "[L" + INTERFACES + "chat/IChatVisibility;"),
+				new FieldMappingData("getDifficultyModes", "[L" + INTERFACES + "world/IDifficulty;"),
+				new FieldMappingData("getClientStates", "[L" + INTERFACES + "client/IClientState;"),
+				new FieldMappingData("getServerStatusInfoGson", "Lcom/google/gson/Gson;", "Lcom/google/gson/Gson;"),
+				new FieldMappingData("inFireDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("onFireDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("lavaDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("inWallDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("drowningDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("starvingDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("cactusDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("fallingDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("outOfWorldDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("genericDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("magicDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("witherDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("anvilDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("fallingBlockDamageSource", "L" + INTERFACES + "entity/combat/IDamageSource;"),
+				new FieldMappingData("getMCProfiler", "L" + INTERFACES + "client/profiler/IProfiler;") };
 		methodHooks = new MethodHook[] {
 				new MethodHook("runtick", "()V", "()V"),
 				new MethodHook("getItemID", "(L" + INTERFACES + "item/IItem;)I"),
 				new MethodHook("shutdown", "()V", "()V") };
 	}
-	
-	@Override
+
+    @Override
+    public boolean accept(ClassContainer classContainer, ClassNode classNode, HookMap hookMap) {
+        List<MethodNode> staticInits = cn.methods(new MethodFilter() {
+            @Override
+            public boolean accept(MethodNode methodNode) {
+                return methodNode.name.equals("<clinit>");
+            }
+        });
+        if (staticInits.size() == 0)
+            return false;
+        MethodNode m = staticInits.get(0);
+        ListIterator<?> it = m.instructions.iterator();
+        while (it.hasNext()) {
+            AbstractInsnNode ain = (AbstractInsnNode) it.next();
+            if (ain instanceof LdcInsnNode) {
+                LdcInsnNode lin = (LdcInsnNode) ain;
+                Object o = lin.cst;
+                if (o != null) {
+                    if (o.toString().equals("10485760")) {
+                        ClassMappingData hook = new ClassMappingData(cn.name, "Minecraft");
+                        FieldInsnNode baseNode = (FieldInsnNode)ain.getNext().getNext();
+                        hooks[1].set
+                        addHook(hooks[1].buildObfFin(((FieldInsnNode) ain.getNext().getNext())));
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void analyse(ClassContainer classContainer) {
+
+    }
+
+    @Override
 	public boolean accept(ClassNode cn) {
-		for(MethodNode m : methods(cn)) {
-			if (m.name.equals("<clinit>")) {
-				ListIterator<?> it = m.instructions.iterator();
-				while (it.hasNext()) {
-					AbstractInsnNode ain = (AbstractInsnNode) it.next();
-					if (ain instanceof LdcInsnNode) {
-						LdcInsnNode lin = (LdcInsnNode) ain;
-						Object o = lin.cst;
-						if (o != null) {
-							if (o.toString().equals("10485760")) {
-								classHook.setObfuscatedName(cn.name);
-								addHook(hooks[1].buildObfFin(((FieldInsnNode) ain.getNext().getNext())));
-								return true;
-							}
-						}
-					}
-				}
-			}
-		}
-		return false;
+
 	}
 	
 	@Override
@@ -82,9 +108,12 @@ public class MinecraftAnalyser extends SingleAnalyser {
 	}
 	
 	private void findLocalPlayer() {
-		ecpmpFinder: for(MethodNode mNode : methods(cn)) {
-			if (!mNode.desc.endsWith(")V"))
-				continue;
+		ecpmpFinder: for(MethodNode mNode : cn.methods(new MethodFilter() {
+            @Override
+            public boolean accept(MethodNode methodNode) {
+                return methodNode.desc.endsWith(")V");
+            }
+        })) {
 			boolean found3553Int = false;
 			boolean foundDisplayLdc = false;
 			ListIterator<?> it = mNode.instructions.iterator();
@@ -104,7 +133,7 @@ public class MinecraftAnalyser extends SingleAnalyser {
 						if (ain instanceof FieldInsnNode) {
 							FieldInsnNode fin = (FieldInsnNode) ain;
 							String pmpcName = fin.desc.substring(1, fin.desc.length()).replace(";", "");
-							map.addClass(new ClassHook(pmpcName, "EntityClientPlayerMP"));
+							map.addClass(new ClassMappingData(pmpcName, "EntityClientPlayerMP", null));
 							addHook(hooks[0].buildObfFin(fin)); // localPlayer
 							break ecpmpFinder;
 						}
