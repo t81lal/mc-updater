@@ -1,0 +1,5998 @@
+{
+  "obfuscatedClasses": {
+    "azp": {
+      "obfuscatedName": "azp",
+      "refactoredName": "WorldProviderHell",
+      "interfaceHook": {
+        "implementingClass": "azp",
+        "interfaceName": "eu/bibl/mc/accessors/world/provider/IWorldProviderHell",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "azo": {
+      "obfuscatedName": "azo",
+      "refactoredName": "WorldProvider",
+      "interfaceHook": {
+        "implementingClass": "azo",
+        "interfaceName": "eu/bibl/mc/accessors/world/provider/IWorldProvider",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "java/lang/Object": {
+      "obfuscatedName": "java/lang/Object",
+      "refactoredName": "Entity",
+      "mod": 0
+    },
+    "tp": {
+      "obfuscatedName": "tp",
+      "refactoredName": "DamageSource",
+      "interfaceHook": {
+        "implementingClass": "tp",
+        "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "gc": {
+      "obfuscatedName": "gc",
+      "refactoredName": "Packet",
+      "interfaceHook": {
+        "implementingClass": "gc",
+        "interfaceName": "eu/bibl/mc/accessors/network/packet/IPacket",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "azr": {
+      "obfuscatedName": "azr",
+      "refactoredName": "Overworld",
+      "interfaceHook": {
+        "implementingClass": "azr",
+        "interfaceName": "eu/bibl/mc/accessors/world/provider/IWorldProviderOverworld",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "azs": {
+      "obfuscatedName": "azs",
+      "refactoredName": "WorldProviderEnd",
+      "interfaceHook": {
+        "implementingClass": "azs",
+        "interfaceName": "eu/bibl/mc/accessors/world/provider/IWorldProviderEnd",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "fg": {
+      "obfuscatedName": "fg",
+      "refactoredName": "NBTTagString",
+      "interfaceHook": {
+        "implementingClass": "fg",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagString",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "tb": {
+      "obfuscatedName": "tb",
+      "refactoredName": "Difficulty",
+      "interfaceHook": {
+        "implementingClass": "tb",
+        "interfaceName": "eu/bibl/mc/accessors/world/IDifficulty",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "ff": {
+      "obfuscatedName": "ff",
+      "refactoredName": "NBTTagShort",
+      "interfaceHook": {
+        "implementingClass": "ff",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagShort",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "fi": {
+      "obfuscatedName": "fi",
+      "refactoredName": "NBTPrimitive",
+      "interfaceHook": {
+        "implementingClass": "fi",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/INBTPrimitive",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "fh": {
+      "obfuscatedName": "fh",
+      "refactoredName": "NBTBase",
+      "interfaceHook": {
+        "implementingClass": "fh",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/INBTBase",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "fs": {
+      "obfuscatedName": "fs",
+      "refactoredName": "NetworkManager",
+      "interfaceHook": {
+        "implementingClass": "fs",
+        "interfaceName": "eu/bibl/mc/accessors/network/INetworkManager",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "bvm": {
+      "obfuscatedName": "bvm",
+      "refactoredName": "ShutdownHook",
+      "interfaceHook": {
+        "implementingClass": "bvm",
+        "interfaceName": "eu/bibl/mc/accessors/system/ShutdownHook",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "bjj": {
+      "obfuscatedName": "bjj",
+      "refactoredName": "WorldInfo",
+      "interfaceHook": {
+        "implementingClass": "bjj",
+        "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "gy": {
+      "obfuscatedName": "gy",
+      "refactoredName": "TranslatedChatComponent",
+      "interfaceHook": {
+        "implementingClass": "gy",
+        "interfaceName": "eu/bibl/mc/accessors/chat/ITranslatableChatComponent",
+        "superClass": "eu/bibl/mc/accessors/chat/IChatComponentStyle"
+      },
+      "mod": 0
+    },
+    "ko": {
+      "obfuscatedName": "ko",
+      "refactoredName": "ClientState",
+      "interfaceHook": {
+        "implementingClass": "ko",
+        "interfaceName": "eu/bibl/mc/accessors/client/IClientState",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "si": {
+      "obfuscatedName": "si",
+      "refactoredName": "Profiler",
+      "interfaceHook": {
+        "implementingClass": "si",
+        "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "gn": {
+      "obfuscatedName": "gn",
+      "refactoredName": "ChatComponent",
+      "interfaceHook": {
+        "implementingClass": "gn",
+        "interfaceName": "eu/bibl/mc/accessors/chat/IChatComponent",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "gi": {
+      "obfuscatedName": "gi",
+      "refactoredName": "ChatComponentStyle",
+      "interfaceHook": {
+        "implementingClass": "gi",
+        "interfaceName": "eu/bibl/mc/accessors/chat/IChatComponentStyle",
+        "superClass": "eu/bibl/mc/accessors/chat/IChatComponent"
+      },
+      "mod": 0
+    },
+    "bmm": {
+      "obfuscatedName": "bmm",
+      "refactoredName": "FontRenderer",
+      "interfaceHook": {
+        "implementingClass": "bmm",
+        "interfaceName": "eu/bibl/mc/accessors/ui/IFontRenderer",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "aez": {
+      "obfuscatedName": "aez",
+      "refactoredName": "Slot",
+      "interfaceHook": {
+        "implementingClass": "aez",
+        "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "adr": {
+      "obfuscatedName": "adr",
+      "refactoredName": "Container",
+      "interfaceHook": {
+        "implementingClass": "adr",
+        "interfaceName": "eu/bibl/mc/accessors/item/container/IContainer",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "vf": {
+      "obfuscatedName": "vf",
+      "refactoredName": "DataWatcher",
+      "interfaceHook": {
+        "implementingClass": "vf",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IDataWatcher",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "ame": {
+      "obfuscatedName": "ame",
+      "refactoredName": "WorldType",
+      "interfaceHook": {
+        "implementingClass": "ame",
+        "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "amc": {
+      "obfuscatedName": "amc",
+      "refactoredName": "GameMode",
+      "interfaceHook": {
+        "implementingClass": "amc",
+        "interfaceName": "eu/bibl/mc/accessors/world/IGameMode",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "alu": {
+      "obfuscatedName": "alu",
+      "refactoredName": "World",
+      "interfaceHook": {
+        "implementingClass": "alu",
+        "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "uv": {
+      "obfuscatedName": "uv",
+      "refactoredName": "EntityPlayer",
+      "interfaceHook": {
+        "implementingClass": "uv",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IEntityPlayer",
+        "superClass": "eu/bibl/mc/accessors/entity/IEntityLivingBase"
+      },
+      "mod": 0
+    },
+    "als": {
+      "obfuscatedName": "als",
+      "refactoredName": "GameRuleValue",
+      "interfaceHook": {
+        "implementingClass": "als",
+        "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "alr": {
+      "obfuscatedName": "alr",
+      "refactoredName": "GameRules",
+      "interfaceHook": {
+        "implementingClass": "alr",
+        "interfaceName": "eu/bibl/mc/accessors/client/IGameRules",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "blj": {
+      "obfuscatedName": "blj",
+      "refactoredName": "Minecraft",
+      "interfaceHook": {
+        "implementingClass": "blj",
+        "interfaceName": "eu/bibl/mc/accessors/IMinecraft",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "aht": {
+      "obfuscatedName": "aht",
+      "refactoredName": "ItemStack",
+      "interfaceHook": {
+        "implementingClass": "aht",
+        "interfaceName": "eu/bibl/mc/accessors/item/IItemStack",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "ew": {
+      "obfuscatedName": "ew",
+      "refactoredName": "NBTTagFloat",
+      "interfaceHook": {
+        "implementingClass": "ew",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagFloat",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "ex": {
+      "obfuscatedName": "ex",
+      "refactoredName": "NBTTagIntArray",
+      "interfaceHook": {
+        "implementingClass": "ex",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagIntArray",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "bxz": {
+      "obfuscatedName": "bxz",
+      "refactoredName": "PlayerControllerMP",
+      "interfaceHook": {
+        "implementingClass": "bxz",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IPlayerControllerMP",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "cbv": {
+      "obfuscatedName": "cbv",
+      "refactoredName": "EntityPlayerSP",
+      "mod": 0
+    },
+    "eu": {
+      "obfuscatedName": "eu",
+      "refactoredName": "NBTTagDouble",
+      "interfaceHook": {
+        "implementingClass": "eu",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagDouble",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "ev": {
+      "obfuscatedName": "ev",
+      "refactoredName": "NBTTagEnd",
+      "interfaceHook": {
+        "implementingClass": "ev",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagEnd",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "ey": {
+      "obfuscatedName": "ey",
+      "refactoredName": "NBTTagInt",
+      "interfaceHook": {
+        "implementingClass": "ey",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagInt",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "ez": {
+      "obfuscatedName": "ez",
+      "refactoredName": "NBTTagList",
+      "interfaceHook": {
+        "implementingClass": "ez",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagList",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "fa": {
+      "obfuscatedName": "fa",
+      "refactoredName": "NBTTagLong",
+      "interfaceHook": {
+        "implementingClass": "fa",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagLong",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "cby": {
+      "obfuscatedName": "cby",
+      "refactoredName": "EntityClientPlayerMP",
+      "interfaceHook": {
+        "implementingClass": "cby",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IEntityClientPlayerMP",
+        "superClass": "eu/bibl/mc/accessors/entity/IEntityPlayerSP"
+      },
+      "mod": 0
+    },
+    "ahb": {
+      "obfuscatedName": "ahb",
+      "refactoredName": "Item",
+      "interfaceHook": {
+        "implementingClass": "ahb",
+        "interfaceName": "eu/bibl/mc/accessors/item/IItem",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "bya": {
+      "obfuscatedName": "bya",
+      "refactoredName": "WorldClient",
+      "interfaceHook": {
+        "implementingClass": "bya",
+        "interfaceName": "eu/bibl/mc/accessors/world/IWorldClient",
+        "superClass": "eu/bibl/mc/accessors/world/IWorld"
+      },
+      "mod": 0
+    },
+    "acz": {
+      "obfuscatedName": "acz",
+      "refactoredName": "ChatVisibility",
+      "interfaceHook": {
+        "implementingClass": "acz",
+        "interfaceName": "eu/bibl/mc/accessors/chat/IChatVisibility",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "ep": {
+      "obfuscatedName": "ep",
+      "refactoredName": "NBTTagByteArray",
+      "interfaceHook": {
+        "implementingClass": "ep",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagByteArray",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "ub": {
+      "obfuscatedName": "ub",
+      "refactoredName": "EntityLivingBase",
+      "mod": 0
+    },
+    "bkl": {
+      "obfuscatedName": "bkl",
+      "refactoredName": "AxisAlignedBB",
+      "interfaceHook": {
+        "implementingClass": "bkl",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "acw": {
+      "obfuscatedName": "acw",
+      "refactoredName": "AbstractClientPlayer",
+      "interfaceHook": {
+        "implementingClass": "acw",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IAbstractClientPlayer",
+        "superClass": "eu/bibl/mc/accessors/entity/IEntityPlayer"
+      },
+      "mod": 0
+    },
+    "acu": {
+      "obfuscatedName": "acu",
+      "refactoredName": "PlayerInventory",
+      "interfaceHook": {
+        "implementingClass": "acu",
+        "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "er": {
+      "obfuscatedName": "er",
+      "refactoredName": "NBTTagCompound",
+      "interfaceHook": {
+        "implementingClass": "er",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagCompound",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "eq": {
+      "obfuscatedName": "eq",
+      "refactoredName": "NBTTagByte",
+      "interfaceHook": {
+        "implementingClass": "eq",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagByte",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    }
+  },
+  "refactoredClasses": {
+    "NBTTagShort": {
+      "obfuscatedName": "ff",
+      "refactoredName": "NBTTagShort",
+      "interfaceHook": {
+        "implementingClass": "ff",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagShort",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "WorldClient": {
+      "obfuscatedName": "bya",
+      "refactoredName": "WorldClient",
+      "interfaceHook": {
+        "implementingClass": "bya",
+        "interfaceName": "eu/bibl/mc/accessors/world/IWorldClient",
+        "superClass": "eu/bibl/mc/accessors/world/IWorld"
+      },
+      "mod": 0
+    },
+    "Overworld": {
+      "obfuscatedName": "azr",
+      "refactoredName": "Overworld",
+      "interfaceHook": {
+        "implementingClass": "azr",
+        "interfaceName": "eu/bibl/mc/accessors/world/provider/IWorldProviderOverworld",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "ChatComponent": {
+      "obfuscatedName": "gn",
+      "refactoredName": "ChatComponent",
+      "interfaceHook": {
+        "implementingClass": "gn",
+        "interfaceName": "eu/bibl/mc/accessors/chat/IChatComponent",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "WorldInfo": {
+      "obfuscatedName": "bjj",
+      "refactoredName": "WorldInfo",
+      "interfaceHook": {
+        "implementingClass": "bjj",
+        "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "WorldProviderHell": {
+      "obfuscatedName": "azp",
+      "refactoredName": "WorldProviderHell",
+      "interfaceHook": {
+        "implementingClass": "azp",
+        "interfaceName": "eu/bibl/mc/accessors/world/provider/IWorldProviderHell",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "DamageSource": {
+      "obfuscatedName": "tp",
+      "refactoredName": "DamageSource",
+      "interfaceHook": {
+        "implementingClass": "tp",
+        "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "ChatComponentStyle": {
+      "obfuscatedName": "gi",
+      "refactoredName": "ChatComponentStyle",
+      "interfaceHook": {
+        "implementingClass": "gi",
+        "interfaceName": "eu/bibl/mc/accessors/chat/IChatComponentStyle",
+        "superClass": "eu/bibl/mc/accessors/chat/IChatComponent"
+      },
+      "mod": 0
+    },
+    "ClientState": {
+      "obfuscatedName": "ko",
+      "refactoredName": "ClientState",
+      "interfaceHook": {
+        "implementingClass": "ko",
+        "interfaceName": "eu/bibl/mc/accessors/client/IClientState",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "EntityPlayerSP": {
+      "obfuscatedName": "cbv",
+      "refactoredName": "EntityPlayerSP",
+      "mod": 0
+    },
+    "Item": {
+      "obfuscatedName": "ahb",
+      "refactoredName": "Item",
+      "interfaceHook": {
+        "implementingClass": "ahb",
+        "interfaceName": "eu/bibl/mc/accessors/item/IItem",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "AbstractClientPlayer": {
+      "obfuscatedName": "acw",
+      "refactoredName": "AbstractClientPlayer",
+      "interfaceHook": {
+        "implementingClass": "acw",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IAbstractClientPlayer",
+        "superClass": "eu/bibl/mc/accessors/entity/IEntityPlayer"
+      },
+      "mod": 0
+    },
+    "Slot": {
+      "obfuscatedName": "aez",
+      "refactoredName": "Slot",
+      "interfaceHook": {
+        "implementingClass": "aez",
+        "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "FontRenderer": {
+      "obfuscatedName": "bmm",
+      "refactoredName": "FontRenderer",
+      "interfaceHook": {
+        "implementingClass": "bmm",
+        "interfaceName": "eu/bibl/mc/accessors/ui/IFontRenderer",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "EntityLivingBase": {
+      "obfuscatedName": "ub",
+      "refactoredName": "EntityLivingBase",
+      "mod": 0
+    },
+    "NBTPrimitive": {
+      "obfuscatedName": "fi",
+      "refactoredName": "NBTPrimitive",
+      "interfaceHook": {
+        "implementingClass": "fi",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/INBTPrimitive",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "NBTTagLong": {
+      "obfuscatedName": "fa",
+      "refactoredName": "NBTTagLong",
+      "interfaceHook": {
+        "implementingClass": "fa",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagLong",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "WorldProvider": {
+      "obfuscatedName": "azo",
+      "refactoredName": "WorldProvider",
+      "interfaceHook": {
+        "implementingClass": "azo",
+        "interfaceName": "eu/bibl/mc/accessors/world/provider/IWorldProvider",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "PlayerInventory": {
+      "obfuscatedName": "acu",
+      "refactoredName": "PlayerInventory",
+      "interfaceHook": {
+        "implementingClass": "acu",
+        "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "WorldProviderEnd": {
+      "obfuscatedName": "azs",
+      "refactoredName": "WorldProviderEnd",
+      "interfaceHook": {
+        "implementingClass": "azs",
+        "interfaceName": "eu/bibl/mc/accessors/world/provider/IWorldProviderEnd",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "ChatVisibility": {
+      "obfuscatedName": "acz",
+      "refactoredName": "ChatVisibility",
+      "interfaceHook": {
+        "implementingClass": "acz",
+        "interfaceName": "eu/bibl/mc/accessors/chat/IChatVisibility",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "ItemStack": {
+      "obfuscatedName": "aht",
+      "refactoredName": "ItemStack",
+      "interfaceHook": {
+        "implementingClass": "aht",
+        "interfaceName": "eu/bibl/mc/accessors/item/IItemStack",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "WorldType": {
+      "obfuscatedName": "ame",
+      "refactoredName": "WorldType",
+      "interfaceHook": {
+        "implementingClass": "ame",
+        "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "Profiler": {
+      "obfuscatedName": "si",
+      "refactoredName": "Profiler",
+      "interfaceHook": {
+        "implementingClass": "si",
+        "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "GameRules": {
+      "obfuscatedName": "alr",
+      "refactoredName": "GameRules",
+      "interfaceHook": {
+        "implementingClass": "alr",
+        "interfaceName": "eu/bibl/mc/accessors/client/IGameRules",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "GameRuleValue": {
+      "obfuscatedName": "als",
+      "refactoredName": "GameRuleValue",
+      "interfaceHook": {
+        "implementingClass": "als",
+        "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "AxisAlignedBB": {
+      "obfuscatedName": "bkl",
+      "refactoredName": "AxisAlignedBB",
+      "interfaceHook": {
+        "implementingClass": "bkl",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "NBTBase": {
+      "obfuscatedName": "fh",
+      "refactoredName": "NBTBase",
+      "interfaceHook": {
+        "implementingClass": "fh",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/INBTBase",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "Entity": {
+      "obfuscatedName": "java/lang/Object",
+      "refactoredName": "Entity",
+      "mod": 0
+    },
+    "NBTTagByteArray": {
+      "obfuscatedName": "ep",
+      "refactoredName": "NBTTagByteArray",
+      "interfaceHook": {
+        "implementingClass": "ep",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagByteArray",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "NBTTagIntArray": {
+      "obfuscatedName": "ex",
+      "refactoredName": "NBTTagIntArray",
+      "interfaceHook": {
+        "implementingClass": "ex",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagIntArray",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "ShutdownHook": {
+      "obfuscatedName": "bvm",
+      "refactoredName": "ShutdownHook",
+      "interfaceHook": {
+        "implementingClass": "bvm",
+        "interfaceName": "eu/bibl/mc/accessors/system/ShutdownHook",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "PlayerControllerMP": {
+      "obfuscatedName": "bxz",
+      "refactoredName": "PlayerControllerMP",
+      "interfaceHook": {
+        "implementingClass": "bxz",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IPlayerControllerMP",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "NetworkManager": {
+      "obfuscatedName": "fs",
+      "refactoredName": "NetworkManager",
+      "interfaceHook": {
+        "implementingClass": "fs",
+        "interfaceName": "eu/bibl/mc/accessors/network/INetworkManager",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "NBTTagByte": {
+      "obfuscatedName": "eq",
+      "refactoredName": "NBTTagByte",
+      "interfaceHook": {
+        "implementingClass": "eq",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagByte",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "NBTTagCompound": {
+      "obfuscatedName": "er",
+      "refactoredName": "NBTTagCompound",
+      "interfaceHook": {
+        "implementingClass": "er",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagCompound",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "TranslatedChatComponent": {
+      "obfuscatedName": "gy",
+      "refactoredName": "TranslatedChatComponent",
+      "interfaceHook": {
+        "implementingClass": "gy",
+        "interfaceName": "eu/bibl/mc/accessors/chat/ITranslatableChatComponent",
+        "superClass": "eu/bibl/mc/accessors/chat/IChatComponentStyle"
+      },
+      "mod": 0
+    },
+    "NBTTagEnd": {
+      "obfuscatedName": "ev",
+      "refactoredName": "NBTTagEnd",
+      "interfaceHook": {
+        "implementingClass": "ev",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagEnd",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "EntityClientPlayerMP": {
+      "obfuscatedName": "cby",
+      "refactoredName": "EntityClientPlayerMP",
+      "interfaceHook": {
+        "implementingClass": "cby",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IEntityClientPlayerMP",
+        "superClass": "eu/bibl/mc/accessors/entity/IEntityPlayerSP"
+      },
+      "mod": 0
+    },
+    "DataWatcher": {
+      "obfuscatedName": "vf",
+      "refactoredName": "DataWatcher",
+      "interfaceHook": {
+        "implementingClass": "vf",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IDataWatcher",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "NBTTagInt": {
+      "obfuscatedName": "ey",
+      "refactoredName": "NBTTagInt",
+      "interfaceHook": {
+        "implementingClass": "ey",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagInt",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "World": {
+      "obfuscatedName": "alu",
+      "refactoredName": "World",
+      "interfaceHook": {
+        "implementingClass": "alu",
+        "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "NBTTagFloat": {
+      "obfuscatedName": "ew",
+      "refactoredName": "NBTTagFloat",
+      "interfaceHook": {
+        "implementingClass": "ew",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagFloat",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    },
+    "EntityPlayer": {
+      "obfuscatedName": "uv",
+      "refactoredName": "EntityPlayer",
+      "interfaceHook": {
+        "implementingClass": "uv",
+        "interfaceName": "eu/bibl/mc/accessors/entity/IEntityPlayer",
+        "superClass": "eu/bibl/mc/accessors/entity/IEntityLivingBase"
+      },
+      "mod": 0
+    },
+    "Container": {
+      "obfuscatedName": "adr",
+      "refactoredName": "Container",
+      "interfaceHook": {
+        "implementingClass": "adr",
+        "interfaceName": "eu/bibl/mc/accessors/item/container/IContainer",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "Minecraft": {
+      "obfuscatedName": "blj",
+      "refactoredName": "Minecraft",
+      "interfaceHook": {
+        "implementingClass": "blj",
+        "interfaceName": "eu/bibl/mc/accessors/IMinecraft",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "NBTTagString": {
+      "obfuscatedName": "fg",
+      "refactoredName": "NBTTagString",
+      "interfaceHook": {
+        "implementingClass": "fg",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagString",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "NBTTagList": {
+      "obfuscatedName": "ez",
+      "refactoredName": "NBTTagList",
+      "interfaceHook": {
+        "implementingClass": "ez",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagList",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+      },
+      "mod": 0
+    },
+    "PacketBuffer": {
+      "obfuscatedName": "gc",
+      "refactoredName": "PacketBuffer",
+      "interfaceHook": {
+        "implementingClass": "gc",
+        "interfaceName": "eu/bibl/mc/accessors/network/packet/IPacketBuffer",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "Packet": {
+      "obfuscatedName": "gc",
+      "refactoredName": "Packet",
+      "interfaceHook": {
+        "implementingClass": "gc",
+        "interfaceName": "eu/bibl/mc/accessors/network/packet/IPacket",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "GameMode": {
+      "obfuscatedName": "amc",
+      "refactoredName": "GameMode",
+      "interfaceHook": {
+        "implementingClass": "amc",
+        "interfaceName": "eu/bibl/mc/accessors/world/IGameMode",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "Difficulty": {
+      "obfuscatedName": "tb",
+      "refactoredName": "Difficulty",
+      "interfaceHook": {
+        "implementingClass": "tb",
+        "interfaceName": "eu/bibl/mc/accessors/world/IDifficulty",
+        "superClass": "java/lang/Object"
+      },
+      "mod": 0
+    },
+    "NBTTagDouble": {
+      "obfuscatedName": "eu",
+      "refactoredName": "NBTTagDouble",
+      "interfaceHook": {
+        "implementingClass": "eu",
+        "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagDouble",
+        "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+      },
+      "mod": 0
+    }
+  },
+  "obfuscatedFields": {
+    "to": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "to",
+          "refactoredName": "CombatTracker",
+          "interfaceHook": {
+            "implementingClass": "to",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/ICombatTracker",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getDamageSources",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      }
+    ],
+    "adr": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "adr",
+          "refactoredName": "Container",
+          "interfaceHook": {
+            "implementingClass": "adr",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IContainer",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getSlots",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "adr",
+          "refactoredName": "Container",
+          "interfaceHook": {
+            "implementingClass": "adr",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IContainer",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getItemStacks",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      }
+    ],
+    "ame": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ame",
+          "refactoredName": "WorldType",
+          "interfaceHook": {
+            "implementingClass": "ame",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "getWorldTypeID",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ame",
+          "refactoredName": "WorldType",
+          "interfaceHook": {
+            "implementingClass": "ame",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "j",
+        "refactoredName": "getWorldType",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ame",
+          "refactoredName": "WorldType",
+          "interfaceHook": {
+            "implementingClass": "ame",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "getGeneratorVersion",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ame",
+          "refactoredName": "WorldType",
+          "interfaceHook": {
+            "implementingClass": "ame",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "canBeGenerated",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "Z",
+        "mod": 0
+      }
+    ],
+    "tp": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "t",
+        "refactoredName": "isFireDamage",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "p",
+        "refactoredName": "isUnblockable",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "s",
+        "refactoredName": "getHungerDamage",
+        "obfuscatedDesc": "F",
+        "refactoredDesc": "F",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "q",
+        "refactoredName": "isDamageAllowedInCreativeMode",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "w",
+        "refactoredName": "isMagicDamage",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "u",
+        "refactoredName": "isProjectile",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "v",
+        "refactoredName": "isDifficultyScaled",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "x",
+        "refactoredName": "isExplosion",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "o",
+        "refactoredName": "getDamageType",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      }
+    ],
+    "gc": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "gc",
+          "refactoredName": "PacketBuffer",
+          "interfaceHook": {
+            "implementingClass": "gc",
+            "interfaceName": "eu/bibl/mc/accessors/network/packet/IPacketBuffer",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getPacketBuffer",
+        "obfuscatedDesc": "Lio/netty/buffer/ByteBuf;",
+        "refactoredDesc": "Lio/netty/buffer/ByteBuf;",
+        "mod": 0
+      }
+    ],
+    "fg": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "fg",
+          "refactoredName": "NBTTagString",
+          "interfaceHook": {
+            "implementingClass": "fg",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagString",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      }
+    ],
+    "ff": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ff",
+          "refactoredName": "NBTTagShort",
+          "interfaceHook": {
+            "implementingClass": "ff",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagShort",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "S",
+        "refactoredDesc": "S",
+        "mod": 0
+      }
+    ],
+    "alu": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getLoadedEntities",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "getUnloadedEntites",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "getPlayerEntities",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "j",
+        "refactoredName": "getWeatherEntities",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      }
+    ],
+    "als": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "als",
+          "refactoredName": "GameRuleValue",
+          "interfaceHook": {
+            "implementingClass": "als",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getValueString",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "als",
+          "refactoredName": "GameRuleValue",
+          "interfaceHook": {
+            "implementingClass": "als",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getValueBoolean",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "als",
+          "refactoredName": "GameRuleValue",
+          "interfaceHook": {
+            "implementingClass": "als",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getValueInt",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "als",
+          "refactoredName": "GameRuleValue",
+          "interfaceHook": {
+            "implementingClass": "als",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getValueDouble",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      }
+    ],
+    "alr": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alr",
+          "refactoredName": "GameRules",
+          "interfaceHook": {
+            "implementingClass": "alr",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRules",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getSettings",
+        "obfuscatedDesc": "Ljava/util/TreeMap;",
+        "refactoredDesc": "Ljava/util/TreeMap;",
+        "mod": 0
+      }
+    ],
+    "blj": [
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "blj",
+          "refactoredName": "Minecraft",
+          "interfaceHook": {
+            "implementingClass": "blj",
+            "interfaceName": "eu/bibl/mc/accessors/IMinecraft",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getMemoryReserve",
+        "obfuscatedDesc": "[B",
+        "refactoredDesc": "[B",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "blj",
+          "refactoredName": "Minecraft",
+          "interfaceHook": {
+            "implementingClass": "blj",
+            "interfaceName": "eu/bibl/mc/accessors/IMinecraft",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "getLocalPlayer",
+        "obfuscatedDesc": "Lcby;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/IEntityClientPlayerMP;",
+        "mod": 0
+      }
+    ],
+    "aht": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aht",
+          "refactoredName": "ItemStack",
+          "interfaceHook": {
+            "implementingClass": "aht",
+            "interfaceName": "eu/bibl/mc/accessors/item/IItemStack",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "getStackSize",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aht",
+          "refactoredName": "ItemStack",
+          "interfaceHook": {
+            "implementingClass": "aht",
+            "interfaceName": "eu/bibl/mc/accessors/item/IItemStack",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "getItem",
+        "obfuscatedDesc": "Laof;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/item/IItem;",
+        "mod": 0
+      }
+    ],
+    "bjj": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getRandomSeed",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getTerrainType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getGeneratorOptions",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "v",
+        "refactoredName": "hasMapFeatures",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getSpawnX",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getSpawnY",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "getSpawnZ",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "getWorldLife",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "getWorldTime",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "getSizeOnDisk",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "n",
+        "refactoredName": "getLevelName",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "o",
+        "refactoredName": "getVersion",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "r",
+        "refactoredName": "getRainTime",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "q",
+        "refactoredName": "isRaining",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "t",
+        "refactoredName": "getThunderTime",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "s",
+        "refactoredName": "isThundering",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "w",
+        "refactoredName": "isHardcore",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "x",
+        "refactoredName": "allowCommands",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "y",
+        "refactoredName": "isInitialised",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "K",
+        "refactoredName": "getGameRules",
+        "obfuscatedDesc": "Lalr;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/client/IGameRules;",
+        "mod": 0
+      }
+    ],
+    "ew": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ew",
+          "refactoredName": "NBTTagFloat",
+          "interfaceHook": {
+            "implementingClass": "ew",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagFloat",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "F",
+        "refactoredDesc": "F",
+        "mod": 0
+      }
+    ],
+    "ex": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ex",
+          "refactoredName": "NBTTagIntArray",
+          "interfaceHook": {
+            "implementingClass": "ex",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagIntArray",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "[I",
+        "refactoredDesc": "[I",
+        "mod": 0
+      }
+    ],
+    "Minecraft": [
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getWorldTypes",
+        "obfuscatedDesc": "[Lame;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getDefaultWorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getFlatWorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getLargeBiomesWorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getAmplifiedWorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "getDefault1_1WorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tb",
+          "refactoredName": "Minecraft$tb",
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getDifficultyModes",
+        "obfuscatedDesc": "[Ltb;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/world/IDifficulty;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "Minecraft$si",
+          "refactoredName": "Minecraft$si",
+          "mod": 0
+        },
+        "obfuscatedName": "y",
+        "refactoredName": "getMCProfiler",
+        "obfuscatedDesc": "Lsi;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/client/profiler/IProfiler;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$acz",
+          "refactoredName": "Minecraft$acz",
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getChatVisibilityTypes",
+        "obfuscatedDesc": "[Lacz;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/chat/IChatVisibility;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "inFireDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "onFireDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "lavaDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "inWallDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "drowningDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "starvingDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "cactusDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "fallingDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "outOfWorldDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "j",
+        "refactoredName": "genericDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "magicDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "l",
+        "refactoredName": "witherDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "m",
+        "refactoredName": "anvilDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "n",
+        "refactoredName": "fallingBlockDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$kw",
+          "refactoredName": "Minecraft$kw",
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getUseEntityActions",
+        "obfuscatedDesc": "[Lkw;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/entity/IUseEntityAction;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ko",
+          "refactoredName": "Minecraft$ko",
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getClientStates",
+        "obfuscatedDesc": "[Lko;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/client/IClientState;",
+        "mod": 0
+      }
+    ],
+    "eu": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "eu",
+          "refactoredName": "NBTTagDouble",
+          "interfaceHook": {
+            "implementingClass": "eu",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagDouble",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      }
+    ],
+    "ey": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ey",
+          "refactoredName": "NBTTagInt",
+          "interfaceHook": {
+            "implementingClass": "ey",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagInt",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      }
+    ],
+    "ez": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ez",
+          "refactoredName": "NBTTagList",
+          "interfaceHook": {
+            "implementingClass": "ez",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagList",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ez",
+          "refactoredName": "NBTTagList",
+          "interfaceHook": {
+            "implementingClass": "ez",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagList",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getTagType",
+        "obfuscatedDesc": "B",
+        "refactoredDesc": "B",
+        "mod": 0
+      }
+    ],
+    "fa": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "fa",
+          "refactoredName": "NBTTagLong",
+          "interfaceHook": {
+            "implementingClass": "fa",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagLong",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      }
+    ],
+    "ahb": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ahb",
+          "refactoredName": "Item",
+          "interfaceHook": {
+            "implementingClass": "ahb",
+            "interfaceName": "eu/bibl/mc/accessors/item/IItem",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "getPotionEffect",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ahb",
+          "refactoredName": "Item",
+          "interfaceHook": {
+            "implementingClass": "ahb",
+            "interfaceName": "eu/bibl/mc/accessors/item/IItem",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "l",
+        "refactoredName": "getName",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      }
+    ],
+    "si": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "isProfilingEnabled",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getTimestampList",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getSectionList",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getProfilingMap",
+        "obfuscatedDesc": "Ljava/util/Map;",
+        "refactoredDesc": "Ljava/util/Map;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getSectionName",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      }
+    ],
+    "ep": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ep",
+          "refactoredName": "NBTTagByteArray",
+          "interfaceHook": {
+            "implementingClass": "ep",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagByteArray",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "[B",
+        "refactoredDesc": "[B",
+        "mod": 0
+      }
+    ],
+    "bkl": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getMinX",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getMinY",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getMinZ",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getMaxX",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getMaxY",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getMaxZ",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      }
+    ],
+    "aez": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aez",
+          "refactoredName": "Slot",
+          "interfaceHook": {
+            "implementingClass": "aez",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getIndex",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aez",
+          "refactoredName": "Slot",
+          "interfaceHook": {
+            "implementingClass": "aez",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getNumber",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aez",
+          "refactoredName": "Slot",
+          "interfaceHook": {
+            "implementingClass": "aez",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getXDisplayPos",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aez",
+          "refactoredName": "Slot",
+          "interfaceHook": {
+            "implementingClass": "aez",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "getYDisplayPos",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      }
+    ],
+    "acu": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "acu",
+          "refactoredName": "PlayerInventory",
+          "interfaceHook": {
+            "implementingClass": "acu",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getOwningPlayer",
+        "obfuscatedDesc": "Lacw;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/IEntityPlayer;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "acu",
+          "refactoredName": "PlayerInventory",
+          "interfaceHook": {
+            "implementingClass": "acu",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getInventoryItems",
+        "obfuscatedDesc": "[Laht;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/item/IItemStack;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "acu",
+          "refactoredName": "PlayerInventory",
+          "interfaceHook": {
+            "implementingClass": "acu",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getArmourItems",
+        "obfuscatedDesc": "[Laht;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/item/IItemStack;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "acu",
+          "refactoredName": "PlayerInventory",
+          "interfaceHook": {
+            "implementingClass": "acu",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getCurrentSlot",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      }
+    ],
+    "er": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "er",
+          "refactoredName": "NBTTagCompound",
+          "interfaceHook": {
+            "implementingClass": "er",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagCompound",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getDataMap",
+        "obfuscatedDesc": "Ljava/util/Map;",
+        "refactoredDesc": "Ljava/util/Map;",
+        "mod": 0
+      }
+    ],
+    "eq": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "eq",
+          "refactoredName": "NBTTagByte",
+          "interfaceHook": {
+            "implementingClass": "eq",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagByte",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "B",
+        "refactoredDesc": "B",
+        "mod": 0
+      }
+    ]
+  },
+  "refactoredFields": {
+    "NBTTagByteArray": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ep",
+          "refactoredName": "NBTTagByteArray",
+          "interfaceHook": {
+            "implementingClass": "ep",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagByteArray",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "[B",
+        "refactoredDesc": "[B",
+        "mod": 0
+      }
+    ],
+    "NBTTagShort": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ff",
+          "refactoredName": "NBTTagShort",
+          "interfaceHook": {
+            "implementingClass": "ff",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagShort",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "S",
+        "refactoredDesc": "S",
+        "mod": 0
+      }
+    ],
+    "Minecraft": [
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "blj",
+          "refactoredName": "Minecraft",
+          "interfaceHook": {
+            "implementingClass": "blj",
+            "interfaceName": "eu/bibl/mc/accessors/IMinecraft",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getMemoryReserve",
+        "obfuscatedDesc": "[B",
+        "refactoredDesc": "[B",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "blj",
+          "refactoredName": "Minecraft",
+          "interfaceHook": {
+            "implementingClass": "blj",
+            "interfaceName": "eu/bibl/mc/accessors/IMinecraft",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "getLocalPlayer",
+        "obfuscatedDesc": "Lcby;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/IEntityClientPlayerMP;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getWorldTypes",
+        "obfuscatedDesc": "[Lame;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getDefaultWorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getFlatWorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getLargeBiomesWorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getAmplifiedWorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ame",
+          "refactoredName": "Minecraft$ame",
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "getDefault1_1WorldType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tb",
+          "refactoredName": "Minecraft$tb",
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getDifficultyModes",
+        "obfuscatedDesc": "[Ltb;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/world/IDifficulty;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "Minecraft$si",
+          "refactoredName": "Minecraft$si",
+          "mod": 0
+        },
+        "obfuscatedName": "y",
+        "refactoredName": "getMCProfiler",
+        "obfuscatedDesc": "Lsi;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/client/profiler/IProfiler;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$acz",
+          "refactoredName": "Minecraft$acz",
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getChatVisibilityTypes",
+        "obfuscatedDesc": "[Lacz;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/chat/IChatVisibility;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "inFireDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "onFireDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "lavaDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "inWallDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "drowningDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "starvingDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "cactusDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "fallingDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "outOfWorldDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "j",
+        "refactoredName": "genericDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "magicDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "l",
+        "refactoredName": "witherDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "m",
+        "refactoredName": "anvilDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$tp",
+          "refactoredName": "Minecraft$tp",
+          "mod": 0
+        },
+        "obfuscatedName": "n",
+        "refactoredName": "fallingBlockDamageSource",
+        "obfuscatedDesc": "Ltp;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$kw",
+          "refactoredName": "Minecraft$kw",
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getUseEntityActions",
+        "obfuscatedDesc": "[Lkw;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/entity/IUseEntityAction;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ko",
+          "refactoredName": "Minecraft$ko",
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getClientStates",
+        "obfuscatedDesc": "[Lko;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/client/IClientState;",
+        "mod": 0
+      }
+    ],
+    "NBTTagIntArray": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ex",
+          "refactoredName": "NBTTagIntArray",
+          "interfaceHook": {
+            "implementingClass": "ex",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagIntArray",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "[I",
+        "refactoredDesc": "[I",
+        "mod": 0
+      }
+    ],
+    "WorldInfo": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getRandomSeed",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getTerrainType",
+        "obfuscatedDesc": "Lame;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/world/IWorldType;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getGeneratorOptions",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "v",
+        "refactoredName": "hasMapFeatures",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getSpawnX",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getSpawnY",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "getSpawnZ",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "getWorldLife",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "getWorldTime",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "getSizeOnDisk",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "n",
+        "refactoredName": "getLevelName",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "o",
+        "refactoredName": "getVersion",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "r",
+        "refactoredName": "getRainTime",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "q",
+        "refactoredName": "isRaining",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "t",
+        "refactoredName": "getThunderTime",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "s",
+        "refactoredName": "isThundering",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "w",
+        "refactoredName": "isHardcore",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "x",
+        "refactoredName": "allowCommands",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "y",
+        "refactoredName": "isInitialised",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bjj",
+          "refactoredName": "WorldInfo",
+          "interfaceHook": {
+            "implementingClass": "bjj",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldInfo",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "K",
+        "refactoredName": "getGameRules",
+        "obfuscatedDesc": "Lalr;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/client/IGameRules;",
+        "mod": 0
+      }
+    ],
+    "NBTTagString": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "fg",
+          "refactoredName": "NBTTagString",
+          "interfaceHook": {
+            "implementingClass": "fg",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagString",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      }
+    ],
+    "NBTTagList": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ez",
+          "refactoredName": "NBTTagList",
+          "interfaceHook": {
+            "implementingClass": "ez",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagList",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ez",
+          "refactoredName": "NBTTagList",
+          "interfaceHook": {
+            "implementingClass": "ez",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagList",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getTagType",
+        "obfuscatedDesc": "B",
+        "refactoredDesc": "B",
+        "mod": 0
+      }
+    ],
+    "DamageSource": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "t",
+        "refactoredName": "isFireDamage",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "p",
+        "refactoredName": "isUnblockable",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "s",
+        "refactoredName": "getHungerDamage",
+        "obfuscatedDesc": "F",
+        "refactoredDesc": "F",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "q",
+        "refactoredName": "isDamageAllowedInCreativeMode",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "w",
+        "refactoredName": "isMagicDamage",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "u",
+        "refactoredName": "isProjectile",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "v",
+        "refactoredName": "isDifficultyScaled",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "x",
+        "refactoredName": "isExplosion",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "o",
+        "refactoredName": "getDamageType",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      }
+    ],
+    "PacketBuffer": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "gc",
+          "refactoredName": "PacketBuffer",
+          "interfaceHook": {
+            "implementingClass": "gc",
+            "interfaceName": "eu/bibl/mc/accessors/network/packet/IPacketBuffer",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getPacketBuffer",
+        "obfuscatedDesc": "Lio/netty/buffer/ByteBuf;",
+        "refactoredDesc": "Lio/netty/buffer/ByteBuf;",
+        "mod": 0
+      }
+    ],
+    "NBTTagByte": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "eq",
+          "refactoredName": "NBTTagByte",
+          "interfaceHook": {
+            "implementingClass": "eq",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagByte",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "B",
+        "refactoredDesc": "B",
+        "mod": 0
+      }
+    ],
+    "ItemStack": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aht",
+          "refactoredName": "ItemStack",
+          "interfaceHook": {
+            "implementingClass": "aht",
+            "interfaceName": "eu/bibl/mc/accessors/item/IItemStack",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "getStackSize",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aht",
+          "refactoredName": "ItemStack",
+          "interfaceHook": {
+            "implementingClass": "aht",
+            "interfaceName": "eu/bibl/mc/accessors/item/IItemStack",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "getItem",
+        "obfuscatedDesc": "Laof;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/item/IItem;",
+        "mod": 0
+      }
+    ],
+    "CombatTracker": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "to",
+          "refactoredName": "CombatTracker",
+          "interfaceHook": {
+            "implementingClass": "to",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/ICombatTracker",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getDamageSources",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      }
+    ],
+    "NBTTagCompound": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "er",
+          "refactoredName": "NBTTagCompound",
+          "interfaceHook": {
+            "implementingClass": "er",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagCompound",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTBase"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getDataMap",
+        "obfuscatedDesc": "Ljava/util/Map;",
+        "refactoredDesc": "Ljava/util/Map;",
+        "mod": 0
+      }
+    ],
+    "Item": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ahb",
+          "refactoredName": "Item",
+          "interfaceHook": {
+            "implementingClass": "ahb",
+            "interfaceName": "eu/bibl/mc/accessors/item/IItem",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "getPotionEffect",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ahb",
+          "refactoredName": "Item",
+          "interfaceHook": {
+            "implementingClass": "ahb",
+            "interfaceName": "eu/bibl/mc/accessors/item/IItem",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "l",
+        "refactoredName": "getName",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      }
+    ],
+    "WorldType": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ame",
+          "refactoredName": "WorldType",
+          "interfaceHook": {
+            "implementingClass": "ame",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "getWorldTypeID",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ame",
+          "refactoredName": "WorldType",
+          "interfaceHook": {
+            "implementingClass": "ame",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "j",
+        "refactoredName": "getWorldType",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ame",
+          "refactoredName": "WorldType",
+          "interfaceHook": {
+            "implementingClass": "ame",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "getGeneratorVersion",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ame",
+          "refactoredName": "WorldType",
+          "interfaceHook": {
+            "implementingClass": "ame",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorldType",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "h",
+        "refactoredName": "canBeGenerated",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "Z",
+        "mod": 0
+      }
+    ],
+    "Profiler": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "isProfilingEnabled",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getTimestampList",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getSectionList",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getProfilingMap",
+        "obfuscatedDesc": "Ljava/util/Map;",
+        "refactoredDesc": "Ljava/util/Map;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getSectionName",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      }
+    ],
+    "Slot": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aez",
+          "refactoredName": "Slot",
+          "interfaceHook": {
+            "implementingClass": "aez",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getIndex",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aez",
+          "refactoredName": "Slot",
+          "interfaceHook": {
+            "implementingClass": "aez",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getNumber",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aez",
+          "refactoredName": "Slot",
+          "interfaceHook": {
+            "implementingClass": "aez",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getXDisplayPos",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "aez",
+          "refactoredName": "Slot",
+          "interfaceHook": {
+            "implementingClass": "aez",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/ISlot",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "getYDisplayPos",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      }
+    ],
+    "GameRuleValue": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "als",
+          "refactoredName": "GameRuleValue",
+          "interfaceHook": {
+            "implementingClass": "als",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getValueString",
+        "obfuscatedDesc": "Ljava/lang/String;",
+        "refactoredDesc": "Ljava/lang/String;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "als",
+          "refactoredName": "GameRuleValue",
+          "interfaceHook": {
+            "implementingClass": "als",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getValueBoolean",
+        "obfuscatedDesc": "Z",
+        "refactoredDesc": "Z",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "als",
+          "refactoredName": "GameRuleValue",
+          "interfaceHook": {
+            "implementingClass": "als",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getValueInt",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "als",
+          "refactoredName": "GameRuleValue",
+          "interfaceHook": {
+            "implementingClass": "als",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRuleValue",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getValueDouble",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      }
+    ],
+    "GameRules": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alr",
+          "refactoredName": "GameRules",
+          "interfaceHook": {
+            "implementingClass": "alr",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRules",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getSettings",
+        "obfuscatedDesc": "Ljava/util/TreeMap;",
+        "refactoredDesc": "Ljava/util/TreeMap;",
+        "mod": 0
+      }
+    ],
+    "AxisAlignedBB": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getMinX",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getMinY",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getMinZ",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getMaxX",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "e",
+        "refactoredName": "getMaxY",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getMaxZ",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      }
+    ],
+    "NBTTagInt": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ey",
+          "refactoredName": "NBTTagInt",
+          "interfaceHook": {
+            "implementingClass": "ey",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagInt",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      }
+    ],
+    "World": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "f",
+        "refactoredName": "getLoadedEntities",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "g",
+        "refactoredName": "getUnloadedEntites",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "i",
+        "refactoredName": "getPlayerEntities",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "j",
+        "refactoredName": "getWeatherEntities",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      }
+    ],
+    "Container": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "adr",
+          "refactoredName": "Container",
+          "interfaceHook": {
+            "implementingClass": "adr",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IContainer",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getSlots",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "adr",
+          "refactoredName": "Container",
+          "interfaceHook": {
+            "implementingClass": "adr",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IContainer",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getItemStacks",
+        "obfuscatedDesc": "Ljava/util/List;",
+        "refactoredDesc": "Ljava/util/List;",
+        "mod": 0
+      }
+    ],
+    "NBTTagDouble": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "eu",
+          "refactoredName": "NBTTagDouble",
+          "interfaceHook": {
+            "implementingClass": "eu",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagDouble",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "D",
+        "refactoredDesc": "D",
+        "mod": 0
+      }
+    ],
+    "NBTTagFloat": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "ew",
+          "refactoredName": "NBTTagFloat",
+          "interfaceHook": {
+            "implementingClass": "ew",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagFloat",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "F",
+        "refactoredDesc": "F",
+        "mod": 0
+      }
+    ],
+    "NBTTagLong": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "fa",
+          "refactoredName": "NBTTagLong",
+          "interfaceHook": {
+            "implementingClass": "fa",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/tags/INBTTagLong",
+            "superClass": "eu/bibl/mc/accessors/nbt/INBTPrimitive"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getData",
+        "obfuscatedDesc": "J",
+        "refactoredDesc": "J",
+        "mod": 0
+      }
+    ],
+    "PlayerInventory": [
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "acu",
+          "refactoredName": "PlayerInventory",
+          "interfaceHook": {
+            "implementingClass": "acu",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "getOwningPlayer",
+        "obfuscatedDesc": "Lacw;",
+        "refactoredDesc": "Leu/bibl/mc/accessors/entity/IEntityPlayer;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "acu",
+          "refactoredName": "PlayerInventory",
+          "interfaceHook": {
+            "implementingClass": "acu",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getInventoryItems",
+        "obfuscatedDesc": "[Laht;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/item/IItemStack;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "acu",
+          "refactoredName": "PlayerInventory",
+          "interfaceHook": {
+            "implementingClass": "acu",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getArmourItems",
+        "obfuscatedDesc": "[Laht;",
+        "refactoredDesc": "[Leu/bibl/mc/accessors/item/IItemStack;",
+        "mod": 0
+      },
+      {
+        "found": true,
+        "isStatic": false,
+        "owner": {
+          "obfuscatedName": "acu",
+          "refactoredName": "PlayerInventory",
+          "interfaceHook": {
+            "implementingClass": "acu",
+            "interfaceName": "eu/bibl/mc/accessors/item/container/IPlayerInventory",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getCurrentSlot",
+        "obfuscatedDesc": "I",
+        "refactoredDesc": "I",
+        "mod": 0
+      }
+    ]
+  },
+  "obfuscatedMethods": {
+    "Minecraft": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ahb",
+          "refactoredName": "Minecraft$ahb",
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getItemID",
+        "obfuscatedDesc": "(Lahb;)I",
+        "refactoredDesc": "(Leu/bibl/mc/accessors/item/IItem;)I",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$blj",
+          "refactoredName": "Minecraft$blj",
+          "mod": 0
+        },
+        "obfuscatedName": "F",
+        "refactoredName": "shutdown",
+        "obfuscatedDesc": "()V",
+        "refactoredDesc": "()V",
+        "mod": 0
+      }
+    ],
+    "alu": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "addWeatherEffect",
+        "obfuscatedDesc": "(Lub;)Z",
+        "refactoredDesc": "(Leu/bibl/mc/accessors/entity/IEntity;)Z",
+        "mod": 0
+      }
+    ],
+    "tp": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "n",
+        "refactoredName": "setFireDamage",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "setBypassesArmour",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "l",
+        "refactoredName": "setDamageAllowedInCreativeMode",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "t",
+        "refactoredName": "setMagicDamage",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "setProjectile",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "q",
+        "refactoredName": "setDifficultyScaled",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "setExplosion",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      }
+    ],
+    "fh": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "fh",
+          "refactoredName": "NBTBase",
+          "interfaceHook": {
+            "implementingClass": "fh",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/INBTBase",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "write",
+        "obfuscatedDesc": "(Ljava/io/DataOutput;)V",
+        "refactoredDesc": "(Ljava/io/DataOutput;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "fh",
+          "refactoredName": "NBTBase",
+          "interfaceHook": {
+            "implementingClass": "fh",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/INBTBase",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "read",
+        "obfuscatedDesc": "(Ljava/io/DataInput;ILfb;)V",
+        "refactoredDesc": "(Ljava/io/DataInput;ILfb;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "fh",
+          "refactoredName": "NBTBase",
+          "interfaceHook": {
+            "implementingClass": "fh",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/INBTBase",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getID",
+        "obfuscatedDesc": "()B",
+        "refactoredDesc": "()I",
+        "mod": 0
+      }
+    ],
+    "alr": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "alr",
+          "refactoredName": "GameRules",
+          "interfaceHook": {
+            "implementingClass": "alr",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRules",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "addGameRule",
+        "obfuscatedDesc": "(Ljava/lang/String;Ljava/lang/String;)V",
+        "refactoredDesc": "(Ljava/lang/String;Ljava/lang/String;)V",
+        "mod": 0
+      }
+    ],
+    "bkl": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "intersectsWith",
+        "obfuscatedDesc": "(Lbkl;)Z",
+        "refactoredDesc": "(Leu/bibl/mc/accessors/entity/IAxisAlignedBB;)Z",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "createNewBoundingBox",
+        "obfuscatedDesc": "(DDDDDD)Lbkl;",
+        "refactoredDesc": "(DDDDDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "addCoord",
+        "obfuscatedDesc": "(DDD)Lbkl;",
+        "refactoredDesc": "(DDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "expand",
+        "obfuscatedDesc": "(DDD)Lbkl;",
+        "refactoredDesc": "(DDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getOffsettedBoundingBox",
+        "obfuscatedDesc": "(DDD)Lbkl;",
+        "refactoredDesc": "(DDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "contract",
+        "obfuscatedDesc": "(DDD)Lbkl;",
+        "refactoredDesc": "(DDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      }
+    ],
+    "cby": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "cby",
+          "refactoredName": "EntityClientPlayerMP",
+          "interfaceHook": {
+            "implementingClass": "cby",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IEntityClientPlayerMP",
+            "superClass": "eu/bibl/mc/accessors/entity/IEntityPlayerSP"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "sendChatMessage",
+        "obfuscatedDesc": "(Lalg;)V",
+        "refactoredDesc": "(Ljava/lang/String;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "cby",
+          "refactoredName": "EntityClientPlayerMP",
+          "interfaceHook": {
+            "implementingClass": "cby",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IEntityClientPlayerMP",
+            "superClass": "eu/bibl/mc/accessors/entity/IEntityPlayerSP"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "sendChatMessage",
+        "obfuscatedDesc": "(Lalg;)V",
+        "refactoredDesc": "(Ljava/lang/String;)V",
+        "mod": 0
+      }
+    ],
+    "si": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "endStartSection",
+        "obfuscatedDesc": "(Ljava/lang/String;)V",
+        "refactoredDesc": "(Ljava/lang/String;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "endSection",
+        "obfuscatedDesc": "()V",
+        "refactoredDesc": "()V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "startSection",
+        "obfuscatedDesc": "(Ljava/lang/String;)V",
+        "refactoredDesc": "(Ljava/lang/String;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "clear",
+        "obfuscatedDesc": "()V",
+        "refactoredDesc": "()V",
+        "mod": 0
+      }
+    ]
+  },
+  "refactoredMethods": {
+    "Minecraft": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$ahb",
+          "refactoredName": "Minecraft$ahb",
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "getItemID",
+        "obfuscatedDesc": "(Lahb;)I",
+        "refactoredDesc": "(Leu/bibl/mc/accessors/item/IItem;)I",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "Minecraft$blj",
+          "refactoredName": "Minecraft$blj",
+          "mod": 0
+        },
+        "obfuscatedName": "F",
+        "refactoredName": "shutdown",
+        "obfuscatedDesc": "()V",
+        "refactoredDesc": "()V",
+        "mod": 0
+      }
+    ],
+    "Profiler": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "endStartSection",
+        "obfuscatedDesc": "(Ljava/lang/String;)V",
+        "refactoredDesc": "(Ljava/lang/String;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "endSection",
+        "obfuscatedDesc": "()V",
+        "refactoredDesc": "()V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "startSection",
+        "obfuscatedDesc": "(Ljava/lang/String;)V",
+        "refactoredDesc": "(Ljava/lang/String;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "si",
+          "refactoredName": "Profiler",
+          "interfaceHook": {
+            "implementingClass": "si",
+            "interfaceName": "eu/bibl/mc/accessors/client/profiler/IProfiler",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "clear",
+        "obfuscatedDesc": "()V",
+        "refactoredDesc": "()V",
+        "mod": 0
+      }
+    ],
+    "EntityClientPlayerMP": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "cby",
+          "refactoredName": "EntityClientPlayerMP",
+          "interfaceHook": {
+            "implementingClass": "cby",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IEntityClientPlayerMP",
+            "superClass": "eu/bibl/mc/accessors/entity/IEntityPlayerSP"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "sendChatMessage",
+        "obfuscatedDesc": "(Lalg;)V",
+        "refactoredDesc": "(Ljava/lang/String;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "cby",
+          "refactoredName": "EntityClientPlayerMP",
+          "interfaceHook": {
+            "implementingClass": "cby",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IEntityClientPlayerMP",
+            "superClass": "eu/bibl/mc/accessors/entity/IEntityPlayerSP"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "sendChatMessage",
+        "obfuscatedDesc": "(Lalg;)V",
+        "refactoredDesc": "(Ljava/lang/String;)V",
+        "mod": 0
+      }
+    ],
+    "GameRules": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "alr",
+          "refactoredName": "GameRules",
+          "interfaceHook": {
+            "implementingClass": "alr",
+            "interfaceName": "eu/bibl/mc/accessors/client/IGameRules",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "addGameRule",
+        "obfuscatedDesc": "(Ljava/lang/String;Ljava/lang/String;)V",
+        "refactoredDesc": "(Ljava/lang/String;Ljava/lang/String;)V",
+        "mod": 0
+      }
+    ],
+    "AxisAlignedBB": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "intersectsWith",
+        "obfuscatedDesc": "(Lbkl;)Z",
+        "refactoredDesc": "(Leu/bibl/mc/accessors/entity/IAxisAlignedBB;)Z",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "createNewBoundingBox",
+        "obfuscatedDesc": "(DDDDDD)Lbkl;",
+        "refactoredDesc": "(DDDDDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "addCoord",
+        "obfuscatedDesc": "(DDD)Lbkl;",
+        "refactoredDesc": "(DDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "expand",
+        "obfuscatedDesc": "(DDD)Lbkl;",
+        "refactoredDesc": "(DDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "getOffsettedBoundingBox",
+        "obfuscatedDesc": "(DDD)Lbkl;",
+        "refactoredDesc": "(DDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "bkl",
+          "refactoredName": "AxisAlignedBB",
+          "interfaceHook": {
+            "implementingClass": "bkl",
+            "interfaceName": "eu/bibl/mc/accessors/entity/IAxisAlignedBB",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "contract",
+        "obfuscatedDesc": "(DDD)Lbkl;",
+        "refactoredDesc": "(DDD)Leu/bibl/mc/accessors/entity/IAxisAlignedBB;",
+        "mod": 0
+      }
+    ],
+    "World": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "alu",
+          "refactoredName": "World",
+          "interfaceHook": {
+            "implementingClass": "alu",
+            "interfaceName": "eu/bibl/mc/accessors/world/IWorld",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "c",
+        "refactoredName": "addWeatherEffect",
+        "obfuscatedDesc": "(Lub;)Z",
+        "refactoredDesc": "(Leu/bibl/mc/accessors/entity/IEntity;)Z",
+        "mod": 0
+      }
+    ],
+    "DamageSource": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "n",
+        "refactoredName": "setFireDamage",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "k",
+        "refactoredName": "setBypassesArmour",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "l",
+        "refactoredName": "setDamageAllowedInCreativeMode",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "t",
+        "refactoredName": "setMagicDamage",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "b",
+        "refactoredName": "setProjectile",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "q",
+        "refactoredName": "setDifficultyScaled",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "tp",
+          "refactoredName": "DamageSource",
+          "interfaceHook": {
+            "implementingClass": "tp",
+            "interfaceName": "eu/bibl/mc/accessors/entity/combat/IDamageSource",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "d",
+        "refactoredName": "setExplosion",
+        "obfuscatedDesc": "()Ltp;",
+        "refactoredDesc": "()Leu/bibl/mc/accessors/entity/combat/IDamageSource;",
+        "mod": 0
+      }
+    ],
+    "NBTBase": [
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "fh",
+          "refactoredName": "NBTBase",
+          "interfaceHook": {
+            "implementingClass": "fh",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/INBTBase",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "write",
+        "obfuscatedDesc": "(Ljava/io/DataOutput;)V",
+        "refactoredDesc": "(Ljava/io/DataOutput;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "fh",
+          "refactoredName": "NBTBase",
+          "interfaceHook": {
+            "implementingClass": "fh",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/INBTBase",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "read",
+        "obfuscatedDesc": "(Ljava/io/DataInput;ILfb;)V",
+        "refactoredDesc": "(Ljava/io/DataInput;ILfb;)V",
+        "mod": 0
+      },
+      {
+        "isBytecodeHook": false,
+        "found": true,
+        "owner": {
+          "obfuscatedName": "fh",
+          "refactoredName": "NBTBase",
+          "interfaceHook": {
+            "implementingClass": "fh",
+            "interfaceName": "eu/bibl/mc/accessors/nbt/INBTBase",
+            "superClass": "java/lang/Object"
+          },
+          "mod": 0
+        },
+        "obfuscatedName": "a",
+        "refactoredName": "getID",
+        "obfuscatedDesc": "()B",
+        "refactoredDesc": "()I",
+        "mod": 0
+      }
+    ]
+  }
+}

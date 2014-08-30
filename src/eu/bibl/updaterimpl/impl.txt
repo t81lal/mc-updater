@@ -1,0 +1,3 @@
+Create analysis provider and information provider
+Register
+Call loader
