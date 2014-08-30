@@ -1,13 +1,14 @@
 package eu.bibl.updater.loader;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import eu.bibl.updater.analysis.AnalysisMap;
+import eu.bibl.banalysis.analyse.MassAnalyser;
+import eu.bibl.banalysis.storage.HookMap;
 import eu.bibl.updater.analysis.MapLink;
 import eu.bibl.updater.analysis.api.AnalysisProvider;
 import eu.bibl.updater.analysis.api.ProviderInfo;
 import eu.bibl.updaterimpl.rev170.Revision170Provider;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Loader {
 
@@ -17,33 +18,27 @@ public class Loader {
 	}
 
 	private static Map<Integer, AnalysisProvider> providers;
-	public static final int[] VERSIONS_TO_ANALYSE = { 179 };
 
-	private Map<Integer, AnalysisMap> maps;
+    private int version;
+    private MapLink link;
 
-	public Loader() {
-		maps = new HashMap<Integer, AnalysisMap>();
-	}
+    public Loader(int version) {
+        this.version = version;
+        if (providers.get(version) == null)
+            throw new RuntimeException("Analyser does not exist!");
+        link = new MapLink(version);
+    }
 
-	public void load() {
-		for (int i = 0; i < VERSIONS_TO_ANALYSE.length; i++) {
-			int version = VERSIONS_TO_ANALYSE[i];
-			MapLink link = new MapLink(version);
-			if (link.successful()) {
-				AnalysisMap map1 = new AnalysisMap(providers.get(version), link);
-				maps.put(i, map1);
-			} else {
-				System.out.println("Could not load version " + version);
-			}
-		}
-		System.out.println("Loaded " + maps.size() + " maps.");
-	}
+    public void load() {
+        if (link.successful())
+            System.out.println("Loaded map for v" + version);
+    }
 
 	public void run() {
-		for (Integer version : maps.keySet()) {
-			maps.get(version).analyse();
-		}
-	}
+        HookMap classMapping = new HookMap();
+        AnalysisProvider anal /* lol */ = providers.get(this.version);
+        MassAnalyser ma = anal.register();
+    }
 
 	public static void registerProvider(AnalysisProvider provider) {
 		ProviderInfo info = provider.retrieveProviderInfo();

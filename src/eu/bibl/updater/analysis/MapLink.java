@@ -1,14 +1,12 @@
 package eu.bibl.updater.analysis;
 
-import eu.bibl.bytetools.jar.ClassParser;
-import eu.bibl.bytetools.jar.JarDownloader;
-import eu.bibl.bytetools.jar.JarType;
+
+import eu.bibl.bio.JarInfo;
+import eu.bibl.bio.jfile.in.JarDownloader;
+
+import java.io.File;
 
 public class MapLink {
-
-	static{
-		ClassParser.addToClassLoader = false;
-	}
 	
 	public static final String OUT_DIR = "res/";
 	
@@ -17,15 +15,15 @@ public class MapLink {
 	
 	public MapLink(int version){
 		this.version = version;
-		jar = new JarDownloader(OUT_DIR + version + "/" + version + ".jar", JarType.FILE);
+		jar = new JarDownloader(new JarInfo (new File(OUT_DIR + version + "/" + version + ".jar")));
 	}
 	
 	public MapLink(String jarLocation){
-		jar = new JarDownloader(jarLocation, JarType.FILE);
+		jar = new JarDownloader(new JarInfo(new File(jarLocation)));
 	}
 
 	public boolean successful(){
-		return jar.wasSuccessful();
+		return jar.parse();
 	}
 	
 	public JarDownloader getDownloader(){
