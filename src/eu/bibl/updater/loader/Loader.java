@@ -38,6 +38,8 @@ public class Loader {
         HookMap classMapping = new HookMap();
         AnalysisProvider anal /* lol */ = providers.get(this.version);
         MassAnalyser ma = anal.register();
+        ma.runSingleAnalysers(link.getDownloader().getContents(), classMapping);
+        ma.runSingleAnalysers(link.getDownloader().getContents(), classMapping);
     }
 
 	public static void registerProvider(AnalysisProvider provider) {

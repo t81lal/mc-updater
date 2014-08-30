@@ -1,23 +1,17 @@
 package eu.bibl.updaterimpl.rev170.analysers;
 
-import java.util.ListIterator;
-
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.IntInsnNode;
-import org.objectweb.asm.tree.LdcInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
+import eu.bibl.banalysis.analyse.single.SingleAnalyser;
 import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
 import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
 import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
 import eu.bibl.bytetools.analysis.storage.hooks.MethodHook;
 import eu.bibl.bytetools.util.Access;
-import eu.bibl.updater.analysis.Analyser;
+import org.objectweb.asm.tree.*;
 
-public class MinecraftAnalyser extends Analyser {
-	
+import java.util.ListIterator;
+
+public class MinecraftAnalyser extends SingleAnalyser {
+
 	public MinecraftAnalyser() {
 		super("Minecraft");
 		hooks = new FieldHook[] {
