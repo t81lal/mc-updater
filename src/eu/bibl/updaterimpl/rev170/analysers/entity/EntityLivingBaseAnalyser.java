@@ -5,6 +5,7 @@ import org.objectweb.asm.tree.MethodNode;
 
 import eu.bibl.banalysis.analyse.Analyser;
 import eu.bibl.banalysis.analyse.AnalyserCache;
+import eu.bibl.banalysis.asm.insn.InstructionSearcher;
 import eu.bibl.banalysis.storage.CallbackMappingData;
 import eu.bibl.banalysis.storage.ClassMappingData;
 import eu.bibl.banalysis.storage.FieldMappingData;
@@ -52,12 +53,17 @@ public class EntityLivingBaseAnalyser extends Analyser {
 	private void findSwingFields() {
 		EntityClientPlayerMPAnalyser playerAnalyser = (EntityClientPlayerMPAnalyser) AnalyserCache.contextGet("EntityClientPlayerMP");
 		CallbackMappingData swingItem = playerAnalyser.getMethodHooks()[0];
-		MethodNode m = getMethod(swingItem);
+		MethodNode m = null;
 		
-		InsnSearcher is = new InsnSearcher(m.instructions, 0, SWING_FIELDS_REGEX);
-		is.match();
+		for (MethodNode m1 : cn.methods()) {
+			if (m1.name.equals(swingItem.getMethodName().getObfuscatedName()) && m1.desc.equals(swingItem.getMethodDesc().getObfuscatedName()))
+				m = m1;
+		}
+		
+		InstructionSearcher is = new InstructionSearcher(m.instructions, SWING_FIELDS_REGEX);
+		is.search();
 		FieldInsnNode fin = (FieldInsnNode) is.getMatches().get(0)[2];
-		addFieldHook(fieldHooks[2].buildObfFin(fin));
-		addFieldHook(fieldHooks[3].buildObfFin((FieldInsnNode) getNext(fin.getNext(), PUTFIELD)));
+		addField(fieldHooks[2].buildObf(fin));
+		addField(fieldHooks[3].buildObf((FieldInsnNode) InsnUtil.getNext(fin.getNext(), PUTFIELD)));
 	}
 }

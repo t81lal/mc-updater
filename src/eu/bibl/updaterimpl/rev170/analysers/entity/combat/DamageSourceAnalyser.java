@@ -1,47 +1,67 @@
 package eu.bibl.updaterimpl.rev170.analysers.entity.combat;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.LdcInsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.analyse.AnalyserCache;
+import eu.bibl.banalysis.storage.CallbackMappingData;
+import eu.bibl.banalysis.storage.FieldMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.MappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class DamageSourceAnalyser extends Analyser {
 	
 	public DamageSourceAnalyser(ClassContainer container, HookMap hookMap) {
 		super("DamageSource", container, hookMap);
 		fieldHooks = new FieldMappingData[] {
-				new FieldMappingData("isFireDamage", "Z", "Z"),
-				new FieldMappingData("isUnblockable", "Z", "Z"),
-				new FieldMappingData("getHungerDamage", "F", "F"),
-				new FieldMappingData("isDamageAllowedInCreativeMode", "Z", "Z"),
-				new FieldMappingData("isMagicDamage", "Z", "Z"),
-				new FieldMappingData("isProjectile", "Z", "Z"),
-				new FieldMappingData("isDifficultyScaled", "Z", "Z"),
-				new FieldMappingData("isExplosion", "Z", "Z"),
-				new FieldMappingData("getDamageType", "Ljava/lang/String;", "Ljava/lang/String;") };
+				/* 0 */new FieldMappingData(new MappingData("isFireDamage"), new MappingData("Z", "Z"), false),
+				/* 1 */new FieldMappingData(new MappingData("isUnblockable"), new MappingData("Z", "Z"), false),
+				/* 2 */new FieldMappingData(new MappingData("getHungerDamage"), new MappingData("F", "F"), false),
+				/* 3 */new FieldMappingData(new MappingData("isDamageAllowedInCreativeMode"), new MappingData("Z", "Z"), false),
+				/* 4 */new FieldMappingData(new MappingData("isMagicDamage"), new MappingData("Z", "Z"), false),
+				/* 5 */new FieldMappingData(new MappingData("isProjectile"), new MappingData("Z", "Z"), false),
+				/* 6 */new FieldMappingData(new MappingData("isDifficultyScaled"), new MappingData("Z", "Z"), false),
+				/* 7 */new FieldMappingData(new MappingData("isExplosion"), new MappingData("Z", "Z"), false),
+				/* 8 */new FieldMappingData(new MappingData("getDamageType"), new MappingData("Ljava/lang/String;", "Ljava/lang/String;"), false) };
 		methodHooks = new CallbackMappingData[] {
-				new CallbackMappingData("setFireDamage", "()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"),
-				new CallbackMappingData("setBypassesArmour", "()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"),
-				new CallbackMappingData("setDamageAllowedInCreativeMode", "()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"),
-				new CallbackMappingData("setMagicDamage", "()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"),
-				new CallbackMappingData("setProjectile", "()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"),
-				new CallbackMappingData("setDifficultyScaled", "()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"),
-				new CallbackMappingData("setExplosion", "()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"), };
+				new CallbackMappingData(new MappingData("setFireDamage"), new MappingData("()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"), null, null, false),
+				new CallbackMappingData(new MappingData("setBypassesArmour"), new MappingData("()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"), null, null, false),
+				new CallbackMappingData(new MappingData("setDamageAllowedInCreativeMode"), new MappingData("()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"), null, null, false),
+				new CallbackMappingData(new MappingData("setMagicDamage"), new MappingData("()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"), null, null, false),
+				new CallbackMappingData(new MappingData("setProjectile"), new MappingData("()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"), null, null, false),
+				new CallbackMappingData(new MappingData("setDifficultyScaled"), new MappingData("()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"), null, null, false),
+				new CallbackMappingData(new MappingData("setExplosion"), new MappingData("()L" + MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource;"), null, null, false), };
 	}
 	
 	@Override
-public boolean accept() {
-		return containsLdc(cn, "outOfWorld");
+	public boolean accept() {
+		return InsnUtil.containsLdc(cn, "outOfWorld");
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource"));
-		
-		MinecraftAnalyser minecraftAnalyser = (MinecraftAnalyser) analysers.get("Minecraft");
+	public InterfaceMappingData run() {
+		MinecraftAnalyser minecraftAnalyser = (MinecraftAnalyser) AnalyserCache.contextGet("Minecraft");
 		int sources = 13;
-		for(MethodNode m : methods(cn)) {
+		for (MethodNode m : cn.methods()) {
 			if (m.name.equals("<clinit>")) {
 				ListIterator<?> it = m.instructions.iterator();
 				while (it.hasNext()) {
 					AbstractInsnNode ain = (AbstractInsnNode) it.next();
 					if (ain.getOpcode() == LDC) {
-						FieldInsnNode fin = (FieldInsnNode) getNext(ain, PUTSTATIC);
-						addMinecraftHook(minecraftAnalyser.getHooks()[sources++].buildObfFin(fin));
+						FieldInsnNode fin = (FieldInsnNode) InsnUtil.getNext(ain, PUTSTATIC);
+						minecraftAnalyser.addField(minecraftAnalyser.getFieldHooks()[sources++].buildObf(fin));
 						
 						LdcInsnNode ldc = (LdcInsnNode) ain;
 						if (ldc.cst.equals("inFire")) {
@@ -59,68 +79,100 @@ public InterfaceMappingData run() {
 			}
 		}
 		
-		for(MethodNode m : methods(cn)) {
-			if (containsLdc(m, "arrow")) {
+		for (MethodNode m : cn.methods()) {
+			if (InsnUtil.containsLdc(m, "arrow")) {
 				findProjectile(m);
 			}
-			if (containsLdc(m, "explosion")) {
+			if (InsnUtil.containsLdc(m, "explosion")) {
 				findDifficultyExplosion(m);
 			}
 		}
 		
-		addFieldHook(fieldHooks[8].buildObfFn(fields(cn, "Ljava/lang/String;").get(0)));
+		addField(fieldHooks[8].buildObf(InsnUtil.fields(cn, "Ljava/lang/String;").get(0)));
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/combat/IDamageSource");
 	}
 	
 	private void findProjectile(MethodNode m) {
 		MethodInsnNode[] mins = getMethodNodes(m, INVOKEVIRTUAL);
 		MethodInsnNode call = mins[mins.length - 1];
 		m = getMethod(call);
-		FieldInsnNode fin = (FieldInsnNode) getNext(m.instructions.getFirst(), PUTFIELD);
-		addFieldHook(fieldHooks[5].buildObfFin(fin));
-		addMethodHook(methodHooks[4].buildObfMn(m));
+		FieldInsnNode fin = (FieldInsnNode) InsnUtil.getNext(m.instructions.getFirst(), PUTFIELD);
+		addField(fieldHooks[5].buildObf(fin));
+		addMethod(methodHooks[4].buildObfMethod(m));
 	}
 	
 	private void findDifficultyExplosion(MethodNode old) {
 		MethodInsnNode[] mins = getMethodNodes(old, INVOKEVIRTUAL);
 		MethodInsnNode call = mins[mins.length - 2];
 		MethodNode newM = getMethod(call);
-		FieldInsnNode fin = (FieldInsnNode) getNext(newM.instructions.getFirst(), PUTFIELD);
-		addFieldHook(fieldHooks[6].buildObfFin(fin));
-		addMethodHook(methodHooks[5].buildObfMn(newM));
+		FieldInsnNode fin = (FieldInsnNode) InsnUtil.getNext(newM.instructions.getFirst(), PUTFIELD);
+		addField(fieldHooks[6].buildObf(fin));
+		addMethod(methodHooks[5].buildObfMethod(newM));
 		
 		call = mins[mins.length - 1];
 		newM = getMethod(call);
-		fin = (FieldInsnNode) getNext(newM.instructions.getFirst(), PUTFIELD);
-		addFieldHook(fieldHooks[7].buildObfFin(fin));
-		addMethodHook(methodHooks[6].buildObfMn(newM));
+		fin = (FieldInsnNode) InsnUtil.getNext(newM.instructions.getFirst(), PUTFIELD);
+		addField(fieldHooks[7].buildObf(fin));
+		addMethod(methodHooks[6].buildObfMethod(newM));
 	}
 	
 	private void findInFire(LdcInsnNode ldc) {
 		MethodNode m = getMethod((MethodInsnNode) ldc.getNext().getNext());
-		addFieldHook(fieldHooks[0].buildObfFin(getFieldNodes(m, PUTFIELD)[0]));
-		addMethodHook(methodHooks[0].buildObfMn(m));
+		addField(fieldHooks[0].buildObf(getFieldNodes(m, PUTFIELD)[0]));
+		addMethod(methodHooks[0].buildObfMethod(m));
 	}
 	
 	private void fireIsUnblockable(LdcInsnNode ldc) {
 		MethodNode m = getMethod((MethodInsnNode) ldc.getNext().getNext());
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
-		addFieldHook(fieldHooks[1].buildObfFin(fins[0]));
-		addFieldHook(fieldHooks[2].buildObfFin(fins[1]));
-		addMethodHook(methodHooks[1].buildObfMn(m));
+		addField(fieldHooks[1].buildObf(fins[0]));
+		addField(fieldHooks[2].buildObf(fins[1]));
+		addMethod(methodHooks[1].buildObfMethod(m));
 	}
 	
 	private void findCreativeDamage(LdcInsnNode ldc) {
 		MethodNode m = getMethod((MethodInsnNode) ldc.getNext().getNext().getNext());
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
-		addFieldHook(fieldHooks[3].buildObfFin(fins[0]));
-		addMethodHook(methodHooks[2].buildObfMn(m));
+		addField(fieldHooks[3].buildObf(fins[0]));
+		addMethod(methodHooks[2].buildObfMethod(m));
 	}
 	
 	private void findMagicDamage(LdcInsnNode ldc) {
 		MethodNode m = getMethod((MethodInsnNode) ldc.getNext().getNext().getNext());
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
-		addFieldHook(fieldHooks[4].buildObfFin(fins[0]));
-		addMethodHook(methodHooks[3].buildObfMn(m));
-		
+		addField(fieldHooks[4].buildObf(fins[0]));
+		addMethod(methodHooks[3].buildObfMethod(m));
+	}
+	
+	private MethodNode getMethod(MethodInsnNode min) {
+		for (MethodNode m : cn.methods()) {
+			if (m.name.equals(min.name) && m.desc.equals(min.desc))
+				return m;
+		}
+		return null;
+	}
+	
+	private static MethodInsnNode[] getMethodNodes(MethodNode m, int opcode) {
+		List<MethodInsnNode> fins = new ArrayList<MethodInsnNode>();
+		ListIterator<?> it = m.instructions.iterator();
+		while (it.hasNext()) {
+			AbstractInsnNode ain = (AbstractInsnNode) it.next();
+			if (ain.getOpcode() == opcode) {
+				fins.add((MethodInsnNode) ain);
+			}
+		}
+		return fins.toArray(new MethodInsnNode[fins.size()]);
+	}
+	
+	private static FieldInsnNode[] getFieldNodes(MethodNode m, int opcode) {
+		List<FieldInsnNode> fins = new ArrayList<FieldInsnNode>();
+		ListIterator<?> it = m.instructions.iterator();
+		while (it.hasNext()) {
+			AbstractInsnNode ain = (AbstractInsnNode) it.next();
+			if (ain.getOpcode() == opcode) {
+				fins.add((FieldInsnNode) ain);
+			}
+		}
+		return fins.toArray(new FieldInsnNode[fins.size()]);
 	}
 }

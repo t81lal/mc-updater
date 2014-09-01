@@ -10,6 +10,7 @@ import eu.bibl.banalysis.storage.CallbackMappingData;
 import eu.bibl.banalysis.storage.ClassMappingData;
 import eu.bibl.banalysis.storage.HookMap;
 import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.MappingData;
 import eu.bibl.banalysis.storage.classes.ClassContainer;
 import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
 
@@ -39,13 +40,13 @@ public class EntityClientPlayerMPAnalyser extends Analyser {
 	public EntityClientPlayerMPAnalyser(ClassContainer container, HookMap hookMap) {
 		super("EntityClientPlayerMP", container, hookMap);
 		methodHooks = new CallbackMappingData[] {
-				new CallbackMappingData("swingItem", "()V", "()V"),
-				new CallbackMappingData("sendChatMessage", "(Ljava/lang/String;)V") };
+				new CallbackMappingData(new MappingData("swingItem"), new MappingData("()V", "()V"), null, null, false),
+				new CallbackMappingData(new MappingData("sendChatMessage"), new MappingData("(Ljava/lang/String;)V"), null, null, false) };
 	}
 	
 	@Override
 	public boolean accept() {
-		ClassMappingData c = hookMap.getClassByObfuscatedName(cn.name);
+		ClassMappingData c = (ClassMappingData) hookMap.getClassByObfuscatedName(cn.name);
 		if ((c != null) && c.getRefactoredName().equals("EntityClientPlayerMP"))
 			return true;
 		return false;
@@ -53,18 +54,18 @@ public class EntityClientPlayerMPAnalyser extends Analyser {
 	
 	@Override
 	public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IEntityClientPlayerMP", MinecraftAnalyser.INTERFACES + "entity/IEntityPlayerSP"));
-		hookMap.addClass(new ClassMappingData(cn.superName, "EntityPlayerSP"));
+		hookMap.addClass(new ClassMappingData(cn.superName, "EntityPlayerSP", null));
 		
 		findCallbackMethods();
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IEntityClientPlayerMP");
 	}
 	
 	private void findCallbackMethods() {
-		for (MethodNode mNode : methods(cn)) {
+		for (MethodNode mNode : cn.methods()) {
 			if (containsRegex(mNode, SWING_ITEM_REGEX)) {
-				addMethodHook(methodHooks[0].buildObfMn(mNode));
+				addMethod(methodHooks[0].buildObfMethod(mNode));
 			} else if (containsRegex(mNode, SEND_CHAT_MESSAGE_REGEX)) {
-				addMethodHook(methodHooks[1].buildObfMn(mNode));
+				addMethod(methodHooks[1].buildObfMethod(mNode));
 			}
 		}
 	}

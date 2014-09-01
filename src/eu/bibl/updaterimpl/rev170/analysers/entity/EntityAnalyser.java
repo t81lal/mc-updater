@@ -1,4 +1,29 @@
 package eu.bibl.updaterimpl.rev170.analysers.entity;
+
+import java.util.List;
+import java.util.ListIterator;
+
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.FieldNode;
+import org.objectweb.asm.tree.LdcInsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.VarInsnNode;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.asm.ClassNode;
+import eu.bibl.banalysis.asm.insn.InstructionSearcher;
+import eu.bibl.banalysis.storage.CallbackMappingData;
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.FieldMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.MappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class EntityAnalyser extends Analyser {
 	
 	// server x,y,z regex
@@ -60,64 +85,62 @@ public class EntityAnalyser extends Analyser {
 	public EntityAnalyser(ClassContainer container, HookMap hookMap) {
 		super("Entity", container, hookMap);
 		fieldHooks = new FieldMappingData[] {
-				new FieldMappingData("getEntityID", "I", "I"),
-				new FieldMappingData("getEntityRidingOnThis", "L" + MinecraftAnalyser.INTERFACES + "entity/IEntity;"),
-				new FieldMappingData("getEntityRiden", "L" + MinecraftAnalyser.INTERFACES + "entity/IEntity;"),
-				new FieldMappingData("getX", "D", "D"),
-				new FieldMappingData("getY", "D", "D"),
-				new FieldMappingData("getZ", "D", "D"),
-				new FieldMappingData("getRotationPitch", "F", "F"),
-				new FieldMappingData("getRotationYaw", "F", "F"),
-				new FieldMappingData("isInWeb", "Z", "Z"),
-				new FieldMappingData("getMotionX", "D", "D"),
-				new FieldMappingData("getMotionY", "D", "D"),
-				new FieldMappingData("getMotionZ", "D", "D"),
-				new FieldMappingData("getFallDistance", "F", "F"),
-				new FieldMappingData("getFireTime", "I", "I"),
-				new FieldMappingData("isOnGround", "Z", "Z"),
-				new FieldMappingData("getDimension", "I", "I"),
-				new FieldMappingData("isInvincible", "Z", "Z"),
-				new FieldMappingData("getWidth", "F", "F"),
-				new FieldMappingData("getHeight", "F", "F"),
-				new FieldMappingData("isDead", "Z", "Z"),
-				new FieldMappingData("isColliding", "Z", "Z"),
-				new FieldMappingData("isCollidingVertically", "Z", "Z"),
-				new FieldMappingData("isCollidingHorizontally", "Z", "Z"),
-				new FieldMappingData("getWorld", "L" + MinecraftAnalyser.INTERFACES + "world/IWorld;"),
-				new FieldMappingData("getStepHeight", "F", "F"),
-				new FieldMappingData("getLifeInTicks", "I", "I"),
-				new FieldMappingData("getBoundingBox", "L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"),
-				new FieldMappingData("isInWater", "Z", "Z"),
-				new FieldMappingData("getInFireTicks", "I", "I"),
-				new FieldMappingData("getInFireResistanceTicks", "I", "I"),
-				new FieldMappingData("getHurtResistanceTicks", "I", "I"),
-				new FieldMappingData("isImmuneToFire", "Z", "Z"),
-				new FieldMappingData("getDataWatcher", "L" + MinecraftAnalyser.INTERFACES + "entity/IDataWatcher;"),
-				new FieldMappingData("isAddedToChunk", "Z", "Z"),
-				new FieldMappingData("getChunkCoordX", "I", "I"),
-				new FieldMappingData("getChunkCoordY", "I", "I"),
-				new FieldMappingData("getChunkCoordZ", "I", "I"),
-				new FieldMappingData("isSpawnForced", "Z", "Z") };
+				/* 0 */new FieldMappingData(new MappingData("getEntityID"), new MappingData("I", "I"), false),
+				/* 1 */new FieldMappingData(new MappingData("getEntityRidingOnThis"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "entity/IEntity;"), false),
+				/* 2 */new FieldMappingData(new MappingData("getEntityRiden"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "entity/IEntity;"), false),
+				/* 3 */new FieldMappingData(new MappingData("getX"), new MappingData("D", "D"), false),
+				/* 4 */new FieldMappingData(new MappingData("getY"), new MappingData("D", "D"), false),
+				/* 5 */new FieldMappingData(new MappingData("getZ"), new MappingData("D", "D"), false),
+				/* 6 */new FieldMappingData(new MappingData("getRotationPitch"), new MappingData("F", "F"), false),
+				/* 7 */new FieldMappingData(new MappingData("getRotationYaw"), new MappingData("F", "F"), false),
+				/* 8 */new FieldMappingData(new MappingData("isInWeb"), new MappingData("Z", "Z"), false),
+				/* 9 */new FieldMappingData(new MappingData("getMotionX"), new MappingData("D", "D"), false),
+				/* 10 */new FieldMappingData(new MappingData("getMotionY"), new MappingData("D", "D"), false),
+				/* 11 */new FieldMappingData(new MappingData("getMotionZ"), new MappingData("D", "D"), false),
+				/* 12 */new FieldMappingData(new MappingData("getFallDistance"), new MappingData("F", "F"), false),
+				/* 13 */new FieldMappingData(new MappingData("getFireTime"), new MappingData("I", "I"), false),
+				/* 14 */new FieldMappingData(new MappingData("isOnGround"), new MappingData("Z", "Z"), false),
+				/* 15 */new FieldMappingData(new MappingData("getDimension"), new MappingData("I", "I"), false),
+				/* 16 */new FieldMappingData(new MappingData("isInvincible"), new MappingData("Z", "Z"), false),
+				/* 17 */new FieldMappingData(new MappingData("getWidth"), new MappingData("F", "F"), false),
+				/* 18 */new FieldMappingData(new MappingData("getHeight"), new MappingData("F", "F"), false),
+				/* 19 */new FieldMappingData(new MappingData("isDead"), new MappingData("Z", "Z"), false),
+				/* 20 */new FieldMappingData(new MappingData("isColliding"), new MappingData("Z", "Z"), false),
+				/* 21 */new FieldMappingData(new MappingData("isCollidingVertically"), new MappingData("Z", "Z"), false),
+				/* 22 */new FieldMappingData(new MappingData("isCollidingHorizontally"), new MappingData("Z", "Z"), false),
+				/* 23 */new FieldMappingData(new MappingData("getWorld"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "world/IWorld;"), false),
+				/* 24 */new FieldMappingData(new MappingData("getStepHeight"), new MappingData("F", "F"), false),
+				/* 25 */new FieldMappingData(new MappingData("getLifeInTicks"), new MappingData("I", "I"), false),
+				/* 26 */new FieldMappingData(new MappingData("getBoundingBox"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"), false),
+				/* 27 */new FieldMappingData(new MappingData("isInWater"), new MappingData("Z", "Z"), false),
+				/* 28 */new FieldMappingData(new MappingData("getInFireTicks"), new MappingData("I", "I"), false),
+				/* 29 */new FieldMappingData(new MappingData("getInFireResistanceTicks"), new MappingData("I", "I"), false),
+				/* 30 */new FieldMappingData(new MappingData("getHurtResistanceTicks"), new MappingData("I", "I"), false),
+				/* 31 */new FieldMappingData(new MappingData("isImmuneToFire"), new MappingData("Z", "Z"), false),
+				/* 32 */new FieldMappingData(new MappingData("getDataWatcher"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "entity/IDataWatcher;"), false),
+				/* 33 */new FieldMappingData(new MappingData("isAddedToChunk"), new MappingData("Z", "Z"), false),
+				/* 34 */new FieldMappingData(new MappingData("getChunkCoordX"), new MappingData("I", "I"), false),
+				/* 35 */new FieldMappingData(new MappingData("getChunkCoordY"), new MappingData("I", "I"), false),
+				/* 36 */new FieldMappingData(new MappingData("getChunkCoordZ"), new MappingData("I", "I"), false),
+				/* 37 */new FieldMappingData(new MappingData("isSpawnForced"), new MappingData("Z", "Z"), false), };
 		methodHooks = new CallbackMappingData[] {
-				new CallbackMappingData("onUpdate", "()V", "()V"),
-				new CallbackMappingData("onEntityUpdate", "()V", "()V"),
-				new CallbackMappingData("setPos", "(DDD)V", "(DDD)V")
+				new CallbackMappingData(new MappingData("onUpdate"), new MappingData("()V", "()V"), null, null, false),
+				new CallbackMappingData(new MappingData("onEntityUpdate"), new MappingData("()V", "()V"), null, null, false),
+				new CallbackMappingData(new MappingData("setPos"), new MappingData("(DDD)V", "(DDD)V"), null, null, false)
 		
 		};
 	}
 	
 	@Override
-public boolean accept() {
-		ClassMappingData c = hookMap.getClassByObfuscatedName(cn.name);
-		if (c != null && c.getRefactoredName().equals("Entity"))
+	public boolean accept() {
+		ClassMappingData c = (ClassMappingData) hookMap.getClassByObfuscatedName(cn.name);
+		if ((c != null) && c.getRefactoredName().equals("Entity"))
 			return true;
 		return false;
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		InterfaceHook interfaceHook = new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IEntity");
-		classHook.setInterfaceHook(interfaceHook);
+	public InterfaceMappingData run() {
 		
 		findEntityID();
 		findRidingEntities();
@@ -140,22 +163,23 @@ public InterfaceMappingData run() {
 		findSetPosMethod();
 		
 		// found in worldanalyser
-		addFieldHook(fieldHooks[37]);
+		addField(fieldHooks[37]);
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IEntity");
 	}
 	
 	private void findSetPosMethod() {
-		for(MethodNode m : methods(cn, "(DDD)V")) {
-			InsnSearcher is = new InsnSearcher(m.instructions, 0, FSUB);
-			if (is.match() && is.size() == 2) {
-				addMethodHook(methodHooks[2].buildObfMn(m));
+		for (MethodNode m : InsnUtil.methods(cn, "(DDD)V")) {
+			InstructionSearcher is = new InstructionSearcher(m.instructions, new int[] { FSUB });
+			if (is.search() && (is.size() == 2)) {
+				addMethod(methodHooks[2].buildObfMethod(m));
 				break;
 			}
 		}
 	}
 	
 	private void findOnUpdateMethod() {
-		for(MethodNode m : methods(cn, "()V")) {
-			if (Access.isStatic(m.access))
+		for (MethodNode m : InsnUtil.methods(cn, "()V")) {
+			if ((m.access & ACC_STATIC) != 0)
 				continue;
 			if (m.instructions.size() != 3)
 				continue;
@@ -166,12 +190,20 @@ public InterfaceMappingData run() {
 			if (!min.owner.equals(cn.name))
 				continue;
 			MethodNode m1 = getMethod(min);
-			if (containsLdc(m1, "entityBaseTick")) {
-				addMethodHook(methodHooks[0].buildObfMn(m));
-				addMethodHook(methodHooks[1].buildObfMn(m1));
+			if (InsnUtil.containsLdc(m1, "entityBaseTick")) {
+				addMethod(methodHooks[0].buildObfMethod(m));
+				addMethod(methodHooks[1].buildObfMethod(m1));
 				break;
 			}
 		}
+	}
+	
+	private MethodNode getMethod(MethodInsnNode min) {
+		for (MethodNode m : cn.methods()) {
+			if (m.name.equals(min.name) && m.desc.equals(min.desc))
+				return m;
+		}
+		return null;
 	}
 	
 	private boolean checkPositionFieldSetters(VarInsnNode vin) {
@@ -200,14 +232,14 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findEntityID() {
-		for(MethodNode mNode : methods(cn)) {
+		for (MethodNode mNode : cn.methods()) {
 			if (mNode.name.equals("<init>")) {
 				ListIterator<?> it = mNode.instructions.iterator();
 				while (it.hasNext()) {
 					AbstractInsnNode ain = (AbstractInsnNode) it.next();
 					if (ain.getOpcode() == PUTFIELD) {
 						FieldInsnNode fin = (FieldInsnNode) ain;
-						addFieldHook(fieldHooks[0].buildObfFin(fin));
+						addField(fieldHooks[0].buildObf(fin));
 						break;
 					}
 				}
@@ -216,17 +248,17 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findRidingEntities() {
-		ArrayList<FieldNode> entityFields = fields(cn, "L" + cn.name + ";");
+		List<FieldNode> entityFields = InsnUtil.fields(cn, "L" + cn.name + ";");
 		if (entityFields.size() == 2) {
 			FieldNode firstEntityNode = entityFields.get(0);
 			FieldNode secondEntityNode = entityFields.get(1);
-			addFieldHook(fieldHooks[1].buildObfFn(firstEntityNode));
-			addFieldHook(fieldHooks[2].buildObfFn(secondEntityNode));
+			addField(fieldHooks[1].buildObf(firstEntityNode));
+			addField(fieldHooks[2].buildObf(secondEntityNode));
 		}
 	}
 	
 	private void findXYZPitchYaw() {
-		posFor: for(MethodNode mNode : methods(cn)) {
+		posFor: for (MethodNode mNode : cn.methods()) {
 			boolean foundLdc = false;
 			int vCount = 0;
 			ListIterator<?> it = mNode.instructions.iterator();
@@ -248,15 +280,15 @@ public InterfaceMappingData run() {
 							vCount++;
 							FieldInsnNode fin1 = (FieldInsnNode) vin.getNext().getNext();
 							if (vCount == 2) {
-								addFieldHook(fieldHooks[3].buildObfFin(fin1));
+								addField(fieldHooks[3].buildObf(fin1));
 							} else if (vCount == 3) {
-								addFieldHook(fieldHooks[4].buildObfFin(fin1));
+								addField(fieldHooks[4].buildObf(fin1));
 							} else if (vCount == 4) {
-								addFieldHook(fieldHooks[5].buildObfFin(fin1));
+								addField(fieldHooks[5].buildObf(fin1));
 							} else if (vCount == 5) {
-								addFieldHook(fieldHooks[6].buildObfFin(fin1));
+								addField(fieldHooks[6].buildObf(fin1));
 							} else if (vCount == 6) {
-								addFieldHook(fieldHooks[7].buildObfFin(fin1));
+								addField(fieldHooks[7].buildObf(fin1));
 							} else if (vCount > 6) {
 								break posFor;
 							}
@@ -268,7 +300,7 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findMotionXYZInWeb() {
-		motionPosFor: for(MethodNode mNode : methods(cn)) {
+		motionPosFor: for (MethodNode mNode : cn.methods()) {
 			boolean foundLdc = false;
 			ListIterator<?> it = mNode.instructions.iterator();
 			while (it.hasNext()) {
@@ -286,9 +318,9 @@ public InterfaceMappingData run() {
 							ALOAD,
 							DCONST_0,
 							PUTFIELD };
-					InsnSearcher is = new InsnSearcher(mNode.instructions, 0, pat);
-					is.match();
-					for(int i = 0; i < is.getMatches().size(); i++) {
+					InstructionSearcher is = new InstructionSearcher(mNode.instructions, pat);
+					is.search();
+					for (int i = 0; i < is.getMatches().size(); i++) {
 						FieldInsnNode fin = (FieldInsnNode) is.getMatches().get(i)[2];
 						if (i == 0) {
 							AbstractInsnNode fin1 = fin.getPrevious();
@@ -299,13 +331,13 @@ public InterfaceMappingData run() {
 							}
 							if (fin1.getOpcode() == PUTFIELD) {
 								FieldInsnNode fin2 = (FieldInsnNode) fin1;
-								addFieldHook(fieldHooks[8].buildObfFin(fin2));
+								addField(fieldHooks[8].buildObf(fin2));
 							}
-							addFieldHook(fieldHooks[9].buildObfFin(fin));
+							addField(fieldHooks[9].buildObf(fin));
 						} else if (i == 1) {
-							addFieldHook(fieldHooks[10].buildObfFin(fin));
+							addField(fieldHooks[10].buildObf(fin));
 						} else if (i == 2) {
-							addFieldHook(fieldHooks[11].buildObfFin(fin));
+							addField(fieldHooks[11].buildObf(fin));
 						} else {
 							break motionPosFor;
 						}
@@ -333,7 +365,7 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findEntityNBTFields() {
-		for(MethodNode mNode : methods(cn)) {
+		for (MethodNode mNode : cn.methods()) {
 			boolean foundSavingMethod = findSavingMethod(mNode);
 			
 			if (foundSavingMethod) {
@@ -354,7 +386,7 @@ public InterfaceMappingData run() {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addFieldHook(fieldHooks[12].buildObfFin(fin));
+									addField(fieldHooks[12].buildObf(fin));
 								}
 							} else if (ldc.cst.toString().equals("OnGround")) {
 								AbstractInsnNode nextInsn = ain;
@@ -367,7 +399,7 @@ public InterfaceMappingData run() {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addFieldHook(fieldHooks[14].buildObfFin(fin));
+									addField(fieldHooks[14].buildObf(fin));
 								}
 							} else if (ldc.cst.toString().equals("Dimension")) {
 								AbstractInsnNode nextInsn = ain;
@@ -380,7 +412,7 @@ public InterfaceMappingData run() {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addFieldHook(fieldHooks[15].buildObfFin(fin));
+									addField(fieldHooks[15].buildObf(fin));
 								}
 							} else if (ldc.cst.toString().equals("Invulnerable")) {
 								AbstractInsnNode nextInsn = ain;
@@ -393,7 +425,7 @@ public InterfaceMappingData run() {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addFieldHook(fieldHooks[16].buildObfFin(fin));
+									addField(fieldHooks[16].buildObf(fin));
 								}
 							} else if (ldc.cst.toString().equals("PortalCoolDown")) {
 								AbstractInsnNode nextInsn = ain;
@@ -405,8 +437,8 @@ public InterfaceMappingData run() {
 										break findingWhile;
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
-									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addHook(new FieldMappingData(classHook, fin.name, "getPortalCoolDown", fin.desc, fin.desc, false));
+									// FieldInsnNode fin = (FieldInsnNode) nextInsn;
+									// addHook(new FieldMappingData(classHook, fin.name, "getPortalCoolDown", fin.desc, fin.desc, false));
 								}
 							} else if (ldc.cst.toString().equals("Fire")) {
 								AbstractInsnNode nextInsn = ain;
@@ -419,7 +451,7 @@ public InterfaceMappingData run() {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addFieldHook(fieldHooks[13].buildObfFin(fin));
+									addField(fieldHooks[13].buildObf(fin));
 								}
 							}
 						}
@@ -431,9 +463,9 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findWidthHeight() {
-		for(MethodNode mNode : methods(cn)) {
-			InsnSearcher is = new InsnSearcher(mNode.instructions, 0, WIDTHHEIGHT_REGEX);
-			if (is.match()) {
+		for (MethodNode mNode : cn.methods()) {
+			InstructionSearcher is = new InstructionSearcher(mNode.instructions, WIDTHHEIGHT_REGEX);
+			if (is.search()) {
 				if (is.getMatches().size() == 2) {
 					AbstractInsnNode[] firstPatAins = is.getMatches().get(0);
 					AbstractInsnNode[] secondPatAins = is.getMatches().get(1);
@@ -442,8 +474,8 @@ public InterfaceMappingData run() {
 					if (prevAin.getOpcode() == FSTORE) {
 						FieldInsnNode firstFin = (FieldInsnNode) firstPatAins[2];
 						FieldInsnNode secondFin = (FieldInsnNode) secondPatAins[2];
-						addFieldHook(fieldHooks[17].buildObfFin(firstFin));
-						addFieldHook(fieldHooks[18].buildObfFin(secondFin));
+						addField(fieldHooks[17].buildObf(firstFin));
+						addField(fieldHooks[18].buildObf(secondFin));
 					}
 				}
 			}
@@ -451,20 +483,20 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findIsDead() {
-		deadFor: for(MethodNode mNode : methods(cn, "()V")) {
-			InsnSearcher is = new InsnSearcher(mNode.instructions, 0, DEAD_REGEX);
-			if (is.match()) {
-				if (mNode.instructions.size() == DEAD_REGEX.length + 1) {
-					for(MethodNode methodNode : methods(cn, "()V")) {
-						InsnSearcher searcher2 = new InsnSearcher(methodNode.instructions, 0, KILL_REGEX);
-						if (searcher2.match()) {
+		deadFor: for (MethodNode mNode : InsnUtil.methods(cn, "()V")) {
+			InstructionSearcher is = new InstructionSearcher(mNode.instructions, DEAD_REGEX);
+			if (is.search()) {
+				if (mNode.instructions.size() == (DEAD_REGEX.length + 1)) {
+					for (MethodNode methodNode : InsnUtil.methods(cn, "()V")) {
+						InstructionSearcher searcher2 = new InstructionSearcher(methodNode.instructions, KILL_REGEX);
+						if (searcher2.search()) {
 							if (searcher2.getMatches().size() == 1) {
-								if (methodNode.instructions.size() == KILL_REGEX.length + 1) {
+								if (methodNode.instructions.size() == (KILL_REGEX.length + 1)) {
 									MethodInsnNode methodCallInsn = (MethodInsnNode) searcher2.getMatches().get(0)[1];
 									String methodCalled = methodCallInsn.name;
 									if (methodCalled.equals(mNode.name)) {
 										FieldInsnNode deadFin = (FieldInsnNode) is.getMatches().get(0)[2];
-										addFieldHook(fieldHooks[19].buildObfFin(deadFin));
+										addField(fieldHooks[19].buildObf(deadFin));
 										break deadFor;
 									}
 								}
@@ -477,7 +509,7 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findCollisionVars() {
-		collisionFor: for(MethodNode mNode : methods(cn)) {
+		collisionFor: for (MethodNode mNode : cn.methods()) {
 			boolean foundRestLdc = false;
 			ListIterator<?> it = mNode.instructions.iterator();
 			AbstractInsnNode ain = null;
@@ -516,7 +548,7 @@ public InterfaceMappingData run() {
 						}
 						if (localAin.getOpcode() == PUTFIELD) {
 							FieldInsnNode isColldingFin = (FieldInsnNode) localAin;
-							addFieldHook(fieldHooks[20].buildObfFin(isColldingFin));
+							addField(fieldHooks[20].buildObf(isColldingFin));
 							localAin = localAin.getPrevious();
 							while (localAin.getOpcode() != PUTFIELD) {
 								if (localAin.getPrevious() == null)
@@ -535,7 +567,7 @@ public InterfaceMappingData run() {
 							}
 							if (localAin.getOpcode() == PUTFIELD) {
 								FieldInsnNode isColldingVerticallyFin = (FieldInsnNode) localAin;
-								addFieldHook(fieldHooks[21].buildObfFin(isColldingVerticallyFin));
+								addField(fieldHooks[21].buildObf(isColldingVerticallyFin));
 								localAin = localAin.getPrevious();
 								while (localAin.getOpcode() != PUTFIELD) {
 									if (localAin.getPrevious() == null)
@@ -546,7 +578,7 @@ public InterfaceMappingData run() {
 								}
 								if (localAin.getOpcode() == PUTFIELD) {
 									FieldInsnNode isColldingHorizontallyFin = (FieldInsnNode) localAin;
-									addFieldHook(fieldHooks[22].buildObfFin(isColldingHorizontallyFin));
+									addField(fieldHooks[22].buildObf(isColldingHorizontallyFin));
 									break collisionFor;
 								}
 							}
@@ -558,49 +590,49 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findWorldField() {
-		addFieldHook(fieldHooks[23].buildObfFn(fields(cn, "L" + hookMap.getClassByRefactoredName("World").getObfuscatedName() + ";").get(0)));
+		addField(fieldHooks[23].buildObf(InsnUtil.fields(cn, "L" + hookMap.getClassByRefactoredName("World").getObfuscatedName() + ";").get(0)));
 	}
 	
 	private void findStepHeightField() {
-		for(MethodNode m : methods(cn)) {
-			InsnSearcher is = new InsnSearcher(m.instructions, 0, STEP_HEIGHT_REGEX);
-			if (is.match()) {
-				addFieldHook(fieldHooks[24].buildObfFin((FieldInsnNode) is.getMatches().get(0)[1]));
+		for (MethodNode m : cn.methods()) {
+			InstructionSearcher is = new InstructionSearcher(m.instructions, STEP_HEIGHT_REGEX);
+			if (is.search()) {
+				addField(fieldHooks[24].buildObf((FieldInsnNode) is.getMatches().get(0)[1]));
 				break;
 			}
 		}
 	}
 	
 	private void findLifeInTicksField() {
-		ArrayList<FieldNode> fields = fields(cn);
-		for(int i = 0; i < fields.size(); i++) {
+		List<FieldNode> fields = cn.fields();
+		for (int i = 0; i < fields.size(); i++) {
 			FieldNode f = fields.get(i);
 			if (f.desc.equals("Ljava/util/Random;")) {
-				addFieldHook(fieldHooks[25].buildObfFn(fields.get(i + 1)));
+				addField(fieldHooks[25].buildObf(fields.get(i + 1)));
 				break;
 			}
 		}
 	}
 	
 	private void findBoundingBoxField() {
-		addFieldHook(fieldHooks[26].buildObfFn(fields(cn, "L" + hookMap.getClassByRefactoredName("AxisAlignedBB").getObfuscatedName() + ";").get(0)));
+		addField(fieldHooks[26].buildObf(InsnUtil.fields(cn, "L" + hookMap.getClassByRefactoredName("AxisAlignedBB").getObfuscatedName() + ";").get(0)));
 	}
 	
 	private void findInWaterFireTicksFireHurtResistance() {
-		for(MethodNode m : methods(cn)) {
-			InsnSearcher is = new InsnSearcher(m.instructions, 0, IN_WATER_REGEX);
-			if (is.match()) {
+		for (MethodNode m : cn.methods()) {
+			InstructionSearcher is = new InstructionSearcher(m.instructions, IN_WATER_REGEX);
+			if (is.search()) {
 				FieldInsnNode inWater = (FieldInsnNode) is.getMatches().get(0)[5];
 				FieldInsnNode fireTicks = (FieldInsnNode) is.getMatches().get(0)[8];
-				addFieldHook(fieldHooks[27].buildObfFin(inWater));
-				addFieldHook(fieldHooks[28].buildObfFin(fireTicks));
+				addField(fieldHooks[27].buildObf(inWater));
+				addField(fieldHooks[28].buildObf(fireTicks));
 				
-				ArrayList<FieldNode> fields = fields(cn, "I");
-				for(int i = 0; i < fields.size(); i++) {
+				List<FieldNode> fields = InsnUtil.fields(cn, "I");
+				for (int i = 0; i < fields.size(); i++) {
 					FieldNode f = fields.get(i);
 					if (f.name.equals(fireTicks.name)) {
-						addFieldHook(fieldHooks[29].buildObfFn(fields.get(i - 1)));
-						addFieldHook(fieldHooks[30].buildObfFn(fields.get(i + 1)));
+						addField(fieldHooks[29].buildObf(fields.get(i - 1)));
+						addField(fieldHooks[30].buildObf(fields.get(i + 1)));
 						break;
 					}
 				}
@@ -610,42 +642,42 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findFireImmunityHook() {
-		for(MethodNode m : methods(cn, "()Z")) {
-			if (m.instructions.size() != 3 || !Access.isFinal(m.access))
+		for (MethodNode m : InsnUtil.methods(cn, "()Z")) {
+			if ((m.instructions.size() != 3) || !((m.access & ACC_FINAL) != 0))
 				continue;
-			InsnSearcher is = new InsnSearcher(m.instructions, 0, new int[] {
+			InstructionSearcher is = new InstructionSearcher(m.instructions, new int[] {
 					ALOAD,
 					GETFIELD });
-			if (is.match()) {
+			if (is.search()) {
 				FieldInsnNode fin = (FieldInsnNode) is.getMatches().get(0)[1];
-				addFieldHook(fieldHooks[31].buildObfFin(fin));
+				addField(fieldHooks[31].buildObf(fin));
 				break;
 			}
 		}
 	}
 	
 	private void findDataWatcherHook() {
-		addFieldHook(fieldHooks[32].buildObfFn(fields(cn, "L" + hookMap.getClassByRefactoredName("DataWatcher").getObfuscatedName() + ";").get(0)));
+		addField(fieldHooks[32].buildObf(InsnUtil.fields(cn, "L" + hookMap.getClassByRefactoredName("DataWatcher").getObfuscatedName() + ";").get(0)));
 	}
 	
 	private void findChunkPositions() {
-		ClassNode worldClient = analysisMap.requestNode(hookMap.getClassByRefactoredName("WorldClient").getObfuscatedName());
-		for(MethodNode m : methods(worldClient)) {
-			InsnSearcher is = new InsnSearcher(m.instructions, 0, CHUNK_POS_REGEX);
-			if (is.match()) {
+		ClassNode worldClient = getNode(hookMap.getClassByRefactoredName("WorldClient").getObfuscatedName());
+		for (MethodNode m : worldClient.methods()) {
+			InstructionSearcher is = new InstructionSearcher(m.instructions, CHUNK_POS_REGEX);
+			if (is.search()) {
 				AbstractInsnNode[] ains = is.getMatches().get(1);
 				FieldInsnNode chunkx = (FieldInsnNode) ains[1];
 				FieldInsnNode chunkz = (FieldInsnNode) ains[4];
 				FieldInsnNode added = (FieldInsnNode) ains[7];
-				addFieldHook(fieldHooks[33].buildObfFin(added));
-				addFieldHook(fieldHooks[34].buildObfFin(chunkx));
-				addFieldHook(fieldHooks[36].buildObfFin(chunkz));
+				addField(fieldHooks[33].buildObf(added));
+				addField(fieldHooks[34].buildObf(chunkx));
+				addField(fieldHooks[36].buildObf(chunkz));
 				
-				ArrayList<FieldNode> fields = fields(cn, "I");
-				for(int i = 0; i < fields.size(); i++) {
+				List<FieldNode> fields = InsnUtil.fields(cn, "I");
+				for (int i = 0; i < fields.size(); i++) {
 					FieldNode f = fields.get(i);
 					if (f.name.equals(chunkx.name)) {
-						addFieldHook(fieldHooks[35].buildObfFn(fields.get(i + 1)));
+						addField(fieldHooks[35].buildObf(fields.get(i + 1)));
 						break;
 					}
 				}
