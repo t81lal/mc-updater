@@ -1,33 +1,45 @@
 package eu.bibl.updaterimpl.rev170.analysers.entity;
+
+import org.objectweb.asm.tree.FieldNode;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.FieldMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.MappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class EntityPlayerAnalyser extends Analyser {
 	
 	public EntityPlayerAnalyser(ClassContainer container, HookMap hookMap) {
 		super("EntityPlayer", container, hookMap);
 		fieldHooks = new FieldMappingData[] {
-				new FieldMappingData("getInventory", "L" + MinecraftAnalyser.INTERFACES + "item/container/IPlayerInventory;"),
-				new FieldMappingData("getInventoryContainer", "L" + MinecraftAnalyser.INTERFACES + "item/container/IContainer;"),
-				new FieldMappingData("getOpenContainer", "L" + MinecraftAnalyser.INTERFACES + "item/container/IContainer;"), };
+				/* 0 */new FieldMappingData(new MappingData("getInventory"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "item/container/IPlayerInventory;"), false),
+				/* 1 */new FieldMappingData(new MappingData("getInventoryContainer"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "item/container/IContainer;"), false),
+				/* 2 */new FieldMappingData(new MappingData("getOpenContainer"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "item/container/IContainer;"), false), };
 	}
 	
 	@Override
-public boolean accept() {
-		ClassMappingData c = hookMap.getClassByObfuscatedName(cn.name);
-		if (c != null && c.getRefactoredName().equals("EntityPlayer"))
+	public boolean accept() {
+		ClassMappingData c = (ClassMappingData) hookMap.getClassByObfuscatedName(cn.name);
+		if ((c != null) && c.getRefactoredName().equals("EntityPlayer"))
 			return true;
 		return false;
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IEntityPlayer", MinecraftAnalyser.INTERFACES + "entity/IEntityLivingBase"));
-		hookMap.addClass(new ClassMappingData(cn.superName, "EntityLivingBase"));
+	public InterfaceMappingData run() {
+		hookMap.addClass(new ClassMappingData(cn.superName, "EntityLivingBase", null));
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IEntityPlayer");
 	}
 	
 	// Called from PlayerInventoryAnalyser
 	public void findPlayerInventory(ClassMappingData playerInventoryHook) {
-		for(FieldNode fNode : fields(cn)) {
+		for (FieldNode fNode : cn.fields()) {
 			if (fNode.desc.equals("L" + playerInventoryHook.getObfuscatedName() + ";")) {
-				addFieldHook(fieldHooks[0].buildObfFn(fNode)); // getinventory
+				addField(fieldHooks[0].buildObf(fNode)); // getinventory
 				break;
 			}
 		}

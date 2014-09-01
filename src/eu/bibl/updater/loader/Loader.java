@@ -41,7 +41,7 @@ public class Loader {
 		ClassContainer container = link.getDownloader().getContents();
 		MassAnalyser ma = anal.register(container, hookMap);
 		ma.runSingleAnalysers(container, hookMap);
-		ma.runSingleAnalysers(container, hookMap); // ?
+		ma.runSingleAnalysers(container, hookMap); // TODO: wtf r u doin here
 	}
 	
 	public static void registerProvider(AnalysisProvider provider) {

@@ -1,26 +1,40 @@
 package eu.bibl.updaterimpl.rev170.analysers.entity;
+
+import java.util.ListIterator;
+
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.storage.CallbackMappingData;
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class EntityClientPlayerMPAnalyser extends Analyser {
 	
 	private static final int[] SWING_ITEM_REGEX = new int[] {
-			ALOAD,
-			INVOKESPECIAL,
-			ALOAD,
-			GETFIELD,
-			NEW,
-			DUP,
-			ALOAD,
-			ICONST_1,
-			INVOKESPECIAL,
-			INVOKEVIRTUAL,
-			RETURN };
+		ALOAD,
+		INVOKESPECIAL,
+		ALOAD,
+		GETFIELD,
+		NEW,
+		DUP,
+		ALOAD,
+		ICONST_1,
+		INVOKESPECIAL,
+		INVOKEVIRTUAL,
+		RETURN };
 	private static final int[] SEND_CHAT_MESSAGE_REGEX = new int[] {
-			ALOAD,
-			GETFIELD,
-			NEW,
-			DUP,
-			ALOAD,
-			INVOKESPECIAL,
-			INVOKEVIRTUAL };
+		ALOAD,
+		GETFIELD,
+		NEW,
+		DUP,
+		ALOAD,
+		INVOKESPECIAL,
+		INVOKEVIRTUAL };
 	
 	public EntityClientPlayerMPAnalyser(ClassContainer container, HookMap hookMap) {
 		super("EntityClientPlayerMP", container, hookMap);
@@ -30,15 +44,15 @@ public class EntityClientPlayerMPAnalyser extends Analyser {
 	}
 	
 	@Override
-public boolean accept() {
+	public boolean accept() {
 		ClassMappingData c = hookMap.getClassByObfuscatedName(cn.name);
-		if (c != null && c.getRefactoredName().equals("EntityClientPlayerMP"))
+		if ((c != null) && c.getRefactoredName().equals("EntityClientPlayerMP"))
 			return true;
 		return false;
 	}
 	
 	@Override
-public InterfaceMappingData run() {
+	public InterfaceMappingData run() {
 		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IEntityClientPlayerMP", MinecraftAnalyser.INTERFACES + "entity/IEntityPlayerSP"));
 		hookMap.addClass(new ClassMappingData(cn.superName, "EntityPlayerSP"));
 		
@@ -46,13 +60,12 @@ public InterfaceMappingData run() {
 	}
 	
 	private void findCallbackMethods() {
-		for(MethodNode mNode : methods(cn)) {
+		for (MethodNode mNode : methods(cn)) {
 			if (containsRegex(mNode, SWING_ITEM_REGEX)) {
 				addMethodHook(methodHooks[0].buildObfMn(mNode));
-			} else
-				if (containsRegex(mNode, SEND_CHAT_MESSAGE_REGEX)) {
-					addMethodHook(methodHooks[1].buildObfMn(mNode));
-				}
+			} else if (containsRegex(mNode, SEND_CHAT_MESSAGE_REGEX)) {
+				addMethodHook(methodHooks[1].buildObfMn(mNode));
+			}
 		}
 	}
 	
@@ -68,7 +81,7 @@ public InterfaceMappingData run() {
 			if (opcode != expectedOpcode) {
 				return false;
 			}
-			if (insnCount == opcodes.length - 1) {
+			if (insnCount == (opcodes.length - 1)) {
 				return true;
 			}
 			insnCount++;
