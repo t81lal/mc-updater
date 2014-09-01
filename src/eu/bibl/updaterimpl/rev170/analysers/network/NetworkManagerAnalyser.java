@@ -1,4 +1,12 @@
 package eu.bibl.updaterimpl.rev170.analysers.network;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class NetworkManagerAnalyser extends Analyser {
 	
 	public NetworkManagerAnalyser(ClassContainer container, HookMap hookMap) {
@@ -6,12 +14,12 @@ public class NetworkManagerAnalyser extends Analyser {
 	}
 	
 	@Override
-public boolean accept() {
-		return cn.superName.equals("io/netty/channel/SimpleChannelInboundHandler") && containsLdc(cn, "NETWORK_PACKETS");
+	public boolean accept() {
+		return cn.superName.equals("io/netty/channel/SimpleChannelInboundHandler") && InsnUtil.containsLdc(cn, "NETWORK_PACKETS");
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "network/INetworkManager"));
+	public InterfaceMappingData run() {
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "network/INetworkManager");
 	}
 }

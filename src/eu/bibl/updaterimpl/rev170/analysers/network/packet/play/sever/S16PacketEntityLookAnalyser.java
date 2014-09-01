@@ -1,4 +1,13 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
+
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
+
 public class S16PacketEntityLookAnalyser extends PlayPacketAnalyser {
 	
 	public S16PacketEntityLookAnalyser(ClassContainer container, HookMap hookMap) {
@@ -6,7 +15,7 @@ public class S16PacketEntityLookAnalyser extends PlayPacketAnalyser {
 	}
 	
 	@Override
-public boolean accept() {
+	public boolean accept() {
 		boolean b = hookMap.getClassByRefactoredName("S14PacketEntity").getObfuscatedName().equals(cn.superName);
 		if (!b)
 			return false;

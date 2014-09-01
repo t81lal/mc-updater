@@ -1,17 +1,28 @@
 package eu.bibl.updaterimpl.rev170.analysers.world;
-public class DifficultyAnalyser extends Analyser{
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.analyse.AnalyserCache;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
+public class DifficultyAnalyser extends Analyser {
+	
 	public DifficultyAnalyser(ClassContainer container, HookMap hookMap) {
 		super("Difficulty", container, hookMap);
 	}
+	
 	@Override
-public boolean accept() {
-		return ((cn.access & ACC_ENUM) != 0) && containsLdc(cn, "options.difficulty.peaceful");
+	public boolean accept() {
+		return ((cn.access & ACC_ENUM) != 0) && InsnUtil.containsLdc(cn, "options.difficulty.peaceful");
 	}
+	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/IDifficulty"));
-		
-		MinecraftAnalyser analyser = (MinecraftAnalyser) analysers.get("Minecraft");
-		addMinecraftHook(analyser.getHooks()[10].buildObfFn(fields(cn, "[L" + cn.name + ";").get(0)));
+	public InterfaceMappingData run() {
+		MinecraftAnalyser analyser = (MinecraftAnalyser) AnalyserCache.contextGet("Minecraft");
+		analyser.addField(analyser.getFieldHooks()[10].buildObf(InsnUtil.fields(cn, "[L" + cn.name + ";").get(0)));
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/IDifficulty");
 	}
 }

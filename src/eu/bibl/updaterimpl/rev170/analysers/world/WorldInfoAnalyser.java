@@ -1,38 +1,57 @@
 package eu.bibl.updaterimpl.rev170.analysers.world;
+
+import java.util.ListIterator;
+
+import org.objectweb.asm.Type;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.LdcInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.FieldMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.MappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class WorldInfoAnalyser extends Analyser {
 	public WorldInfoAnalyser(ClassContainer container, HookMap hookMap) {
 		super("WorldInfo", container, hookMap);
-		fieldHooks = new FieldMappingData[] { 
-			new FieldMappingData("getRandomSeed", "J", "J"), 
-			new FieldMappingData("getTerrainType", "L" + MinecraftAnalyser.INTERFACES + "world/IWorldType;"), 
-			new FieldMappingData("getGeneratorOptions", "Ljava/lang/String;", "Ljava/lang/String;"), 
-			new FieldMappingData("hasMapFeatures", "Z", "Z"), 
-			new FieldMappingData("getSpawnX", "I", "I"), 
-			new FieldMappingData("getSpawnY", "I", "I"), 
-			new FieldMappingData("getSpawnZ", "I", "I"), 
-			new FieldMappingData("getWorldLife", "J", "J"), 
-			new FieldMappingData("getWorldTime", "J", "J"), 
-			new FieldMappingData("getSizeOnDisk", "J", "J"), 
-			new FieldMappingData("getLevelName", "Ljava/lang/String;", "Ljava/lang/String;"), 
-			new FieldMappingData("getVersion", "I", "I"), 
-			new FieldMappingData("getRainTime", "I", "I"), 
-			new FieldMappingData("isRaining", "Z", "Z"), 
-			new FieldMappingData("getThunderTime", "I", "I"), 
-			new FieldMappingData("isThundering", "Z", "Z"), 
-			new FieldMappingData("isHardcore", "Z", "Z"), 
-			new FieldMappingData("allowCommands", "Z", "Z"), 
-			new FieldMappingData("isInitialised", "Z", "Z"), 
-			new FieldMappingData("getGameRules", "L" + MinecraftAnalyser.INTERFACES + "client/IGameRules;"), 
-		};
+		fieldHooks = new FieldMappingData[] {
+				/* 0 */new FieldMappingData(new MappingData("getRandomSeed"), new MappingData("J", "J"), false),
+				/* 1 */new FieldMappingData(new MappingData("getTerrainType"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "world/IWorldType;"), false),
+				/* 2 */new FieldMappingData(new MappingData("getGeneratorOptions"), new MappingData("Ljava/lang/String;", "Ljava/lang/String;"), false),
+				/* 3 */new FieldMappingData(new MappingData("hasMapFeatures"), new MappingData("Z", "Z"), false),
+				/* 4 */new FieldMappingData(new MappingData("getSpawnX"), new MappingData("I", "I"), false),
+				/* 5 */new FieldMappingData(new MappingData("getSpawnY"), new MappingData("I", "I"), false),
+				/* 6 */new FieldMappingData(new MappingData("getSpawnZ"), new MappingData("I", "I"), false),
+				/* 7 */new FieldMappingData(new MappingData("getWorldLife"), new MappingData("J", "J"), false),
+				/* 8 */new FieldMappingData(new MappingData("getWorldTime"), new MappingData("J", "J"), false),
+				/* 9 */new FieldMappingData(new MappingData("getSizeOnDisk"), new MappingData("J", "J"), false),
+				/* 10 */new FieldMappingData(new MappingData("getLevelName"), new MappingData("Ljava/lang/String;", "Ljava/lang/String;"), false),
+				/* 11 */new FieldMappingData(new MappingData("getVersion"), new MappingData("I", "I"), false),
+				/* 12 */new FieldMappingData(new MappingData("getRainTime"), new MappingData("I", "I"), false),
+				/* 13 */new FieldMappingData(new MappingData("isRaining"), new MappingData("Z", "Z"), false),
+				/* 14 */new FieldMappingData(new MappingData("getThunderTime"), new MappingData("I", "I"), false),
+				/* 15 */new FieldMappingData(new MappingData("isThundering"), new MappingData("Z", "Z"), false),
+				/* 16 */new FieldMappingData(new MappingData("isHardcore"), new MappingData("Z", "Z"), false),
+				/* 17 */new FieldMappingData(new MappingData("allowCommands"), new MappingData("Z", "Z"), false),
+				/* 18 */new FieldMappingData(new MappingData("isInitialised"), new MappingData("Z", "Z"), false),
+				/* 19 */new FieldMappingData(new MappingData("getGameRules"), new MappingData("L" + MinecraftAnalyser.INTERFACES + "client/IGameRules;"), false), };
 	}
+	
 	@Override
-public boolean accept() {
-		return containsLdc(cn, "RandomSeed");
+	public boolean accept() {
+		return InsnUtil.containsLdc(cn, "RandomSeed");
 	}
+	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/IWorldInfo"));
-		methods: for (MethodNode m : methods(cn)) {
+	public InterfaceMappingData run() {
+		methods: for (MethodNode m : cn.methods()) {
 			if (m.name.equals("<init>") || m.name.equals("<clinit>"))
 				continue;
 			boolean found = false;
@@ -50,51 +69,53 @@ public InterfaceMappingData run() {
 					}
 					String cst = ldc.cst.toString();
 					if (cst.equals("RandomSeed")) {
-						addFieldHook(fieldHooks[0].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[0].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("generatorName")) {
-						addFieldHook(fieldHooks[1].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[1].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("generatorOptions")) {
-						addFieldHook(fieldHooks[2].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[2].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("MapFeatures")) {
-						addFieldHook(fieldHooks[3].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[3].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("SpawnX")) {
-						addFieldHook(fieldHooks[4].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[4].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("SpawnY")) {
-						addFieldHook(fieldHooks[5].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[5].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("SpawnZ")) {
-						addFieldHook(fieldHooks[6].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[6].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("Time")) {
-						addFieldHook(fieldHooks[7].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[7].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("DayTime")) {
-						addFieldHook(fieldHooks[8].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[8].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("SizeOnDisk")) {
-						addFieldHook(fieldHooks[9].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[9].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("LevelName")) {
-						addFieldHook(fieldHooks[10].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[10].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("version")) {
-						addFieldHook(fieldHooks[11].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[11].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("rainTime")) {
-						addFieldHook(fieldHooks[12].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[12].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("raining")) {
-						addFieldHook(fieldHooks[13].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[13].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("thunderTime")) {
-						addFieldHook(fieldHooks[14].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[14].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("thundering")) {
-						addFieldHook(fieldHooks[15].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[15].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("hardcore")) {
-						addFieldHook(fieldHooks[16].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[16].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("allowCommands")) {
-						addFieldHook(fieldHooks[17].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[17].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("initialized")) {
-						addFieldHook(fieldHooks[18].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addField(fieldHooks[18].buildObf((FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD)));
 					} else if (cst.equals("GameRules")) {
-						FieldInsnNode fin = (FieldInsnNode) getNext(ldc, GETFIELD);
+						FieldInsnNode fin = (FieldInsnNode) InsnUtil.getNext(ldc, GETFIELD);
 						String gameRules = Type.getReturnType(fin.desc).getClassName();
-						hookMap.addClass(new ClassMappingData(gameRules, "GameRules"));
-						addFieldHook(fieldHooks[19].buildObfFin(fin));
+						hookMap.addClass(new ClassMappingData(gameRules, "GameRules", null));
+						addField(fieldHooks[19].buildObf(fin));
 					}
 				}
 			}
 		}
+		
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/IWorldInfo");
 	}
 }

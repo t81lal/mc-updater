@@ -1,4 +1,14 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.status;
+
+import java.util.HashMap;
+
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+import eu.bibl.updaterimpl.rev170.analysers.network.packet.PacketBaseAnalyser;
+
 public abstract class StatusPacketAnalyser extends PacketBaseAnalyser {
 	
 	public static HashMap<Integer, String> realServerBoundPacketCache = new HashMap<Integer, String>();
@@ -14,32 +24,32 @@ public abstract class StatusPacketAnalyser extends PacketBaseAnalyser {
 		realClientBoundPacketCache.put(1, "S01PacketPong");
 	}
 	
-	public StatusPacketAnalyser(String name) {
-		super(name);
+	public StatusPacketAnalyser(String name, ClassContainer container, HookMap hookMap) {
+		super(name, container, hookMap);
 	}
 	
 	@Override
-public boolean accept() {
+	public boolean accept() {
 		boolean b = hookMap.getClassByRefactoredName("Packet").getObfuscatedName().equals(cn.superName);
 		if (!b)
 			return false;
-		ClassMappingData hook = hookMap.getClassByRefactoredName(name);
+		ClassMappingData hook = (ClassMappingData) hookMap.getClassByRefactoredName(name);
 		if (hook == null)
 			return false;
 		return hook.getObfuscatedName().equals(cn.name);
 	}
 	
 	@Override
-public InterfaceMappingData run() {
+	public InterfaceMappingData run() {
 		String pck = realServerBoundPacketCache.containsValue(name) ? "client" : "server";
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "network/packet/status/" + pck + "/I" + name, MinecraftAnalyser.INTERFACES + "network/packet/IPacket"));
 		run1();
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "network/packet/status/" + pck + "/I" + name);
 	}
 	
 	public abstract void run1();
 	
 	@Override
-	public boolean accept1(ClassNode cn) {
+	public boolean accept1() {
 		return true;
 	}
 }

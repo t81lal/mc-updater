@@ -1,4 +1,18 @@
 package eu.bibl.updaterimpl.rev170.analysers.world;
+
+import java.util.ListIterator;
+
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.LdcInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class WorldClientAnalyser extends Analyser {
 	
 	public WorldClientAnalyser(ClassContainer container, HookMap hookMap) {
@@ -6,8 +20,8 @@ public class WorldClientAnalyser extends Analyser {
 	}
 	
 	@Override
-public boolean accept() {
-		for(MethodNode mNode : methods(cn)) {
+	public boolean accept() {
+		for (MethodNode mNode : cn.methods()) {
 			if (!mNode.name.equals("<init>"))
 				continue;
 			ListIterator<?> it = mNode.instructions.iterator();
@@ -27,10 +41,8 @@ public boolean accept() {
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		InterfaceHook mcInterfaceData = new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/IWorldClient", MinecraftAnalyser.INTERFACES + "world/IWorld");
-		classHook.setInterfaceHook(mcInterfaceData);
-		
-		hookMap.addClass(new ClassMappingData(cn.superName, "World"));
+	public InterfaceMappingData run() {
+		hookMap.addClass(new ClassMappingData(cn.superName, "World", null));
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/IWorldClient");
 	}
 }
