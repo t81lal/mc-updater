@@ -1,4 +1,18 @@
 package eu.bibl.updaterimpl.rev170.analysers.system;
+
+import java.util.ListIterator;
+
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.analyse.AnalyserCache;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class ShutdownHookAnalyser extends Analyser {
 	
 	public ShutdownHookAnalyser(ClassContainer container, HookMap hookMap) {
@@ -6,11 +20,11 @@ public class ShutdownHookAnalyser extends Analyser {
 	}
 	
 	@Override
-public boolean accept() {
+	public boolean accept() {
 		boolean b = cn.superName.equals("java/lang/Thread");
 		if (!b)
 			return false;
-		for(MethodNode m : methods(cn)) {
+		for (MethodNode m : cn.methods()) {
 			if (m.instructions.size() != 2)
 				continue;
 			ListIterator<?> it = m.instructions.iterator();
@@ -27,21 +41,20 @@ public boolean accept() {
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "system/ShutdownHook"));
-		
-		for(MethodNode m : methods(cn)) {
+	public InterfaceMappingData run() {
+		for (MethodNode m : cn.methods()) {
 			if (!m.name.equals("<init>") && !m.desc.equals("<clinit>")) {
 				ListIterator<?> it = m.instructions.iterator();
 				while (it.hasNext()) {
 					AbstractInsnNode ain = (AbstractInsnNode) it.next();
 					if (ain.getOpcode() == INVOKESTATIC) {
 						MethodInsnNode min = (MethodInsnNode) ain;
-						MinecraftAnalyser analyser = (MinecraftAnalyser) analysers.get("Minecraft");
-						analyser.addMinecraftHook(analyser.getCallbackMappingDatas()[2].buildObfMin(min));
+						MinecraftAnalyser analyser = (MinecraftAnalyser) AnalyserCache.contextGet("Minecraft");
+						analyser.addMethod(analyser.getMethodHooks()[2].buildObfMethod(min));
 					}
 				}
 			}
 		}
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "system/ShutdownHook");
 	}
 }

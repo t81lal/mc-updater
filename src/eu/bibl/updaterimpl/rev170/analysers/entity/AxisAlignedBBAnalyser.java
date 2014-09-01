@@ -4,6 +4,7 @@ import org.objectweb.asm.tree.FieldInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
 import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.asm.insn.InstructionSearcher;
 import eu.bibl.banalysis.storage.CallbackMappingData;
 import eu.bibl.banalysis.storage.FieldMappingData;
 import eu.bibl.banalysis.storage.HookMap;
@@ -215,60 +216,60 @@ public class AxisAlignedBBAnalyser extends Analyser {
 	
 	@Override
 	public InterfaceMappingData run() {
-		addMethodHook(methodHooks[5].buildObfMn(methods(cn, "(L" + cn.name + ";)Z").get(0)));
+		addMethod(methodHooks[5].buildObfMethod(InsnUtil.methods(cn, "(L" + cn.name + ";)Z").get(0)));
 		
-		for (MethodNode m : methods(cn)) {
+		for (MethodNode m : cn.methods()) {
 			if (m.name.equals("toString")) {
-				InsnSearcher is = new InsnSearcher(m.instructions, 0, new int[] { GETFIELD });
-				if (is.match()) {
+				InstructionSearcher is = new InstructionSearcher(m.instructions, new int[] { GETFIELD });
+				if (is.search()) {
 					for (int i = 0; i < is.size(); i++) {
 						FieldInsnNode fin = (FieldInsnNode) is.getMatches().get(i)[0];
-						addFieldHook(fieldHooks[i].buildObfFin(fin));
+						addField(fieldHooks[i].buildObf(fin));
 					}
 				}
 			}
 		}
 		
-		for (MethodNode m : methods(cn, "(DDDDDD)L" + cn.name + ";")) {
-			if (Access.isStatic(m.access)) {
-				addMethodHook(methodHooks[0].buildObfMn(m));
+		for (MethodNode m : InsnUtil.methods(cn, "(DDDDDD)L" + cn.name + ";")) {
+			if ((m.access & ACC_STATIC) != 0) {
+				addMethod(methodHooks[0].buildObfMethod(m));
 			} else {
-				InsnSearcher is = new InsnSearcher(m.instructions, 0, SET_BOUNDS_REGEX);
-				if (is.match()) {
-					addMethodHook(methodHooks[1].buildObfMn(m));
+				InstructionSearcher is = new InstructionSearcher(m.instructions, SET_BOUNDS_REGEX);
+				if (is.search()) {
+					addMethod(methodHooks[1].buildObfMethod(m));
 				}
 			}
 		}
 		
-		for (MethodNode m : methods(cn, "(DDD)L" + cn.name + ";")) {
-			if (!methodHooks[2].identified()) {
-				InsnSearcher is = new InsnSearcher(m.instructions, 0, ADD_CHORD_REGEX);
-				if (is.match()) {
-					addMethodHook(methodHooks[2].buildObfMn(m));
+		for (MethodNode m : InsnUtil.methods(cn, "(DDD)L" + cn.name + ";")) {
+			if (!methodHooks[2].isIdentified()) {
+				InstructionSearcher is = new InstructionSearcher(m.instructions, ADD_CHORD_REGEX);
+				if (is.search()) {
+					addMethod(methodHooks[2].buildObfMethod(m));
 				}
 			}
-			if (!methodHooks[3].identified()) {
-				InsnSearcher is = new InsnSearcher(m.instructions, 0, EXPAND_REGEX);
-				if (is.match()) {
-					addMethodHook(methodHooks[3].buildObfMn(m));
+			if (!methodHooks[3].isIdentified()) {
+				InstructionSearcher is = new InstructionSearcher(m.instructions, EXPAND_REGEX);
+				if (is.search()) {
+					addMethod(methodHooks[3].buildObfMethod(m));
 				}
 			}
-			if (!methodHooks[4].identified()) {
-				InsnSearcher is = new InsnSearcher(m.instructions, 0, GET_OFFSETED_BOX__REGEX);
-				if (is.match()) {
-					addMethodHook(methodHooks[4].buildObfMn(m));
+			if (!methodHooks[4].isIdentified()) {
+				InstructionSearcher is = new InstructionSearcher(m.instructions, GET_OFFSETED_BOX__REGEX);
+				if (is.search()) {
+					addMethod(methodHooks[4].buildObfMethod(m));
 				}
 			}
-			if (!methodHooks[6].identified()) {
-				InsnSearcher is = new InsnSearcher(m.instructions, 0, OFFSET_REGEX);
-				if (is.match()) {
-					addMethodHook(methodHooks[6].buildObfMn(m));
+			if (!methodHooks[6].isIdentified()) {
+				InstructionSearcher is = new InstructionSearcher(m.instructions, OFFSET_REGEX);
+				if (is.search()) {
+					addMethod(methodHooks[6].buildObfMethod(m));
 				}
 			}
-			if (!methodHooks[7].identified()) {
-				InsnSearcher is = new InsnSearcher(m.instructions, 0, CONTRACT_REGEX);
-				if (is.match()) {
-					addMethodHook(methodHooks[7].buildObfMn(m));
+			if (!methodHooks[7].isIdentified()) {
+				InstructionSearcher is = new InstructionSearcher(m.instructions, CONTRACT_REGEX);
+				if (is.search()) {
+					addMethod(methodHooks[7].buildObfMethod(m));
 				}
 			}
 		}
