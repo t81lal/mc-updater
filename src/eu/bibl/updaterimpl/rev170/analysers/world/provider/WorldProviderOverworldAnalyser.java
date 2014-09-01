@@ -1,20 +1,13 @@
 package eu.bibl.updaterimpl.rev170.analysers.world.provider;
-
-import org.objectweb.asm.tree.ClassNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.updater.analysis.Analyser;
-
 public class WorldProviderOverworldAnalyser extends Analyser {
 	
-	public WorldProviderOverworldAnalyser() {
-		super("Overworld");
+	public WorldProviderOverworldAnalyser(ClassContainer container, HookMap hookMap) {
+		super("Overworld", container, hookMap);
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		ClassHook hook = map.getClassByRefactoredName("WorldProvider");
+public boolean accept() {
+		ClassMappingData hook = hookMap.getClassByRefactoredName("WorldProvider");
 		if (hook == null)
 			return false;
 		if (hook.getObfuscatedName().equals(cn.superName))
@@ -23,7 +16,7 @@ public class WorldProviderOverworldAnalyser extends Analyser {
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "world/provider/IWorldProviderOverworld"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/provider/IWorldProviderOverworld"));
 	}
 }

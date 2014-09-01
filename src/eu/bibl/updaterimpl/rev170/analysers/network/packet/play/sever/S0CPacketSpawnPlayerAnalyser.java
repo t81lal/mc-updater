@@ -1,26 +1,19 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S0CPacketSpawnPlayerAnalyser extends PlayPacketAnalyser {
 	
-	public S0CPacketSpawnPlayerAnalyser() {
-		super("S0CPacketSpawnPlayer");
-		hooks = new FieldHook[] {
-				new FieldHook("getEntityID", "I", "I"),
-				new FieldHook("getGameProfile", "Lcom/mojang/authlib/GameProfile;", "Lcom/mojang/authlib/GameProfile;"),
-				new FieldHook("getDataLength", "I", "I"),
-				new FieldHook("getX", "I", "I"),
-				new FieldHook("getY", "I", "I"),
-				new FieldHook("getZ", "I", "I"),
-				new FieldHook("getRotationPitch", "B", "B"),
-				new FieldHook("getRotationYaw", "B", "B"),
-				new FieldHook("gegetCurrentItem", "I", "I"),
-				new FieldHook("getMetadata", "Ljava/util/List;", "Ljava/util/List;"), };
+	public S0CPacketSpawnPlayerAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S0CPacketSpawnPlayer", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getEntityID", "I", "I"),
+				new FieldMappingData("getGameProfile", "Lcom/mojang/authlib/GameProfile;", "Lcom/mojang/authlib/GameProfile;"),
+				new FieldMappingData("getDataLength", "I", "I"),
+				new FieldMappingData("getX", "I", "I"),
+				new FieldMappingData("getY", "I", "I"),
+				new FieldMappingData("getZ", "I", "I"),
+				new FieldMappingData("getRotationPitch", "B", "B"),
+				new FieldMappingData("getRotationYaw", "B", "B"),
+				new FieldMappingData("gegetCurrentItem", "I", "I"),
+				new FieldMappingData("getMetadata", "Ljava/util/List;", "Ljava/util/List;"), };
 	}
 	
 	@Override
@@ -28,8 +21,8 @@ public class S0CPacketSpawnPlayerAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length - 1; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
-		addHook(hooks[9].buildObfFn(fields(cn, "Ljava/util/List;").get(0)));
+		addFieldHook(fieldHooks[9].buildObfFn(fields(cn, "Ljava/util/List;").get(0)));
 	}
 }

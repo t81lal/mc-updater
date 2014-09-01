@@ -1,24 +1,4 @@
 package eu.bibl.updaterimpl.rev170.analysers.world;
-
-import java.util.ListIterator;
-
-import org.objectweb.asm.Type;
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.LdcInsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.pattern.InsnSearcher;
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.bytetools.analysis.storage.hooks.MethodHook;
-import eu.bibl.updater.analysis.Analyser;
-import eu.bibl.updaterimpl.rev170.analysers.client.profiler.ProfilerAnalyser;
-import eu.bibl.updaterimpl.rev170.analysers.entity.EntityAnalyser;
-
 public class WorldAnalyser extends Analyser {
 	
 	private static final int[] REMOVE_ENTITY_REGEX = new int[] {
@@ -53,26 +33,26 @@ public class WorldAnalyser extends Analyser {
 			GETFIELD,
 			ISTORE };
 	
-	public WorldAnalyser() {
-		super("World");
-		hooks = new FieldHook[] {
-				new FieldHook("getLoadedEntities", "Ljava/util/List;", "Ljava/util/List;"),
-				new FieldHook("getUnloadedEntites", "Ljava/util/List;", "Ljava/util/List;"),
-				new FieldHook("getPlayerEntities", "Ljava/util/List;", "Ljava/util/List;"),
-				new FieldHook("getWeatherEntities", "Ljava/util/List;", "Ljava/util/List;") };
-		methodHooks = new MethodHook[] { new MethodHook("addWeatherEffect", "(L" + INTERFACES + "entity/IEntity;)Z"),
+	public WorldAnalyser(ClassContainer container, HookMap hookMap) {
+		super("World", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getLoadedEntities", "Ljava/util/List;", "Ljava/util/List;"),
+				new FieldMappingData("getUnloadedEntites", "Ljava/util/List;", "Ljava/util/List;"),
+				new FieldMappingData("getPlayerEntities", "Ljava/util/List;", "Ljava/util/List;"),
+				new FieldMappingData("getWeatherEntities", "Ljava/util/List;", "Ljava/util/List;") };
+		methodHooks = new CallbackMappingData[] { new CallbackMappingData("addWeatherEffect", "(L" + MinecraftAnalyser.INTERFACES + "entity/IEntity;)Z"),
 		
 		};
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		return map.getClassByRefactoredName("World").getObfuscatedName().equals(cn.name);
+public boolean accept() {
+		return hookMap.getClassByRefactoredName("World").getObfuscatedName().equals(cn.name);
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "world/IWorld"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/IWorld"));
 		
 		all: for(MethodNode m : methods(cn)) {
 			ListIterator<?> it = m.instructions.iterator();
@@ -83,11 +63,11 @@ public class WorldAnalyser extends Analyser {
 					if (ldc.cst.equals("remove")) {
 						FieldInsnNode fin = (FieldInsnNode) getNext(ain, GETFIELD);
 						if (fin.desc.equals("Ljava/util/List;")) {
-							addHook(hooks[0].buildObfFin(fin));
+							addFieldHook(fieldHooks[0].buildObfFin(fin));
 							FieldInsnNode fin2 = (FieldInsnNode) getNext(fin.getNext(), GETFIELD);
-							addHook(hooks[1].buildObfFin(fin2));
+							addFieldHook(fieldHooks[1].buildObfFin(fin2));
 							MethodInsnNode profiler = (MethodInsnNode) getNext(ain, INVOKEVIRTUAL);
-							map.addClass(new ClassHook(profiler.owner, "Profiler"));
+							hookMap.addClass(new ClassMappingData(profiler.owner, "Profiler"));
 							ProfilerAnalyser profilerAnalyser = (ProfilerAnalyser) analysers.get("Profiler");
 							profilerAnalyser.findEndStart(profiler);
 							break all;
@@ -105,7 +85,7 @@ public class WorldAnalyser extends Analyser {
 				if (ain2.getOpcode() == GETFIELD) {
 					FieldInsnNode fin = (FieldInsnNode) ain2;
 					if (fin.desc.equals("Ljava/util/List;")) {
-						addHook(hooks[2].buildObfFin(fin));
+						addFieldHook(fieldHooks[2].buildObfFin(fin));
 						break;
 					}
 				}
@@ -116,8 +96,8 @@ public class WorldAnalyser extends Analyser {
 			InsnSearcher is = new InsnSearcher(m.instructions, 0, WEATHER_REGEX);
 			if (is.match()) {
 				FieldInsnNode fin = (FieldInsnNode) is.getMatches().get(0)[1];
-				addHook(hooks[3].buildObfFin(fin));
-				addHook(methodHooks[0].buildObfMn(m));
+				addFieldHook(fieldHooks[3].buildObfFin(fin));
+				addMethodHook(methodHooks[0].buildObfMn(m));
 				break;
 			}
 		}

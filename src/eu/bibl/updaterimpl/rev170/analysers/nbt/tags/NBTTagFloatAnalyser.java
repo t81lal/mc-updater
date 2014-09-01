@@ -1,26 +1,20 @@
 package eu.bibl.updaterimpl.rev170.analysers.nbt.tags;
-
-import org.objectweb.asm.tree.ClassNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-
 public class NBTTagFloatAnalyser extends NBTTagAnalyser {
 	
-	public NBTTagFloatAnalyser() {
-		super("NBTTagFloat");
-		hooks = new FieldHook[] { new FieldHook("getData", "F", "F") };
+	public NBTTagFloatAnalyser(ClassContainer container, HookMap hookMap) {
+		super("NBTTagFloat", container, hookMap);
+		fieldHooks = new FieldMappingData[] { new FieldMappingData("getData", "F", "F") };
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		return map.getClassByRefactoredName("NBTTagFloat").getObfuscatedName().equals(cn.name);
+public boolean accept() {
+		return hookMap.getClassByRefactoredName("NBTTagFloat").getObfuscatedName().equals(cn.name);
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "nbt/tags/INBTTagFloat", INTERFACES + "nbt/INBTPrimitive"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "nbt/tags/INBTTagFloat", MinecraftAnalyser.INTERFACES + "nbt/INBTPrimitive"));
 		
-		addHook(hooks[0].buildObfFn(fields(cn, "F").get(0)));
+		addFieldHook(fieldHooks[0].buildObfFn(fields(cn, "F").get(0)));
 	}
 }

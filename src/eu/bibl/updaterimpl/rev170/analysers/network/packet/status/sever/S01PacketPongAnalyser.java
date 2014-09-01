@@ -1,17 +1,13 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.status.sever;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.status.StatusPacketAnalyser;
-
 public class S01PacketPongAnalyser extends StatusPacketAnalyser {
 	
-	public S01PacketPongAnalyser() {
-		super("S01PacketPong");
-		hooks = new FieldHook[] { new FieldHook("getTime", "J", "J") };
+	public S01PacketPongAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S01PacketPong", container, hookMap);
+		fieldHooks = new FieldMappingData[] { new FieldMappingData("getTime", "J", "J") };
 	}
 	
 	@Override
 	public void run1() {
-		addHook(hooks[0].buildObfFn(fields(cn, "J").get(0)));
+		addFieldHook(fieldHooks[0].buildObfFn(fields(cn, "J").get(0)));
 	}
 }

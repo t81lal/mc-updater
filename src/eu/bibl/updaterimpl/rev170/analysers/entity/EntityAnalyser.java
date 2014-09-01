@@ -1,25 +1,4 @@
 package eu.bibl.updaterimpl.rev170.analysers.entity;
-
-import java.util.ArrayList;
-import java.util.ListIterator;
-
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.FieldNode;
-import org.objectweb.asm.tree.LdcInsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-import org.objectweb.asm.tree.VarInsnNode;
-
-import eu.bibl.bytetools.analysis.pattern.InsnSearcher;
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.bytetools.analysis.storage.hooks.MethodHook;
-import eu.bibl.bytetools.util.Access;
-import eu.bibl.updater.analysis.Analyser;
-
 public class EntityAnalyser extends Analyser {
 	
 	// server x,y,z regex
@@ -78,66 +57,66 @@ public class EntityAnalyser extends Analyser {
 			ALOAD,
 			GETFIELD };
 	
-	public EntityAnalyser() {
-		super("Entity");
-		hooks = new FieldHook[] {
-				new FieldHook("getEntityID", "I", "I"),
-				new FieldHook("getEntityRidingOnThis", "L" + INTERFACES + "entity/IEntity;"),
-				new FieldHook("getEntityRiden", "L" + INTERFACES + "entity/IEntity;"),
-				new FieldHook("getX", "D", "D"),
-				new FieldHook("getY", "D", "D"),
-				new FieldHook("getZ", "D", "D"),
-				new FieldHook("getRotationPitch", "F", "F"),
-				new FieldHook("getRotationYaw", "F", "F"),
-				new FieldHook("isInWeb", "Z", "Z"),
-				new FieldHook("getMotionX", "D", "D"),
-				new FieldHook("getMotionY", "D", "D"),
-				new FieldHook("getMotionZ", "D", "D"),
-				new FieldHook("getFallDistance", "F", "F"),
-				new FieldHook("getFireTime", "I", "I"),
-				new FieldHook("isOnGround", "Z", "Z"),
-				new FieldHook("getDimension", "I", "I"),
-				new FieldHook("isInvincible", "Z", "Z"),
-				new FieldHook("getWidth", "F", "F"),
-				new FieldHook("getHeight", "F", "F"),
-				new FieldHook("isDead", "Z", "Z"),
-				new FieldHook("isColliding", "Z", "Z"),
-				new FieldHook("isCollidingVertically", "Z", "Z"),
-				new FieldHook("isCollidingHorizontally", "Z", "Z"),
-				new FieldHook("getWorld", "L" + INTERFACES + "world/IWorld;"),
-				new FieldHook("getStepHeight", "F", "F"),
-				new FieldHook("getLifeInTicks", "I", "I"),
-				new FieldHook("getBoundingBox", "L" + INTERFACES + "entity/IAxisAlignedBB;"),
-				new FieldHook("isInWater", "Z", "Z"),
-				new FieldHook("getInFireTicks", "I", "I"),
-				new FieldHook("getInFireResistanceTicks", "I", "I"),
-				new FieldHook("getHurtResistanceTicks", "I", "I"),
-				new FieldHook("isImmuneToFire", "Z", "Z"),
-				new FieldHook("getDataWatcher", "L" + INTERFACES + "entity/IDataWatcher;"),
-				new FieldHook("isAddedToChunk", "Z", "Z"),
-				new FieldHook("getChunkCoordX", "I", "I"),
-				new FieldHook("getChunkCoordY", "I", "I"),
-				new FieldHook("getChunkCoordZ", "I", "I"),
-				new FieldHook("isSpawnForced", "Z", "Z") };
-		methodHooks = new MethodHook[] {
-				new MethodHook("onUpdate", "()V", "()V"),
-				new MethodHook("onEntityUpdate", "()V", "()V"),
-				new MethodHook("setPos", "(DDD)V", "(DDD)V")
+	public EntityAnalyser(ClassContainer container, HookMap hookMap) {
+		super("Entity", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getEntityID", "I", "I"),
+				new FieldMappingData("getEntityRidingOnThis", "L" + MinecraftAnalyser.INTERFACES + "entity/IEntity;"),
+				new FieldMappingData("getEntityRiden", "L" + MinecraftAnalyser.INTERFACES + "entity/IEntity;"),
+				new FieldMappingData("getX", "D", "D"),
+				new FieldMappingData("getY", "D", "D"),
+				new FieldMappingData("getZ", "D", "D"),
+				new FieldMappingData("getRotationPitch", "F", "F"),
+				new FieldMappingData("getRotationYaw", "F", "F"),
+				new FieldMappingData("isInWeb", "Z", "Z"),
+				new FieldMappingData("getMotionX", "D", "D"),
+				new FieldMappingData("getMotionY", "D", "D"),
+				new FieldMappingData("getMotionZ", "D", "D"),
+				new FieldMappingData("getFallDistance", "F", "F"),
+				new FieldMappingData("getFireTime", "I", "I"),
+				new FieldMappingData("isOnGround", "Z", "Z"),
+				new FieldMappingData("getDimension", "I", "I"),
+				new FieldMappingData("isInvincible", "Z", "Z"),
+				new FieldMappingData("getWidth", "F", "F"),
+				new FieldMappingData("getHeight", "F", "F"),
+				new FieldMappingData("isDead", "Z", "Z"),
+				new FieldMappingData("isColliding", "Z", "Z"),
+				new FieldMappingData("isCollidingVertically", "Z", "Z"),
+				new FieldMappingData("isCollidingHorizontally", "Z", "Z"),
+				new FieldMappingData("getWorld", "L" + MinecraftAnalyser.INTERFACES + "world/IWorld;"),
+				new FieldMappingData("getStepHeight", "F", "F"),
+				new FieldMappingData("getLifeInTicks", "I", "I"),
+				new FieldMappingData("getBoundingBox", "L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"),
+				new FieldMappingData("isInWater", "Z", "Z"),
+				new FieldMappingData("getInFireTicks", "I", "I"),
+				new FieldMappingData("getInFireResistanceTicks", "I", "I"),
+				new FieldMappingData("getHurtResistanceTicks", "I", "I"),
+				new FieldMappingData("isImmuneToFire", "Z", "Z"),
+				new FieldMappingData("getDataWatcher", "L" + MinecraftAnalyser.INTERFACES + "entity/IDataWatcher;"),
+				new FieldMappingData("isAddedToChunk", "Z", "Z"),
+				new FieldMappingData("getChunkCoordX", "I", "I"),
+				new FieldMappingData("getChunkCoordY", "I", "I"),
+				new FieldMappingData("getChunkCoordZ", "I", "I"),
+				new FieldMappingData("isSpawnForced", "Z", "Z") };
+		methodHooks = new CallbackMappingData[] {
+				new CallbackMappingData("onUpdate", "()V", "()V"),
+				new CallbackMappingData("onEntityUpdate", "()V", "()V"),
+				new CallbackMappingData("setPos", "(DDD)V", "(DDD)V")
 		
 		};
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		ClassHook c = map.getClassByObfuscatedName(cn.name);
+public boolean accept() {
+		ClassMappingData c = hookMap.getClassByObfuscatedName(cn.name);
 		if (c != null && c.getRefactoredName().equals("Entity"))
 			return true;
 		return false;
 	}
 	
 	@Override
-	public void run() {
-		InterfaceHook interfaceHook = new InterfaceHook(classHook, INTERFACES + "entity/IEntity");
+public InterfaceMappingData run() {
+		InterfaceHook interfaceHook = new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IEntity");
 		classHook.setInterfaceHook(interfaceHook);
 		
 		findEntityID();
@@ -161,14 +140,14 @@ public class EntityAnalyser extends Analyser {
 		findSetPosMethod();
 		
 		// found in worldanalyser
-		addHook(hooks[37]);
+		addFieldHook(fieldHooks[37]);
 	}
 	
 	private void findSetPosMethod() {
 		for(MethodNode m : methods(cn, "(DDD)V")) {
 			InsnSearcher is = new InsnSearcher(m.instructions, 0, FSUB);
 			if (is.match() && is.size() == 2) {
-				addHook(methodHooks[2].buildObfMn(m));
+				addMethodHook(methodHooks[2].buildObfMn(m));
 				break;
 			}
 		}
@@ -188,8 +167,8 @@ public class EntityAnalyser extends Analyser {
 				continue;
 			MethodNode m1 = getMethod(min);
 			if (containsLdc(m1, "entityBaseTick")) {
-				addHook(methodHooks[0].buildObfMn(m));
-				addHook(methodHooks[1].buildObfMn(m1));
+				addMethodHook(methodHooks[0].buildObfMn(m));
+				addMethodHook(methodHooks[1].buildObfMn(m1));
 				break;
 			}
 		}
@@ -228,7 +207,7 @@ public class EntityAnalyser extends Analyser {
 					AbstractInsnNode ain = (AbstractInsnNode) it.next();
 					if (ain.getOpcode() == PUTFIELD) {
 						FieldInsnNode fin = (FieldInsnNode) ain;
-						addHook(hooks[0].buildObfFin(fin));
+						addFieldHook(fieldHooks[0].buildObfFin(fin));
 						break;
 					}
 				}
@@ -241,8 +220,8 @@ public class EntityAnalyser extends Analyser {
 		if (entityFields.size() == 2) {
 			FieldNode firstEntityNode = entityFields.get(0);
 			FieldNode secondEntityNode = entityFields.get(1);
-			addHook(hooks[1].buildObfFn(firstEntityNode));
-			addHook(hooks[2].buildObfFn(secondEntityNode));
+			addFieldHook(fieldHooks[1].buildObfFn(firstEntityNode));
+			addFieldHook(fieldHooks[2].buildObfFn(secondEntityNode));
 		}
 	}
 	
@@ -269,15 +248,15 @@ public class EntityAnalyser extends Analyser {
 							vCount++;
 							FieldInsnNode fin1 = (FieldInsnNode) vin.getNext().getNext();
 							if (vCount == 2) {
-								addHook(hooks[3].buildObfFin(fin1));
+								addFieldHook(fieldHooks[3].buildObfFin(fin1));
 							} else if (vCount == 3) {
-								addHook(hooks[4].buildObfFin(fin1));
+								addFieldHook(fieldHooks[4].buildObfFin(fin1));
 							} else if (vCount == 4) {
-								addHook(hooks[5].buildObfFin(fin1));
+								addFieldHook(fieldHooks[5].buildObfFin(fin1));
 							} else if (vCount == 5) {
-								addHook(hooks[6].buildObfFin(fin1));
+								addFieldHook(fieldHooks[6].buildObfFin(fin1));
 							} else if (vCount == 6) {
-								addHook(hooks[7].buildObfFin(fin1));
+								addFieldHook(fieldHooks[7].buildObfFin(fin1));
 							} else if (vCount > 6) {
 								break posFor;
 							}
@@ -320,13 +299,13 @@ public class EntityAnalyser extends Analyser {
 							}
 							if (fin1.getOpcode() == PUTFIELD) {
 								FieldInsnNode fin2 = (FieldInsnNode) fin1;
-								addHook(hooks[8].buildObfFin(fin2));
+								addFieldHook(fieldHooks[8].buildObfFin(fin2));
 							}
-							addHook(hooks[9].buildObfFin(fin));
+							addFieldHook(fieldHooks[9].buildObfFin(fin));
 						} else if (i == 1) {
-							addHook(hooks[10].buildObfFin(fin));
+							addFieldHook(fieldHooks[10].buildObfFin(fin));
 						} else if (i == 2) {
-							addHook(hooks[11].buildObfFin(fin));
+							addFieldHook(fieldHooks[11].buildObfFin(fin));
 						} else {
 							break motionPosFor;
 						}
@@ -375,7 +354,7 @@ public class EntityAnalyser extends Analyser {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addHook(hooks[12].buildObfFin(fin));
+									addFieldHook(fieldHooks[12].buildObfFin(fin));
 								}
 							} else if (ldc.cst.toString().equals("OnGround")) {
 								AbstractInsnNode nextInsn = ain;
@@ -388,7 +367,7 @@ public class EntityAnalyser extends Analyser {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addHook(hooks[14].buildObfFin(fin));
+									addFieldHook(fieldHooks[14].buildObfFin(fin));
 								}
 							} else if (ldc.cst.toString().equals("Dimension")) {
 								AbstractInsnNode nextInsn = ain;
@@ -401,7 +380,7 @@ public class EntityAnalyser extends Analyser {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addHook(hooks[15].buildObfFin(fin));
+									addFieldHook(fieldHooks[15].buildObfFin(fin));
 								}
 							} else if (ldc.cst.toString().equals("Invulnerable")) {
 								AbstractInsnNode nextInsn = ain;
@@ -414,7 +393,7 @@ public class EntityAnalyser extends Analyser {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addHook(hooks[16].buildObfFin(fin));
+									addFieldHook(fieldHooks[16].buildObfFin(fin));
 								}
 							} else if (ldc.cst.toString().equals("PortalCoolDown")) {
 								AbstractInsnNode nextInsn = ain;
@@ -427,7 +406,7 @@ public class EntityAnalyser extends Analyser {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addHook(new FieldHook(classHook, fin.name, "getPortalCoolDown", fin.desc, fin.desc, false));
+									addHook(new FieldMappingData(classHook, fin.name, "getPortalCoolDown", fin.desc, fin.desc, false));
 								}
 							} else if (ldc.cst.toString().equals("Fire")) {
 								AbstractInsnNode nextInsn = ain;
@@ -440,7 +419,7 @@ public class EntityAnalyser extends Analyser {
 								}
 								if (nextInsn.getOpcode() == GETFIELD) {
 									FieldInsnNode fin = (FieldInsnNode) nextInsn;
-									addHook(hooks[13].buildObfFin(fin));
+									addFieldHook(fieldHooks[13].buildObfFin(fin));
 								}
 							}
 						}
@@ -463,8 +442,8 @@ public class EntityAnalyser extends Analyser {
 					if (prevAin.getOpcode() == FSTORE) {
 						FieldInsnNode firstFin = (FieldInsnNode) firstPatAins[2];
 						FieldInsnNode secondFin = (FieldInsnNode) secondPatAins[2];
-						addHook(hooks[17].buildObfFin(firstFin));
-						addHook(hooks[18].buildObfFin(secondFin));
+						addFieldHook(fieldHooks[17].buildObfFin(firstFin));
+						addFieldHook(fieldHooks[18].buildObfFin(secondFin));
 					}
 				}
 			}
@@ -485,7 +464,7 @@ public class EntityAnalyser extends Analyser {
 									String methodCalled = methodCallInsn.name;
 									if (methodCalled.equals(mNode.name)) {
 										FieldInsnNode deadFin = (FieldInsnNode) is.getMatches().get(0)[2];
-										addHook(hooks[19].buildObfFin(deadFin));
+										addFieldHook(fieldHooks[19].buildObfFin(deadFin));
 										break deadFor;
 									}
 								}
@@ -537,7 +516,7 @@ public class EntityAnalyser extends Analyser {
 						}
 						if (localAin.getOpcode() == PUTFIELD) {
 							FieldInsnNode isColldingFin = (FieldInsnNode) localAin;
-							addHook(hooks[20].buildObfFin(isColldingFin));
+							addFieldHook(fieldHooks[20].buildObfFin(isColldingFin));
 							localAin = localAin.getPrevious();
 							while (localAin.getOpcode() != PUTFIELD) {
 								if (localAin.getPrevious() == null)
@@ -556,7 +535,7 @@ public class EntityAnalyser extends Analyser {
 							}
 							if (localAin.getOpcode() == PUTFIELD) {
 								FieldInsnNode isColldingVerticallyFin = (FieldInsnNode) localAin;
-								addHook(hooks[21].buildObfFin(isColldingVerticallyFin));
+								addFieldHook(fieldHooks[21].buildObfFin(isColldingVerticallyFin));
 								localAin = localAin.getPrevious();
 								while (localAin.getOpcode() != PUTFIELD) {
 									if (localAin.getPrevious() == null)
@@ -567,7 +546,7 @@ public class EntityAnalyser extends Analyser {
 								}
 								if (localAin.getOpcode() == PUTFIELD) {
 									FieldInsnNode isColldingHorizontallyFin = (FieldInsnNode) localAin;
-									addHook(hooks[22].buildObfFin(isColldingHorizontallyFin));
+									addFieldHook(fieldHooks[22].buildObfFin(isColldingHorizontallyFin));
 									break collisionFor;
 								}
 							}
@@ -579,14 +558,14 @@ public class EntityAnalyser extends Analyser {
 	}
 	
 	private void findWorldField() {
-		addHook(hooks[23].buildObfFn(fields(cn, "L" + map.getClassByRefactoredName("World").getObfuscatedName() + ";").get(0)));
+		addFieldHook(fieldHooks[23].buildObfFn(fields(cn, "L" + hookMap.getClassByRefactoredName("World").getObfuscatedName() + ";").get(0)));
 	}
 	
 	private void findStepHeightField() {
 		for(MethodNode m : methods(cn)) {
 			InsnSearcher is = new InsnSearcher(m.instructions, 0, STEP_HEIGHT_REGEX);
 			if (is.match()) {
-				addHook(hooks[24].buildObfFin((FieldInsnNode) is.getMatches().get(0)[1]));
+				addFieldHook(fieldHooks[24].buildObfFin((FieldInsnNode) is.getMatches().get(0)[1]));
 				break;
 			}
 		}
@@ -597,14 +576,14 @@ public class EntityAnalyser extends Analyser {
 		for(int i = 0; i < fields.size(); i++) {
 			FieldNode f = fields.get(i);
 			if (f.desc.equals("Ljava/util/Random;")) {
-				addHook(hooks[25].buildObfFn(fields.get(i + 1)));
+				addFieldHook(fieldHooks[25].buildObfFn(fields.get(i + 1)));
 				break;
 			}
 		}
 	}
 	
 	private void findBoundingBoxField() {
-		addHook(hooks[26].buildObfFn(fields(cn, "L" + map.getClassByRefactoredName("AxisAlignedBB").getObfuscatedName() + ";").get(0)));
+		addFieldHook(fieldHooks[26].buildObfFn(fields(cn, "L" + hookMap.getClassByRefactoredName("AxisAlignedBB").getObfuscatedName() + ";").get(0)));
 	}
 	
 	private void findInWaterFireTicksFireHurtResistance() {
@@ -613,15 +592,15 @@ public class EntityAnalyser extends Analyser {
 			if (is.match()) {
 				FieldInsnNode inWater = (FieldInsnNode) is.getMatches().get(0)[5];
 				FieldInsnNode fireTicks = (FieldInsnNode) is.getMatches().get(0)[8];
-				addHook(hooks[27].buildObfFin(inWater));
-				addHook(hooks[28].buildObfFin(fireTicks));
+				addFieldHook(fieldHooks[27].buildObfFin(inWater));
+				addFieldHook(fieldHooks[28].buildObfFin(fireTicks));
 				
 				ArrayList<FieldNode> fields = fields(cn, "I");
 				for(int i = 0; i < fields.size(); i++) {
 					FieldNode f = fields.get(i);
 					if (f.name.equals(fireTicks.name)) {
-						addHook(hooks[29].buildObfFn(fields.get(i - 1)));
-						addHook(hooks[30].buildObfFn(fields.get(i + 1)));
+						addFieldHook(fieldHooks[29].buildObfFn(fields.get(i - 1)));
+						addFieldHook(fieldHooks[30].buildObfFn(fields.get(i + 1)));
 						break;
 					}
 				}
@@ -639,18 +618,18 @@ public class EntityAnalyser extends Analyser {
 					GETFIELD });
 			if (is.match()) {
 				FieldInsnNode fin = (FieldInsnNode) is.getMatches().get(0)[1];
-				addHook(hooks[31].buildObfFin(fin));
+				addFieldHook(fieldHooks[31].buildObfFin(fin));
 				break;
 			}
 		}
 	}
 	
 	private void findDataWatcherHook() {
-		addHook(hooks[32].buildObfFn(fields(cn, "L" + map.getClassByRefactoredName("DataWatcher").getObfuscatedName() + ";").get(0)));
+		addFieldHook(fieldHooks[32].buildObfFn(fields(cn, "L" + hookMap.getClassByRefactoredName("DataWatcher").getObfuscatedName() + ";").get(0)));
 	}
 	
 	private void findChunkPositions() {
-		ClassNode worldClient = analysisMap.requestNode(map.getClassByRefactoredName("WorldClient").getObfuscatedName());
+		ClassNode worldClient = analysisMap.requestNode(hookMap.getClassByRefactoredName("WorldClient").getObfuscatedName());
 		for(MethodNode m : methods(worldClient)) {
 			InsnSearcher is = new InsnSearcher(m.instructions, 0, CHUNK_POS_REGEX);
 			if (is.match()) {
@@ -658,15 +637,15 @@ public class EntityAnalyser extends Analyser {
 				FieldInsnNode chunkx = (FieldInsnNode) ains[1];
 				FieldInsnNode chunkz = (FieldInsnNode) ains[4];
 				FieldInsnNode added = (FieldInsnNode) ains[7];
-				addHook(hooks[33].buildObfFin(added));
-				addHook(hooks[34].buildObfFin(chunkx));
-				addHook(hooks[36].buildObfFin(chunkz));
+				addFieldHook(fieldHooks[33].buildObfFin(added));
+				addFieldHook(fieldHooks[34].buildObfFin(chunkx));
+				addFieldHook(fieldHooks[36].buildObfFin(chunkz));
 				
 				ArrayList<FieldNode> fields = fields(cn, "I");
 				for(int i = 0; i < fields.size(); i++) {
 					FieldNode f = fields.get(i);
 					if (f.name.equals(chunkx.name)) {
-						addHook(hooks[35].buildObfFn(fields.get(i + 1)));
+						addFieldHook(fieldHooks[35].buildObfFn(fields.get(i + 1)));
 						break;
 					}
 				}

@@ -1,22 +1,17 @@
 package eu.bibl.updaterimpl.rev170.analysers.nbt.tags;
-
-import org.objectweb.asm.tree.ClassNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-
 public class NBTTagEndAnalyser extends NBTTagAnalyser {
 	
-	public NBTTagEndAnalyser() {
-		super("NBTTagEnd");
+	public NBTTagEndAnalyser(ClassContainer container, HookMap hookMap) {
+		super("NBTTagEnd", container, hookMap);
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		return map.getClassByRefactoredName("NBTTagEnd").getObfuscatedName().equals(cn.name);
+public boolean accept() {
+		return hookMap.getClassByRefactoredName("NBTTagEnd").getObfuscatedName().equals(cn.name);
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "nbt/tags/INBTTagEnd", INTERFACES + "nbt/INBTBase"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "nbt/tags/INBTTagEnd", MinecraftAnalyser.INTERFACES + "nbt/INBTBase"));
 	}
 }

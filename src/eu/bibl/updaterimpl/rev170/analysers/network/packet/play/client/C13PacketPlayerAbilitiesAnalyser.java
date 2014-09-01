@@ -1,33 +1,22 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.client;
-
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class C13PacketPlayerAbilitiesAnalyser extends PlayPacketAnalyser{
-
-	public C13PacketPlayerAbilitiesAnalyser() {
-		super("C13PacketPlayerAbilities");
-		hooks = new FieldHook[]{
-			new FieldHook("isInvincible", "Z", "Z"),
-			new FieldHook("canFly", "Z", "Z"),
-			new FieldHook("isFlying", "Z", "Z"),
-			new FieldHook("isCreative", "Z", "Z"),
-			new FieldHook("getFlyingSpeed", "F", "F"),
-			new FieldHook("getWalkingSpeed", "F", "F")
+	public C13PacketPlayerAbilitiesAnalyser(ClassContainer container, HookMap hookMap) {
+		super("C13PacketPlayerAbilities", container, hookMap);
+		fieldHooks = new FieldMappingData[]{
+			new FieldMappingData("isInvincible", "Z", "Z"),
+			new FieldMappingData("canFly", "Z", "Z"),
+			new FieldMappingData("isFlying", "Z", "Z"),
+			new FieldMappingData("isCreative", "Z", "Z"),
+			new FieldMappingData("getFlyingSpeed", "F", "F"),
+			new FieldMappingData("getWalkingSpeed", "F", "F")
 		};
 	}
-
 	@Override
 	public void run1() {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getAll(m);
 		for(int i=0; i < fins.length; i++){
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 	

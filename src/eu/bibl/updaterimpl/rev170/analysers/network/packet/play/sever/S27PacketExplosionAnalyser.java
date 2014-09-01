@@ -1,24 +1,17 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S27PacketExplosionAnalyser extends PlayPacketAnalyser {
 	
-	public S27PacketExplosionAnalyser() {
-		super("S27PacketExplosion");
-		hooks = new FieldHook[] {
-				new FieldHook("getX", "D", "D"),
-				new FieldHook("getY", "D", "D"),
-				new FieldHook("getZ", "D", "D"),
-				new FieldHook("getRadius", "F", "F"),
-				new FieldHook("getRecords", "Ljava/util/List;", "Ljava/util/List;"),
-				new FieldHook("getMotionX", "F", "F"),
-				new FieldHook("getMotionY", "F", "F"),
-				new FieldHook("getMotionZ", "F", "F") };
+	public S27PacketExplosionAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S27PacketExplosion", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getX", "D", "D"),
+				new FieldMappingData("getY", "D", "D"),
+				new FieldMappingData("getZ", "D", "D"),
+				new FieldMappingData("getRadius", "F", "F"),
+				new FieldMappingData("getRecords", "Ljava/util/List;", "Ljava/util/List;"),
+				new FieldMappingData("getMotionX", "F", "F"),
+				new FieldMappingData("getMotionY", "F", "F"),
+				new FieldMappingData("getMotionZ", "F", "F") };
 	}
 	
 	@Override
@@ -26,7 +19,7 @@ public class S27PacketExplosionAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

@@ -1,13 +1,4 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.status;
-
-import java.util.HashMap;
-
-import org.objectweb.asm.tree.ClassNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.PacketBaseAnalyser;
-
 public abstract class StatusPacketAnalyser extends PacketBaseAnalyser {
 	
 	public static HashMap<Integer, String> realServerBoundPacketCache = new HashMap<Integer, String>();
@@ -28,20 +19,20 @@ public abstract class StatusPacketAnalyser extends PacketBaseAnalyser {
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		boolean b = map.getClassByRefactoredName("Packet").getObfuscatedName().equals(cn.superName);
+public boolean accept() {
+		boolean b = hookMap.getClassByRefactoredName("Packet").getObfuscatedName().equals(cn.superName);
 		if (!b)
 			return false;
-		ClassHook hook = map.getClassByRefactoredName(name);
+		ClassMappingData hook = hookMap.getClassByRefactoredName(name);
 		if (hook == null)
 			return false;
 		return hook.getObfuscatedName().equals(cn.name);
 	}
 	
 	@Override
-	public void run() {
+public InterfaceMappingData run() {
 		String pck = realServerBoundPacketCache.containsValue(name) ? "client" : "server";
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "network/packet/status/" + pck + "/I" + name, INTERFACES + "network/packet/IPacket"));
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "network/packet/status/" + pck + "/I" + name, MinecraftAnalyser.INTERFACES + "network/packet/IPacket"));
 		run1();
 	}
 	

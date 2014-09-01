@@ -1,18 +1,11 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S1CPacketEntityMetadataAnalyser extends PlayPacketAnalyser {
 	
-	public S1CPacketEntityMetadataAnalyser() {
-		super("S1CPacketEntityMetadata");
-		hooks = new FieldHook[] {
-				new FieldHook("getEntityID", "I", "I"),
-				new FieldHook("getMetadata", "Ljava/util/List;") };
+	public S1CPacketEntityMetadataAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S1CPacketEntityMetadata", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getEntityID", "I", "I"),
+				new FieldMappingData("getMetadata", "Ljava/util/List;") };
 	}
 	
 	@Override
@@ -20,7 +13,7 @@ public class S1CPacketEntityMetadataAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

@@ -1,22 +1,15 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S29PacketSoundEffectAnalyser extends PlayPacketAnalyser {
 	
-	public S29PacketSoundEffectAnalyser() {
-		super("S29PacketSoundEffect");
-		hooks = new FieldHook[] {
-				new FieldHook("getSoundName", "Ljava/lang/String;", "Ljava/lang/String;"),
-				new FieldHook("getEffectX", "I", "I"),
-				new FieldHook("getEffectY", "I", "I"),
-				new FieldHook("getEffectZ", "I", "I"),
-				new FieldHook("getVolume", "F", "F"),
-				new FieldHook("getPitch", "I", "I") };
+	public S29PacketSoundEffectAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S29PacketSoundEffect", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getSoundName", "Ljava/lang/String;", "Ljava/lang/String;"),
+				new FieldMappingData("getEffectX", "I", "I"),
+				new FieldMappingData("getEffectY", "I", "I"),
+				new FieldMappingData("getEffectZ", "I", "I"),
+				new FieldMappingData("getVolume", "F", "F"),
+				new FieldMappingData("getPitch", "I", "I") };
 	}
 	
 	@Override
@@ -24,7 +17,7 @@ public class S29PacketSoundEffectAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

@@ -1,23 +1,15 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S39PacketPlayerAbilitiesAnalyser extends PlayPacketAnalyser {
 	
-	public S39PacketPlayerAbilitiesAnalyser() {
-		super("S39PacketPlayerAbilities");
-		hooks = new FieldHook[] {
-				new FieldHook("isInvincible", "Z", "Z"),
-				new FieldHook("canFly", "Z", "Z"),
-				new FieldHook("isFlying", "Z", "Z"),
-				new FieldHook("isCreativeMode", "Z", "Z"),
-				new FieldHook("getFlyingSpeed", "F", "F"),
-				new FieldHook("getWalkingSpeed", "F", "F") };
+	public S39PacketPlayerAbilitiesAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S39PacketPlayerAbilities", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("isInvincible", "Z", "Z"),
+				new FieldMappingData("canFly", "Z", "Z"),
+				new FieldMappingData("isFlying", "Z", "Z"),
+				new FieldMappingData("isCreativeMode", "Z", "Z"),
+				new FieldMappingData("getFlyingSpeed", "F", "F"),
+				new FieldMappingData("getWalkingSpeed", "F", "F") };
 	}
 	
 	@Override
@@ -30,7 +22,7 @@ public class S39PacketPlayerAbilitiesAnalyser extends PlayPacketAnalyser {
 				continue;
 			MethodNode m = getMethod(min.name, min.desc);
 			FieldInsnNode fin = (FieldInsnNode) getNext(m.instructions.getFirst(), PUTFIELD);
-			addHook(hooks[i++].buildObfFin(fin));
+			addFieldHook(fieldHooks[i++].buildObfFin(fin));
 		}
 	}
 }

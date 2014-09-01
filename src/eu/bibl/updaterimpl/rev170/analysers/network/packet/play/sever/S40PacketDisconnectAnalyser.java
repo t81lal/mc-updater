@@ -1,16 +1,9 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S40PacketDisconnectAnalyser extends PlayPacketAnalyser {
 	
-	public S40PacketDisconnectAnalyser() {
-		super("S40PacketDisconnect");
-		hooks = new FieldHook[] { new FieldHook("getReason", "L" + INTERFACES + "chat/IChatComponent;") };
+	public S40PacketDisconnectAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S40PacketDisconnect", container, hookMap);
+		fieldHooks = new FieldMappingData[] { new FieldMappingData("getReason", "L" + MinecraftAnalyser.INTERFACES + "chat/IChatComponent;") };
 	}
 	
 	@Override
@@ -18,7 +11,7 @@ public class S40PacketDisconnectAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

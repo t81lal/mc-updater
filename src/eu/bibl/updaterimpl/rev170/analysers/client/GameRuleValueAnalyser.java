@@ -1,42 +1,33 @@
 package eu.bibl.updaterimpl.rev170.analysers.client;
-
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.updater.analysis.Analyser;
-
 public class GameRuleValueAnalyser extends Analyser {
 	
-	public GameRuleValueAnalyser() {
-		super("GameRuleValue");
-		hooks = new FieldHook[] { new FieldHook("getValueString", "Ljava/lang/String;", "Ljava/lang/String;"), new FieldHook("getValueBoolean", "Z", "Z"), new FieldHook("getValueInt", "I", "I"), new FieldHook("getValueDouble", "D", "D"), };
+	public GameRuleValueAnalyser(ClassContainer container, HookMap hookMap) {
+		super("GameRuleValue", container, hookMap);
+		fieldHooks = new FieldMappingData[] { new FieldMappingData("getValueString", "Ljava/lang/String;", "Ljava/lang/String;"), new FieldMappingData("getValueBoolean", "Z", "Z"), new FieldMappingData("getValueInt", "I", "I"), new FieldMappingData("getValueDouble", "D", "D"), };
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		ClassHook c = map.getClassByObfuscatedName(cn.name);
+public boolean accept() {
+		ClassMappingData c = hookMap.getClassByObfuscatedName(cn.name);
 		if (c == null)
 			return false;
 		return c.getRefactoredName().equals("GameRuleValue");
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "client/IGameRuleValue"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "client/IGameRuleValue"));
 		
 		FieldNode valueString = fields(cn, "Ljava/lang/String;").get(0);
-		addHook(hooks[0].buildObfFn(valueString));
+		addFieldHook(fieldHooks[0].buildObfFn(valueString));
 		
 		FieldNode valueBoolean = fields(cn, "Z").get(0);
-		addHook(hooks[1].buildObfFn(valueBoolean));
+		addFieldHook(fieldHooks[1].buildObfFn(valueBoolean));
 		
 		FieldNode valueInt = fields(cn, "I").get(0);
-		addHook(hooks[2].buildObfFn(valueInt));
+		addFieldHook(fieldHooks[2].buildObfFn(valueInt));
 		
 		FieldNode valueDouble = fields(cn, "D").get(0);
-		addHook(hooks[3].buildObfFn(valueDouble));
+		addFieldHook(fieldHooks[3].buildObfFn(valueDouble));
 	}
 }

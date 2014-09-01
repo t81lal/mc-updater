@@ -1,22 +1,15 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.client;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class C15PacketClientSettingsAnalyser extends PlayPacketAnalyser {
 	
-	public C15PacketClientSettingsAnalyser() {
-		super("C15PacketClientSettings");
-		hooks = new FieldHook[] {
-				new FieldHook("getLocale", "Ljava/lang/String;", "Ljava/lang/String;"),
-				new FieldHook("getViewDistance", "I", "I"),
-				new FieldHook("getChatVisiblity", "L" + INTERFACES + "chat/IChatVisibility;"),
-				new FieldHook("chatColoursEnabled", "Z", "Z"),
-				new FieldHook("getDifficulity", "L" + INTERFACES + "world/IDifficulty;"),
-				new FieldHook("showCapes", "Z", "Z") };
+	public C15PacketClientSettingsAnalyser(ClassContainer container, HookMap hookMap) {
+		super("C15PacketClientSettings", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getLocale", "Ljava/lang/String;", "Ljava/lang/String;"),
+				new FieldMappingData("getViewDistance", "I", "I"),
+				new FieldMappingData("getChatVisiblity", "L" + MinecraftAnalyser.INTERFACES + "chat/IChatVisibility;"),
+				new FieldMappingData("chatColoursEnabled", "Z", "Z"),
+				new FieldMappingData("getDifficulity", "L" + MinecraftAnalyser.INTERFACES + "world/IDifficulty;"),
+				new FieldMappingData("showCapes", "Z", "Z") };
 	}
 	
 	@Override
@@ -24,7 +17,7 @@ public class C15PacketClientSettingsAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

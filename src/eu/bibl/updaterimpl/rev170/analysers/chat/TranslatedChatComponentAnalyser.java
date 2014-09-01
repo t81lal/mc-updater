@@ -1,25 +1,12 @@
 package eu.bibl.updaterimpl.rev170.analysers.chat;
-
-import java.util.ListIterator;
-
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.LdcInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-import org.objectweb.asm.tree.TypeInsnNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.updater.analysis.Analyser;
-
 public class TranslatedChatComponentAnalyser extends Analyser {
 	
-	public TranslatedChatComponentAnalyser() {
-		super("TranslatedChatComponent");
+	public TranslatedChatComponentAnalyser(ClassContainer container, HookMap hookMap) {
+		super("TranslatedChatComponent", container, hookMap);
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
+public boolean accept() {
 		for(MethodNode mNode : methods(cn)) {
 			ListIterator<?> it = mNode.instructions.iterator();
 			while (it.hasNext()) {
@@ -29,8 +16,8 @@ public class TranslatedChatComponentAnalyser extends Analyser {
 					if (ldc.cst != null && ldc.cst.toString().equals("tile.bed.occupied")) {
 						AbstractInsnNode prevAin = ain.getPrevious();
 						TypeInsnNode newInsn = (TypeInsnNode) prevAin.getPrevious();
-						ClassHook tccOwner = new ClassHook(newInsn.desc, "TranslatedChatComponent");
-						map.addClass(tccOwner);
+						ClassMappingData tccOwner = new ClassMappingData(newInsn.desc, "TranslatedChatComponent");
+						hookMap.addClass(tccOwner);
 						return true;
 					}
 				}
@@ -40,14 +27,14 @@ public class TranslatedChatComponentAnalyser extends Analyser {
 	}
 	
 	@Override
-	public void run() {
+public InterfaceMappingData run() {
 		// NOTE, DO NOT USE cn.name AS THIS IS BLOCKBED CLASS, NOT TCC!
-		classHook = map.getClassByRefactoredName("TranslatedChatComponent");
-		InterfaceHook hook = new InterfaceHook(classHook, INTERFACES + "chat/ITranslatableChatComponent", INTERFACES + "chat/IChatComponentStyle");
+		classHook = hookMap.getClassByRefactoredName("TranslatedChatComponent");
+		InterfaceHook hook = new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "chat/ITranslatableChatComponent", MinecraftAnalyser.INTERFACES + "chat/IChatComponentStyle");
 		classHook.setInterfaceHook(hook);
 		
 		cn = analysisMap.requestNode(classHook.getObfuscatedName());
-		ClassHook chatStyle = new ClassHook(cn.superName, "ChatComponentStyle");
-		map.addClass(chatStyle);
+		ClassMappingData chatStyle = new ClassMappingData(cn.superName, "ChatComponentStyle");
+		hookMap.addClass(chatStyle);
 	}
 }

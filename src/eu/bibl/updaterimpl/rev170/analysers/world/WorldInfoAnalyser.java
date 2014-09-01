@@ -1,56 +1,37 @@
 package eu.bibl.updaterimpl.rev170.analysers.world;
-
-import java.util.ListIterator;
-
-import org.objectweb.asm.Type;
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.LdcInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.updater.analysis.Analyser;
-
 public class WorldInfoAnalyser extends Analyser {
-
-	public WorldInfoAnalyser() {
-		super("WorldInfo");
-		hooks = new FieldHook[] { 
-			new FieldHook("getRandomSeed", "J", "J"), 
-			new FieldHook("getTerrainType", "L" + INTERFACES + "world/IWorldType;"), 
-			new FieldHook("getGeneratorOptions", "Ljava/lang/String;", "Ljava/lang/String;"), 
-			new FieldHook("hasMapFeatures", "Z", "Z"), 
-			new FieldHook("getSpawnX", "I", "I"), 
-			new FieldHook("getSpawnY", "I", "I"), 
-			new FieldHook("getSpawnZ", "I", "I"), 
-			new FieldHook("getWorldLife", "J", "J"), 
-			new FieldHook("getWorldTime", "J", "J"), 
-			new FieldHook("getSizeOnDisk", "J", "J"), 
-			new FieldHook("getLevelName", "Ljava/lang/String;", "Ljava/lang/String;"), 
-			new FieldHook("getVersion", "I", "I"), 
-			new FieldHook("getRainTime", "I", "I"), 
-			new FieldHook("isRaining", "Z", "Z"), 
-			new FieldHook("getThunderTime", "I", "I"), 
-			new FieldHook("isThundering", "Z", "Z"), 
-			new FieldHook("isHardcore", "Z", "Z"), 
-			new FieldHook("allowCommands", "Z", "Z"), 
-			new FieldHook("isInitialised", "Z", "Z"), 
-			new FieldHook("getGameRules", "L" + INTERFACES + "client/IGameRules;"), 
+	public WorldInfoAnalyser(ClassContainer container, HookMap hookMap) {
+		super("WorldInfo", container, hookMap);
+		fieldHooks = new FieldMappingData[] { 
+			new FieldMappingData("getRandomSeed", "J", "J"), 
+			new FieldMappingData("getTerrainType", "L" + MinecraftAnalyser.INTERFACES + "world/IWorldType;"), 
+			new FieldMappingData("getGeneratorOptions", "Ljava/lang/String;", "Ljava/lang/String;"), 
+			new FieldMappingData("hasMapFeatures", "Z", "Z"), 
+			new FieldMappingData("getSpawnX", "I", "I"), 
+			new FieldMappingData("getSpawnY", "I", "I"), 
+			new FieldMappingData("getSpawnZ", "I", "I"), 
+			new FieldMappingData("getWorldLife", "J", "J"), 
+			new FieldMappingData("getWorldTime", "J", "J"), 
+			new FieldMappingData("getSizeOnDisk", "J", "J"), 
+			new FieldMappingData("getLevelName", "Ljava/lang/String;", "Ljava/lang/String;"), 
+			new FieldMappingData("getVersion", "I", "I"), 
+			new FieldMappingData("getRainTime", "I", "I"), 
+			new FieldMappingData("isRaining", "Z", "Z"), 
+			new FieldMappingData("getThunderTime", "I", "I"), 
+			new FieldMappingData("isThundering", "Z", "Z"), 
+			new FieldMappingData("isHardcore", "Z", "Z"), 
+			new FieldMappingData("allowCommands", "Z", "Z"), 
+			new FieldMappingData("isInitialised", "Z", "Z"), 
+			new FieldMappingData("getGameRules", "L" + MinecraftAnalyser.INTERFACES + "client/IGameRules;"), 
 		};
 	}
-
 	@Override
-	public boolean accept(ClassNode cn) {
+public boolean accept() {
 		return containsLdc(cn, "RandomSeed");
 	}
-
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "world/IWorldInfo"));
-
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/IWorldInfo"));
 		methods: for (MethodNode m : methods(cn)) {
 			if (m.name.equals("<init>") || m.name.equals("<clinit>"))
 				continue;
@@ -69,48 +50,48 @@ public class WorldInfoAnalyser extends Analyser {
 					}
 					String cst = ldc.cst.toString();
 					if (cst.equals("RandomSeed")) {
-						addHook(hooks[0].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[0].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("generatorName")) {
-						addHook(hooks[1].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[1].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("generatorOptions")) {
-						addHook(hooks[2].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[2].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("MapFeatures")) {
-						addHook(hooks[3].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[3].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("SpawnX")) {
-						addHook(hooks[4].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[4].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("SpawnY")) {
-						addHook(hooks[5].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[5].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("SpawnZ")) {
-						addHook(hooks[6].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[6].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("Time")) {
-						addHook(hooks[7].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[7].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("DayTime")) {
-						addHook(hooks[8].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[8].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("SizeOnDisk")) {
-						addHook(hooks[9].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[9].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("LevelName")) {
-						addHook(hooks[10].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[10].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("version")) {
-						addHook(hooks[11].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[11].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("rainTime")) {
-						addHook(hooks[12].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[12].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("raining")) {
-						addHook(hooks[13].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[13].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("thunderTime")) {
-						addHook(hooks[14].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[14].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("thundering")) {
-						addHook(hooks[15].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[15].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("hardcore")) {
-						addHook(hooks[16].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[16].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("allowCommands")) {
-						addHook(hooks[17].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[17].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("initialized")) {
-						addHook(hooks[18].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
+						addFieldHook(fieldHooks[18].buildObfFin((FieldInsnNode) getNext(ldc, GETFIELD)));
 					} else if (cst.equals("GameRules")) {
 						FieldInsnNode fin = (FieldInsnNode) getNext(ldc, GETFIELD);
 						String gameRules = Type.getReturnType(fin.desc).getClassName();
-						map.addClass(new ClassHook(gameRules, "GameRules"));
-						addHook(hooks[19].buildObfFin(fin));
+						hookMap.addClass(new ClassMappingData(gameRules, "GameRules"));
+						addFieldHook(fieldHooks[19].buildObfFin(fin));
 					}
 				}
 			}

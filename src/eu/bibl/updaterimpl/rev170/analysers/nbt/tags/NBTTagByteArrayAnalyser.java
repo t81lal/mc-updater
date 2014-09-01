@@ -1,26 +1,20 @@
 package eu.bibl.updaterimpl.rev170.analysers.nbt.tags;
-
-import org.objectweb.asm.tree.ClassNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-
 public class NBTTagByteArrayAnalyser extends NBTTagAnalyser {
 	
-	public NBTTagByteArrayAnalyser() {
-		super("NBTTagByteArray");
-		hooks = new FieldHook[] { new FieldHook("getData", "[B", "[B") };
+	public NBTTagByteArrayAnalyser(ClassContainer container, HookMap hookMap) {
+		super("NBTTagByteArray", container, hookMap);
+		fieldHooks = new FieldMappingData[] { new FieldMappingData("getData", "[B", "[B") };
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		return map.getClassByRefactoredName("NBTTagByteArray").getObfuscatedName().equals(cn.name);
+public boolean accept() {
+		return hookMap.getClassByRefactoredName("NBTTagByteArray").getObfuscatedName().equals(cn.name);
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "nbt/tags/INBTTagByteArray", INTERFACES + "nbt/INBTBase"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "nbt/tags/INBTTagByteArray", MinecraftAnalyser.INTERFACES + "nbt/INBTBase"));
 		
-		addHook(hooks[0].buildObfFn(fields(cn, "[B").get(0)));
+		addFieldHook(fieldHooks[0].buildObfFn(fields(cn, "[B").get(0)));
 	}
 }

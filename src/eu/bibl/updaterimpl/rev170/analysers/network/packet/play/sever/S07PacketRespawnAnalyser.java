@@ -1,20 +1,13 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S07PacketRespawnAnalyser extends PlayPacketAnalyser {
 	
-	public S07PacketRespawnAnalyser() {
-		super("S07PacketRespawn");
-		hooks = new FieldHook[] {
-				new FieldHook("getDimension", "I", "I"),
-				new FieldHook("getDifficulty", "L" + INTERFACES + "world/IDifficulty;"),
-				new FieldHook("getGameMode", "L" + INTERFACES + "world/IGameMode;"),
-				new FieldHook("getWorldType", "L" + INTERFACES + "world/IWorldType;") };
+	public S07PacketRespawnAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S07PacketRespawn", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getDimension", "I", "I"),
+				new FieldMappingData("getDifficulty", "L" + MinecraftAnalyser.INTERFACES + "world/IDifficulty;"),
+				new FieldMappingData("getGameMode", "L" + MinecraftAnalyser.INTERFACES + "world/IGameMode;"),
+				new FieldMappingData("getWorldType", "L" + MinecraftAnalyser.INTERFACES + "world/IWorldType;") };
 	}
 	
 	@Override
@@ -22,7 +15,7 @@ public class S07PacketRespawnAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

@@ -1,16 +1,4 @@
 package eu.bibl.updaterimpl.rev170.analysers.entity;
-
-import java.util.ListIterator;
-
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.bytetools.analysis.storage.hooks.MethodHook;
-import eu.bibl.updater.analysis.Analyser;
-
 public class EntityClientPlayerMPAnalyser extends Analyser {
 	
 	private static final int[] SWING_ITEM_REGEX = new int[] {
@@ -34,25 +22,25 @@ public class EntityClientPlayerMPAnalyser extends Analyser {
 			INVOKESPECIAL,
 			INVOKEVIRTUAL };
 	
-	public EntityClientPlayerMPAnalyser() {
-		super("EntityClientPlayerMP");
-		methodHooks = new MethodHook[] {
-				new MethodHook("swingItem", "()V", "()V"),
-				new MethodHook("sendChatMessage", "(Ljava/lang/String;)V") };
+	public EntityClientPlayerMPAnalyser(ClassContainer container, HookMap hookMap) {
+		super("EntityClientPlayerMP", container, hookMap);
+		methodHooks = new CallbackMappingData[] {
+				new CallbackMappingData("swingItem", "()V", "()V"),
+				new CallbackMappingData("sendChatMessage", "(Ljava/lang/String;)V") };
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		ClassHook c = map.getClassByObfuscatedName(cn.name);
+public boolean accept() {
+		ClassMappingData c = hookMap.getClassByObfuscatedName(cn.name);
 		if (c != null && c.getRefactoredName().equals("EntityClientPlayerMP"))
 			return true;
 		return false;
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "entity/IEntityClientPlayerMP", INTERFACES + "entity/IEntityPlayerSP"));
-		map.addClass(new ClassHook(cn.superName, "EntityPlayerSP"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IEntityClientPlayerMP", MinecraftAnalyser.INTERFACES + "entity/IEntityPlayerSP"));
+		hookMap.addClass(new ClassMappingData(cn.superName, "EntityPlayerSP"));
 		
 		findCallbackMethods();
 	}
@@ -60,10 +48,10 @@ public class EntityClientPlayerMPAnalyser extends Analyser {
 	private void findCallbackMethods() {
 		for(MethodNode mNode : methods(cn)) {
 			if (containsRegex(mNode, SWING_ITEM_REGEX)) {
-				addHook(methodHooks[0].buildObfMn(mNode));
+				addMethodHook(methodHooks[0].buildObfMn(mNode));
 			} else
 				if (containsRegex(mNode, SEND_CHAT_MESSAGE_REGEX)) {
-					addHook(methodHooks[1].buildObfMn(mNode));
+					addMethodHook(methodHooks[1].buildObfMn(mNode));
 				}
 		}
 	}

@@ -1,22 +1,15 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S01PacketJoinGameAnalyser extends PlayPacketAnalyser {
 	
-	public S01PacketJoinGameAnalyser() {
-		super("S01PacketJoinGame");
-		hooks = new FieldHook[] {
-				new FieldHook("getEntityID", "I", "I"),
-				new FieldHook("isHardcore", "Z", "Z"),
-				new FieldHook("getGameMode", "L" + INTERFACES + "world/IGameMode;"),
-				new FieldHook("getDifficulty", "L" + INTERFACES + "world/IDifficulty;"),
-				new FieldHook("getMaxPlayers", "I", "I"),
-				new FieldHook("getWorldType", "L" + INTERFACES + "world/IWorldType;"), };
+	public S01PacketJoinGameAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S01PacketJoinGame", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getEntityID", "I", "I"),
+				new FieldMappingData("isHardcore", "Z", "Z"),
+				new FieldMappingData("getGameMode", "L" + MinecraftAnalyser.INTERFACES + "world/IGameMode;"),
+				new FieldMappingData("getDifficulty", "L" + MinecraftAnalyser.INTERFACES + "world/IDifficulty;"),
+				new FieldMappingData("getMaxPlayers", "I", "I"),
+				new FieldMappingData("getWorldType", "L" + MinecraftAnalyser.INTERFACES + "world/IWorldType;"), };
 	}
 	
 	@Override
@@ -24,7 +17,7 @@ public class S01PacketJoinGameAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

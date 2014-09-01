@@ -1,17 +1,13 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.login.server;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.login.LoginPacketAnalyser;
-
 public class S00PacketDisconnectAnalyser extends LoginPacketAnalyser {
 	
-	public S00PacketDisconnectAnalyser() {
-		super("S00PacketDisconnect");
-		hooks = new FieldHook[] { new FieldHook("getChatComponent", "L" + INTERFACES + "IChatComponent;") };
+	public S00PacketDisconnectAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S00PacketDisconnect", container, hookMap);
+		fieldHooks = new FieldMappingData[] { new FieldMappingData("getChatComponent", "L" + MinecraftAnalyser.INTERFACES + "IChatComponent;") };
 	}
 	
 	@Override
 	public void run1() {
-		addHook(hooks[0].buildObfFn(fields(cn, "L" + map.getClassByRefactoredName("ChatComponent").getObfuscatedName() + ";").get(0)));
+		addFieldHook(fieldHooks[0].buildObfFn(fields(cn, "L" + hookMap.getClassByRefactoredName("ChatComponent").getObfuscatedName() + ";").get(0)));
 	}
 }

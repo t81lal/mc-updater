@@ -1,30 +1,22 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.FieldNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S0FPacketSpawnMobAnalyser extends PlayPacketAnalyser {
 	
-	public S0FPacketSpawnMobAnalyser() {
-		super("S0FPacketSpawnMob");
-		hooks = new FieldHook[] {
-				new FieldHook("getEntityID", "I", "I"),
-				new FieldHook("getEntityType", "I", "I"),
-				new FieldHook("getX", "I", "I"),
-				new FieldHook("getY", "I", "I"),
-				new FieldHook("getZ", "I", "I"),
-				new FieldHook("getRotationPitch", "B", "B"),
-				new FieldHook("getRotationHeadPitch", "B", "B"),
-				new FieldHook("getRotationYaw", "B", "B"),
-				new FieldHook("getVelocityX", "I", "I"),
-				new FieldHook("getVelocityY", "I", "I"),
-				new FieldHook("getVelocityZ", "I", "I"),
-				new FieldHook("getDataWatcher", "L" + INTERFACES + "entity/IDataWatcher;"),
-				new FieldHook("getMetadata", "Ljava/util/List;", "Ljava/util/List;"), };
+	public S0FPacketSpawnMobAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S0FPacketSpawnMob", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getEntityID", "I", "I"),
+				new FieldMappingData("getEntityType", "I", "I"),
+				new FieldMappingData("getX", "I", "I"),
+				new FieldMappingData("getY", "I", "I"),
+				new FieldMappingData("getZ", "I", "I"),
+				new FieldMappingData("getRotationPitch", "B", "B"),
+				new FieldMappingData("getRotationHeadPitch", "B", "B"),
+				new FieldMappingData("getRotationYaw", "B", "B"),
+				new FieldMappingData("getVelocityX", "I", "I"),
+				new FieldMappingData("getVelocityY", "I", "I"),
+				new FieldMappingData("getVelocityZ", "I", "I"),
+				new FieldMappingData("getDataWatcher", "L" + MinecraftAnalyser.INTERFACES + "entity/IDataWatcher;"),
+				new FieldMappingData("getMetadata", "Ljava/util/List;", "Ljava/util/List;"), };
 	}
 	
 	@Override
@@ -32,11 +24,11 @@ public class S0FPacketSpawnMobAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length - 2; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
-		FieldNode dw = fields(cn, "L" + map.getClassByRefactoredName("DataWatcher").getObfuscatedName() + ";").get(0);
+		FieldNode dw = fields(cn, "L" + hookMap.getClassByRefactoredName("DataWatcher").getObfuscatedName() + ";").get(0);
 		FieldNode meta = fields(cn, "Ljava/util/List;").get(0);
-		addHook(hooks[11].buildObfFn(dw));
-		addHook(hooks[12].buildObfFn(meta));
+		addFieldHook(fieldHooks[11].buildObfFn(dw));
+		addFieldHook(fieldHooks[12].buildObfFn(meta));
 	}
 }

@@ -1,19 +1,12 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S04PacketEntityEquipmentAnalyser extends PlayPacketAnalyser {
 	
-	public S04PacketEntityEquipmentAnalyser() {
-		super("S04PacketEntityEquipment");
-		hooks = new FieldHook[] {
-				new FieldHook("getEntityID", "I", "I"),
-				new FieldHook("getSlot", "I", "I"),
-				new FieldHook("getItem", "L" + INTERFACES + "item/IItem;") };
+	public S04PacketEntityEquipmentAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S04PacketEntityEquipment", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getEntityID", "I", "I"),
+				new FieldMappingData("getSlot", "I", "I"),
+				new FieldMappingData("getItem", "L" + MinecraftAnalyser.INTERFACES + "item/IItem;") };
 	}
 	
 	@Override
@@ -21,7 +14,7 @@ public class S04PacketEntityEquipmentAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

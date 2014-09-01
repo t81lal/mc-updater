@@ -1,18 +1,4 @@
 package eu.bibl.updaterimpl.rev170.analysers.nbt;
-
-import java.util.HashMap;
-
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-import org.objectweb.asm.tree.TypeInsnNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.bytetools.analysis.storage.hooks.MethodHook;
-import eu.bibl.bytetools.util.Access;
-
 public class NBTBaseAnalyser extends NBTAnalyser {
 	
 	private static final HashMap<Integer, String> NBT_SUBS = new HashMap<Integer, String>();
@@ -33,37 +19,37 @@ public class NBTBaseAnalyser extends NBTAnalyser {
 		
 	}
 	
-	public NBTBaseAnalyser() {
-		super("NBTBase");
-		methodHooks = new MethodHook[] { new MethodHook("getID", "()I", "()I"), new MethodHook("write", "(Ljava/io/DataOutput;)V", "(Ljava/io/DataOutput;)V"), new MethodHook("read", "") };
+	public NBTBaseAnalyser(ClassContainer container, HookMap hookMap) {
+		super("NBTBase", container, hookMap);
+		methodHooks = new CallbackMappingData[] { new CallbackMappingData("getID", "()I", "()I"), new CallbackMappingData("write", "(Ljava/io/DataOutput;)V", "(Ljava/io/DataOutput;)V"), new CallbackMappingData("read", "") };
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
+public boolean accept() {
 		return containsLdc(cn, "INT[]");
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "nbt/INBTBase"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "nbt/INBTBase"));
 		for(MethodNode m : methods(cn, "(B)L" + cn.name + ";")) {
 			if (Access.isAbstract(m.access))
 				continue;
 			HashMap<Integer, TypeInsnNode> tins = getTypeInsns(m.instructions.getFirst());
 			for(Integer num : tins.keySet()) {
-				map.addClass(new ClassHook(tins.get(num).desc, NBT_SUBS.get(num)));
+				hookMap.addClass(new ClassMappingData(tins.get(num).desc, NBT_SUBS.get(num)));
 			}
 		}
 		for(MethodNode m : methods(cn)) {
 			if (m.name.equals("hashCode")) {
 				MethodInsnNode min = (MethodInsnNode) m.instructions.getFirst().getNext();
-				addHook(methodHooks[0].buildObfMin(min));
+				addMethodHook(methodHooks[0].buildObfMin(min));
 			} else
 				if (m.desc.equals("(Ljava/io/DataOutput;)V")) {
-					addHook(methodHooks[1].buildObfMn(m));
+					addMethodHook(methodHooks[1].buildObfMn(m));
 				} else {
 					if (m.desc.startsWith("(Ljava/io/DataInput;I")) {
-						addHook(methodHooks[2].buildObfMn(m).buildRefacDesc(m.desc));
+						addMethodHook(methodHooks[2].buildObfMn(m).buildRefacDesc(m.desc));
 					}
 				}
 		}

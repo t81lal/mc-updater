@@ -1,20 +1,13 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.client;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class C12PacketUpdateSignAnalyser extends PlayPacketAnalyser {
 	
-	public C12PacketUpdateSignAnalyser() {
-		super("C12PacketUpdateSign");
-		hooks = new FieldHook[] {
-				new FieldHook("getX", "I", "I"),
-				new FieldHook("getY", "I", "I"),
-				new FieldHook("getZ", "I", "I"),
-				new FieldHook("getText", "[Ljava/lang/String;", "[Ljava/lang/String;") };
+	public C12PacketUpdateSignAnalyser(ClassContainer container, HookMap hookMap) {
+		super("C12PacketUpdateSign", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getX", "I", "I"),
+				new FieldMappingData("getY", "I", "I"),
+				new FieldMappingData("getZ", "I", "I"),
+				new FieldMappingData("getText", "[Ljava/lang/String;", "[Ljava/lang/String;") };
 	}
 	
 	@Override
@@ -22,7 +15,7 @@ public class C12PacketUpdateSignAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

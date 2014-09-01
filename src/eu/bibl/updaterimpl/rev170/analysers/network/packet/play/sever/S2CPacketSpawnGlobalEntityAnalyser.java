@@ -1,21 +1,14 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S2CPacketSpawnGlobalEntityAnalyser extends PlayPacketAnalyser {
 	
-	public S2CPacketSpawnGlobalEntityAnalyser() {
-		super("S2CPacketSpawnGlobalEntity");
-		hooks = new FieldHook[] {
-				new FieldHook("getEntityID", "I", "I"),
-				new FieldHook("getEntityType", "I", "I"),
-				new FieldHook("getX", "I", "I"),
-				new FieldHook("getY", "I", "I"),
-				new FieldHook("getZ", "I", "I") };
+	public S2CPacketSpawnGlobalEntityAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S2CPacketSpawnGlobalEntity", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getEntityID", "I", "I"),
+				new FieldMappingData("getEntityType", "I", "I"),
+				new FieldMappingData("getX", "I", "I"),
+				new FieldMappingData("getY", "I", "I"),
+				new FieldMappingData("getZ", "I", "I") };
 	}
 	
 	@Override
@@ -23,7 +16,7 @@ public class S2CPacketSpawnGlobalEntityAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }

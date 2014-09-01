@@ -1,23 +1,25 @@
 package eu.bibl.updaterimpl.rev170.analysers.block;
 
-import org.objectweb.asm.tree.ClassNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.updater.analysis.Analyser;
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
 
 public class BlockAnalyser extends Analyser {
 	
-	public BlockAnalyser() {
-		super("Block");
+	public BlockAnalyser(ClassContainer container, HookMap hookMap) {
+		super("Block", container, hookMap);
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
-		return containsLdc(cn, "dig.glass");
+	public boolean accept() {
+		return InsnUtil.containsLdc(cn, "dig.glass");
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "block/IBlock"));
+	public InterfaceMappingData run() {
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "block/IBlock");
 	}
 }

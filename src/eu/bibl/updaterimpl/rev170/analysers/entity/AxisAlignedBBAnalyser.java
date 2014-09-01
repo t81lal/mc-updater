@@ -1,16 +1,4 @@
 package eu.bibl.updaterimpl.rev170.analysers.entity;
-
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.pattern.InsnSearcher;
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.bytetools.analysis.storage.hooks.MethodHook;
-import eu.bibl.bytetools.util.Access;
-import eu.bibl.updater.analysis.Analyser;
-
 public class AxisAlignedBBAnalyser extends Analyser {
 	
 	private static final int[] SET_BOUNDS_REGEX = new int[] {
@@ -186,36 +174,36 @@ public class AxisAlignedBBAnalyser extends Analyser {
 			DSUB,
 			DSTORE };
 	
-	public AxisAlignedBBAnalyser() {
-		super("AxisAlignedBB");
-		hooks = new FieldHook[] {
-				new FieldHook("getMinX", "D", "D"),
-				new FieldHook("getMinY", "D", "D"),
-				new FieldHook("getMinZ", "D", "D"),
-				new FieldHook("getMaxX", "D", "D"),
-				new FieldHook("getMaxY", "D", "D"),
-				new FieldHook("getMaxZ", "D", "D") };
-		methodHooks = new MethodHook[] {
-				new MethodHook("createNewBoundingBox", "(DDDDDD)L" + INTERFACES + "entity/IAxisAlignedBB;"),
-				new MethodHook("setBounds", "(DDDDDD)L" + INTERFACES + "entity/IAxisAlignedBB;"),
-				new MethodHook("addCoord", "(DDD)L" + INTERFACES + "entity/IAxisAlignedBB;"),
-				new MethodHook("expand", "(DDD)L" + INTERFACES + "entity/IAxisAlignedBB;"),
-				new MethodHook("getOffsettedBoundingBox", "(DDD)L" + INTERFACES + "entity/IAxisAlignedBB;"),
-				new MethodHook("intersectsWith", "(L" + INTERFACES + "entity/IAxisAlignedBB;)Z"),
-				new MethodHook("offset", "(DDD)L" + INTERFACES + "entity/IAxisAlignedBB;"),
-				new MethodHook("contract", "(DDD)L" + INTERFACES + "entity/IAxisAlignedBB;"), };
+	public AxisAlignedBBAnalyser(ClassContainer container, HookMap hookMap) {
+		super("AxisAlignedBB", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getMinX", "D", "D"),
+				new FieldMappingData("getMinY", "D", "D"),
+				new FieldMappingData("getMinZ", "D", "D"),
+				new FieldMappingData("getMaxX", "D", "D"),
+				new FieldMappingData("getMaxY", "D", "D"),
+				new FieldMappingData("getMaxZ", "D", "D") };
+		methodHooks = new CallbackMappingData[] {
+				new CallbackMappingData("createNewBoundingBox", "(DDDDDD)L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"),
+				new CallbackMappingData("setBounds", "(DDDDDD)L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"),
+				new CallbackMappingData("addCoord", "(DDD)L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"),
+				new CallbackMappingData("expand", "(DDD)L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"),
+				new CallbackMappingData("getOffsettedBoundingBox", "(DDD)L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"),
+				new CallbackMappingData("intersectsWith", "(L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;)Z"),
+				new CallbackMappingData("offset", "(DDD)L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"),
+				new CallbackMappingData("contract", "(DDD)L" + MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB;"), };
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
+public boolean accept() {
 		return containsLdc(cn, "box[");
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "entity/IAxisAlignedBB"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "entity/IAxisAlignedBB"));
 		
-		addHook(methodHooks[5].buildObfMn(methods(cn, "(L" + cn.name + ";)Z").get(0)));
+		addMethodHook(methodHooks[5].buildObfMn(methods(cn, "(L" + cn.name + ";)Z").get(0)));
 		
 		for(MethodNode m : methods(cn)) {
 			if (m.name.equals("toString")) {
@@ -223,7 +211,7 @@ public class AxisAlignedBBAnalyser extends Analyser {
 				if (is.match()) {
 					for(int i = 0; i < is.size(); i++) {
 						FieldInsnNode fin = (FieldInsnNode) is.getMatches().get(i)[0];
-						addHook(hooks[i].buildObfFin(fin));
+						addFieldHook(fieldHooks[i].buildObfFin(fin));
 					}
 				}
 			}
@@ -231,11 +219,11 @@ public class AxisAlignedBBAnalyser extends Analyser {
 		
 		for(MethodNode m : methods(cn, "(DDDDDD)L" + cn.name + ";")) {
 			if (Access.isStatic(m.access)) {
-				addHook(methodHooks[0].buildObfMn(m));
+				addMethodHook(methodHooks[0].buildObfMn(m));
 			} else {
 				InsnSearcher is = new InsnSearcher(m.instructions, 0, SET_BOUNDS_REGEX);
 				if (is.match()) {
-					addHook(methodHooks[1].buildObfMn(m));
+					addMethodHook(methodHooks[1].buildObfMn(m));
 				}
 			}
 		}
@@ -244,31 +232,31 @@ public class AxisAlignedBBAnalyser extends Analyser {
 			if (!methodHooks[2].identified()) {
 				InsnSearcher is = new InsnSearcher(m.instructions, 0, ADD_CHORD_REGEX);
 				if (is.match()) {
-					addHook(methodHooks[2].buildObfMn(m));
+					addMethodHook(methodHooks[2].buildObfMn(m));
 				}
 			}
 			if (!methodHooks[3].identified()) {
 				InsnSearcher is = new InsnSearcher(m.instructions, 0, EXPAND_REGEX);
 				if (is.match()) {
-					addHook(methodHooks[3].buildObfMn(m));
+					addMethodHook(methodHooks[3].buildObfMn(m));
 				}
 			}
 			if (!methodHooks[4].identified()) {
 				InsnSearcher is = new InsnSearcher(m.instructions, 0, GET_OFFSETED_BOX__REGEX);
 				if (is.match()) {
-					addHook(methodHooks[4].buildObfMn(m));
+					addMethodHook(methodHooks[4].buildObfMn(m));
 				}
 			}
 			if (!methodHooks[6].identified()) {
 				InsnSearcher is = new InsnSearcher(m.instructions, 0, OFFSET_REGEX);
 				if (is.match()) {
-					addHook(methodHooks[6].buildObfMn(m));
+					addMethodHook(methodHooks[6].buildObfMn(m));
 				}
 			}
 			if (!methodHooks[7].identified()) {
 				InsnSearcher is = new InsnSearcher(m.instructions, 0, CONTRACT_REGEX);
 				if (is.match()) {
-					addHook(methodHooks[7].buildObfMn(m));
+					addMethodHook(methodHooks[7].buildObfMn(m));
 				}
 			}
 		}

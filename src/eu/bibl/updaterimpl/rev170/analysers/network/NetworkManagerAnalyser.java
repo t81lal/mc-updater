@@ -1,23 +1,17 @@
 package eu.bibl.updaterimpl.rev170.analysers.network;
-
-import org.objectweb.asm.tree.ClassNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.updater.analysis.Analyser;
-
 public class NetworkManagerAnalyser extends Analyser {
 	
-	public NetworkManagerAnalyser() {
-		super("NetworkManager");
+	public NetworkManagerAnalyser(ClassContainer container, HookMap hookMap) {
+		super("NetworkManager", container, hookMap);
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
+public boolean accept() {
 		return cn.superName.equals("io/netty/channel/SimpleChannelInboundHandler") && containsLdc(cn, "NETWORK_PACKETS");
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "network/INetworkManager"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "network/INetworkManager"));
 	}
 }

@@ -1,46 +1,29 @@
 package eu.bibl.updaterimpl.rev170.analysers.world;
-
-import java.util.ListIterator;
-
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.LdcInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.updater.analysis.Analyser;
-import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
-
 public class WorldTypeAnalyser extends Analyser{
-
-	public WorldTypeAnalyser() {
-		super("WorldType");
-		hooks = new FieldHook[]{
+	public WorldTypeAnalyser(ClassContainer container, HookMap hookMap) {
+		super("WorldType", container, hookMap);
+		fieldHooks = new FieldMappingData[]{
 			//mc hooks
-			//new FieldHook("getWorldTypes", "[L" + INTERFACES + "IWorldType;"),
-			//new FieldHook("getDefaultWorldType", "L" + INTERFACES + "IWorldType;"),
-			//new FieldHook("getFlatWorldType", "L" + INTERFACES + "IWorldType;"),
-			//new FieldHook("getLargeBiomesWorldType", "L" + INTERFACES + "IWorldType;"),
-			//new FieldHook("getAmplifiedWorldType", "L" + INTERFACES + "IWorldType;"),
-			//new FieldHook("getDefault1_1WorldType", "L" + INTERFACES + "IWorldType;"),
+			//new FieldMappingData("getWorldTypes", "[L" + MinecraftAnalyser.INTERFACES + "IWorldType;"),
+			//new FieldMappingData("getDefaultWorldType", "L" + MinecraftAnalyser.INTERFACES + "IWorldType;"),
+			//new FieldMappingData("getFlatWorldType", "L" + MinecraftAnalyser.INTERFACES + "IWorldType;"),
+			//new FieldMappingData("getLargeBiomesWorldType", "L" + MinecraftAnalyser.INTERFACES + "IWorldType;"),
+			//new FieldMappingData("getAmplifiedWorldType", "L" + MinecraftAnalyser.INTERFACES + "IWorldType;"),
+			//new FieldMappingData("getDefault1_1WorldType", "L" + MinecraftAnalyser.INTERFACES + "IWorldType;"),
 			//instance
-			new FieldHook("getWorldTypeID", "I", "I"),
-			new FieldHook("getWorldType", "Ljava/lang/String;", "Ljava/lang/String;"),
-			new FieldHook("getGeneratorVersion", "I", "I"),
-			new FieldHook("canBeGenerated", "Z", "Z")
+			new FieldMappingData("getWorldTypeID", "I", "I"),
+			new FieldMappingData("getWorldType", "Ljava/lang/String;", "Ljava/lang/String;"),
+			new FieldMappingData("getGeneratorVersion", "I", "I"),
+			new FieldMappingData("canBeGenerated", "Z", "Z")
 		};
 	}
-
 	@Override
-	public boolean accept(ClassNode cn) {
+public boolean accept() {
 		return containsLdc(cn, "default_1_1");
 	}
-
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "world/IWorldType"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "world/IWorldType"));
 		
 		MinecraftAnalyser analyser = (MinecraftAnalyser) analysers.get("Minecraft");
 		addMinecraftHook(analyser.getHooks()[2].buildObfFn(fields(cn, "[L" + cn.name + ";").get(0)));
@@ -70,13 +53,13 @@ public class WorldTypeAnalyser extends Analyser{
 			}else if(m.name.equals("<init>")){
 				FieldInsnNode worldType = (FieldInsnNode) getNext(m.instructions.getFirst(), PUTFIELD);
 				if(worldType != null){
-					addHook(hooks[0].buildObfFin(worldType));
+					addFieldHook(fieldHooks[0].buildObfFin(worldType));
 					FieldInsnNode generatorversion = (FieldInsnNode) getNext(worldType.getNext(), PUTFIELD);
-					addHook(hooks[1].buildObfFin(generatorversion));
+					addFieldHook(fieldHooks[1].buildObfFin(generatorversion));
 					FieldInsnNode canbegenerated = (FieldInsnNode) getNext(generatorversion.getNext(), PUTFIELD);
-					addHook(hooks[2].buildObfFin(canbegenerated));
+					addFieldHook(fieldHooks[2].buildObfFin(canbegenerated));
 					FieldInsnNode worldtypeid = (FieldInsnNode) getNext(canbegenerated.getNext(), PUTFIELD);
-					addHook(hooks[3].buildObfFin(worldtypeid));
+					addFieldHook(fieldHooks[3].buildObfFin(worldtypeid));
 				}
 			}
 		}

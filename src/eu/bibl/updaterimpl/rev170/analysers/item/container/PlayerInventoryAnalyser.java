@@ -1,39 +1,17 @@
 package eu.bibl.updaterimpl.rev170.analysers.item.container;
-
-import java.util.ListIterator;
-
-import org.objectweb.asm.Type;
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.FieldNode;
-import org.objectweb.asm.tree.InsnList;
-import org.objectweb.asm.tree.IntInsnNode;
-import org.objectweb.asm.tree.LdcInsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.ClassHook;
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.bytetools.analysis.storage.hooks.InterfaceHook;
-import eu.bibl.updater.analysis.Analyser;
-import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
-import eu.bibl.updaterimpl.rev170.analysers.entity.EntityPlayerAnalyser;
-import eu.bibl.updaterimpl.rev170.analysers.item.ItemStackAnalyser;
-
 public class PlayerInventoryAnalyser extends Analyser {
 	
-	public PlayerInventoryAnalyser() {
-		super("PlayerInventory");
-		hooks = new FieldHook[] {
-				new FieldHook("getOwningPlayer", "L" + INTERFACES + "entity/IEntityPlayer;"),
-				new FieldHook("getInventoryItems", "[L" + INTERFACES + "item/IItemStack;"),
-				new FieldHook("getArmourItems", "[L" + INTERFACES + "item/IItemStack;"),
-				new FieldHook("getCurrentSlot", "I", "I") };
+	public PlayerInventoryAnalyser(ClassContainer container, HookMap hookMap) {
+		super("PlayerInventory", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getOwningPlayer", "L" + MinecraftAnalyser.INTERFACES + "entity/IEntityPlayer;"),
+				new FieldMappingData("getInventoryItems", "[L" + MinecraftAnalyser.INTERFACES + "item/IItemStack;"),
+				new FieldMappingData("getArmourItems", "[L" + MinecraftAnalyser.INTERFACES + "item/IItemStack;"),
+				new FieldMappingData("getCurrentSlot", "I", "I") };
 	}
 	
 	@Override
-	public boolean accept(ClassNode cn) {
+public boolean accept() {
 		for(MethodNode mNode : methods(cn)) {
 			if (mNode.desc.startsWith("(L") && mNode.desc.endsWith(";)Z")) {
 				ListIterator<?> it = mNode.instructions.iterator();
@@ -53,8 +31,8 @@ public class PlayerInventoryAnalyser extends Analyser {
 	}
 	
 	@Override
-	public void run() {
-		classHook.setInterfaceHook(new InterfaceHook(classHook, INTERFACES + "item/container/IPlayerInventory"));
+public InterfaceMappingData run() {
+		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "item/container/IPlayerInventory"));
 		
 		findItemItemStackAndGetItemIDAndDamage();
 		findInventoryArmourItemsAndOwningPlayer();
@@ -76,7 +54,7 @@ public class PlayerInventoryAnalyser extends Analyser {
 				}
 				if (tempAin.getOpcode() == PUTFIELD) {
 					FieldInsnNode playerFin = (FieldInsnNode) tempAin;
-					addHook(hooks[0].buildObfFin(playerFin));// getowningplayer
+					addFieldHook(fieldHooks[0].buildObfFin(playerFin));// getowningplayer
 				}
 				boolean foundMainInventory = false;
 				boolean foundArmourInventory = false;
@@ -87,13 +65,13 @@ public class PlayerInventoryAnalyser extends Analyser {
 						IntInsnNode iin = (IntInsnNode) ain;
 						if (iin.operand == 36) {
 							FieldInsnNode fin = (FieldInsnNode) ain.getNext().getNext();
-							addHook(hooks[1].buildObfFin(fin));// getinventoryitems
+							addFieldHook(fieldHooks[1].buildObfFin(fin));// getinventoryitems
 							foundMainInventory = true;
 						}
 					} else
 						if (ain.getOpcode() == ICONST_4) {
 							FieldInsnNode fin = (FieldInsnNode) ain.getNext().getNext();
-							addHook(hooks[2].buildObfFin(fin));// getarmouritems
+							addFieldHook(fieldHooks[2].buildObfFin(fin));// getarmouritems
 						}
 					if (foundMainInventory && foundArmourInventory)
 						break inventoryFor;
@@ -117,7 +95,7 @@ public class PlayerInventoryAnalyser extends Analyser {
 								if (ldc.cst.toString().equals("Item being added")) {
 									Type[] parameters = Type.getArgumentTypes(mNode.desc);
 									String itemStackClass = parameters[0].getInternalName().substring(0, parameters[0].getInternalName().length()).replace(";", "");
-									map.addClass(new ClassHook(itemStackClass, "ItemStack"));
+									hookMap.addClass(new ClassMappingData(itemStackClass, "ItemStack"));
 									foundItemStackClass = true;
 								}
 							}
@@ -129,17 +107,17 @@ public class PlayerInventoryAnalyser extends Analyser {
 								String strung = ldc.cst.toString();
 								if (strung.equals("Item ID")) {
 									MethodInsnNode localMin = (MethodInsnNode) ain.getNext().getNext();
-									// addHook(methodHooks[0].buildObfMin(localMin));//getitem
+									// addMethodHook(methodHooks[0].buildObfMin(localMin));//getitem
 									Type returnType = Type.getReturnType(localMin.desc);
 									String itemClass = returnType.getInternalName().substring(0, returnType.getInternalName().length()).replace(";", "");
-									map.addClass(new ClassHook(itemClass, "Item"));
+									hookMap.addClass(new ClassMappingData(itemClass, "Item"));
 									localMin = (MethodInsnNode) localMin.getNext();
 									MinecraftAnalyser minecraftAnalyser = (MinecraftAnalyser) analysers.get("Minecraft");
-									addMinecraftHook(minecraftAnalyser.getMethodHooks()[1].buildObfMin(localMin), map.getClassByRefactoredName("Item").getObfuscatedName());
+									addMinecraftHook(minecraftAnalyser.getCallbackMappingDatas()[1].buildObfMin(localMin), hookMap.getClassByRefactoredName("Item").getObfuscatedName());
 								} else
 									if (strung.equals("Item data")) {
 										MethodInsnNode localMin = (MethodInsnNode) ain.getNext().getNext();
-										// addHook(methodHooks[1].buildObfMin(localMin));//getdamage
+										// addMethodHook(methodHooks[1].buildObfMin(localMin));//getdamage
 									}
 							}
 						}
@@ -156,6 +134,6 @@ public class PlayerInventoryAnalyser extends Analyser {
 	
 	private void findCurrentSlot() {
 		FieldNode currentSlotFieldNode = fields(cn, "I").get(0);
-		addHook(hooks[3].buildObfFn(currentSlotFieldNode));
+		addFieldHook(fieldHooks[3].buildObfFn(currentSlotFieldNode));
 	}
 }

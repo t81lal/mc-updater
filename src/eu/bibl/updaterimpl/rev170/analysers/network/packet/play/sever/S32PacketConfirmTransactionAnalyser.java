@@ -1,19 +1,12 @@
 package eu.bibl.updaterimpl.rev170.analysers.network.packet.play.sever;
-
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-
-import eu.bibl.bytetools.analysis.storage.hooks.FieldHook;
-import eu.bibl.updaterimpl.rev170.analysers.network.packet.play.PlayPacketAnalyser;
-
 public class S32PacketConfirmTransactionAnalyser extends PlayPacketAnalyser {
 	
-	public S32PacketConfirmTransactionAnalyser() {
-		super("S32PacketConfirmTransaction");
-		hooks = new FieldHook[] {
-				new FieldHook("getWindowID", "I", "I"),
-				new FieldHook("getActionNumber", "I", "I"),
-				new FieldHook("isAccepted", "Z", "Z") };
+	public S32PacketConfirmTransactionAnalyser(ClassContainer container, HookMap hookMap) {
+		super("S32PacketConfirmTransaction", container, hookMap);
+		fieldHooks = new FieldMappingData[] {
+				new FieldMappingData("getWindowID", "I", "I"),
+				new FieldMappingData("getActionNumber", "I", "I"),
+				new FieldMappingData("isAccepted", "Z", "Z") };
 	}
 	
 	@Override
@@ -21,7 +14,7 @@ public class S32PacketConfirmTransactionAnalyser extends PlayPacketAnalyser {
 		MethodNode m = getReadMethod(cn);
 		FieldInsnNode[] fins = getFieldNodes(m, PUTFIELD);
 		for(int i = 0; i < hooks.length; i++) {
-			addHook(hooks[i].buildObfFin(fins[i]));
+			addFieldHook(fieldHooks[i].buildObfFin(fins[i]));
 		}
 	}
 }
