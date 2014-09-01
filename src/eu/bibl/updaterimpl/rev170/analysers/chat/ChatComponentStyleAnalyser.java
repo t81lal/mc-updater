@@ -15,7 +15,7 @@ public class ChatComponentStyleAnalyser extends Analyser {
 	
 	@Override
 	public boolean accept() {
-		ClassMappingData owner = hookMap.getClassByOfuscatedName(cn.name);
+		ClassMappingData owner = (ClassMappingData) hookMap.getClassByObfuscatedName(cn.name);
 		if (owner == null)
 			return false;
 		return owner.getRefactoredName().equals("ChatComponentStyle");
@@ -23,10 +23,9 @@ public class ChatComponentStyleAnalyser extends Analyser {
 	
 	@Override
 	public InterfaceMappingData run() {
-		ClassMappingData chatComponent = new ClassMappingData((String) (cn.interfaces.get(0)), "ChatComponent");
+		ClassMappingData chatComponent = new ClassMappingData((String) (cn.interfaces.get(0)), "ChatComponent", null);
 		hookMap.addClass(chatComponent);
 		
-		InterfaceHook hook = new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "chat/IChatComponentStyle", MinecraftAnalyser.INTERFACES + "chat/IChatComponent");
-		classHook.setInterfaceHook(hook);
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "chat/IChatStyledComponent");
 	}
 }

@@ -1,32 +1,46 @@
 package eu.bibl.updaterimpl.rev170.analysers.client;
+
+import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.TypeInsnNode;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.storage.CallbackMappingData;
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.FieldMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.MappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class GameRulesAnalyser extends Analyser {
 	
 	public GameRulesAnalyser(ClassContainer container, HookMap hookMap) {
 		super("GameRules", container, hookMap);
-		fieldHooks = new FieldMappingData[] { new FieldMappingData("getSettings", "Ljava/util/TreeMap;", "Ljava/util/TreeMap;") };
-		methodHooks = new CallbackMappingData[] { new CallbackMappingData("addGameRule", "(Ljava/lang/String;Ljava/lang/String;)V", "(Ljava/lang/String;Ljava/lang/String;)V") };
+		fieldHooks = new FieldMappingData[] { new FieldMappingData(new MappingData("getSettings"), new MappingData("Ljava/util/TreeMap;", "Ljava/util/TreeMap;"), false) };
+		methodHooks = new CallbackMappingData[] { new CallbackMappingData(new MappingData("addGameRule"), new MappingData("(Ljava/lang/String;Ljava/lang/String;)V", "(Ljava/lang/String;Ljava/lang/String;)V"), null, null, false) };
 	}
 	
 	@Override
-public boolean accept() {
-		ClassMappingData c = hookMap.getClassByObfuscatedName(cn.name);
+	public boolean accept() {
+		ClassMappingData c = (ClassMappingData) hookMap.getClassByObfuscatedName(cn.name);
 		if (c == null)
 			return false;
 		return c.getRefactoredName().equals("GameRules");
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "client/IGameRules"));
+	public InterfaceMappingData run() {
+		addField(fieldHooks[0].buildObf(InsnUtil.fields(cn, "Ljava/util/TreeMap;").get(0)));
 		
-		addFieldHook(fieldHooks[0].buildObfFn(fields(cn, "Ljava/util/TreeMap;").get(0)));
-		
-		for(MethodNode m : methods(cn, "(Ljava/lang/String;Ljava/lang/String;)V")) {
-			TypeInsnNode tin = (TypeInsnNode) getNext(m.instructions.getFirst(), NEW);
+		for (MethodNode m : InsnUtil.methods(cn, "(Ljava/lang/String;Ljava/lang/String;)V")) {
+			TypeInsnNode tin = (TypeInsnNode) InsnUtil.getNext(m.instructions.getFirst(), NEW);
 			if (tin != null) {
-				addMethodHook(methodHooks[0].buildObfMn(m));
-				hookMap.addClass(new ClassMappingData(tin.desc, "GameRuleValue"));
+				addMethod(methodHooks[0].buildObfMethod(m));
+				hookMap.addClass(new ClassMappingData(tin.desc, "GameRuleValue", null));
 			}
 		}
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "client/IGameRules");
 	}
 }

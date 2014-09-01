@@ -1,4 +1,28 @@
 package eu.bibl.updaterimpl.rev170.analysers.client.profiler;
+
+import java.util.Arrays;
+import java.util.ListIterator;
+
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.FieldInsnNode;
+import org.objectweb.asm.tree.FieldNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.analyse.AnalyserCache;
+import eu.bibl.banalysis.asm.InstructionVector;
+import eu.bibl.banalysis.filter.InstructionFilter;
+import eu.bibl.banalysis.storage.CallbackMappingData;
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.FieldMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.MappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class ProfilerAnalyser extends Analyser {
 	
 	private MethodInsnNode startEndMin;
@@ -6,78 +30,88 @@ public class ProfilerAnalyser extends Analyser {
 	public ProfilerAnalyser(ClassContainer container, HookMap hookMap) {
 		super("Profiler", container, hookMap);
 		methodHooks = new CallbackMappingData[] {
-				new CallbackMappingData("endStartSection", "(Ljava/lang/String;)V", "(Ljava/lang/String;)V"),
-				new CallbackMappingData("endSection", "()V", "()V"),
-				new CallbackMappingData("startSection", "(Ljava/lang/String;)V", "(Ljava/lang/String;)V"),
-				new CallbackMappingData("clear", "()V", "()V") };
+				/* 0 */new CallbackMappingData(new MappingData("endStartSection"), new MappingData("(Ljava/lang/String;)V", "(Ljava/lang/String;)V"), null, null, false),
+				/* 1 */new CallbackMappingData(new MappingData("endSection"), new MappingData("()V", "()V"), null, null, false),
+				/* 2 */new CallbackMappingData(new MappingData("startSection"), new MappingData("(Ljava/lang/String;)V", "(Ljava/lang/String;)V"), null, null, false),
+				/* 3 */new CallbackMappingData(new MappingData("clear"), new MappingData("()V", "()V"), null, null, false) };
 		fieldHooks = new FieldMappingData[] {
-				new FieldMappingData("isProfilingEnabled", "Z", "Z"),
-				new FieldMappingData("getTimestampList", "Ljava/uti/List;", "Ljava/util/List;"),
-				new FieldMappingData("getSectionList", "Ljava/uti/List;", "Ljava/util/List;"),
-				new FieldMappingData("getProfilingMap", "Ljava/util/Map;", "Ljava/util/Map;"),
-				new FieldMappingData("getSectionName", "Ljava/lang/String;", "Ljava/lang/String;") };
+				/* 0 */new FieldMappingData(new MappingData("isProfilingEnabled"), new MappingData("Z", "Z"), false),
+				/* 1 */new FieldMappingData(new MappingData("getTimestampList"), new MappingData("Ljava/uti/List;", "Ljava/util/List;"), false),
+				/* 2 */new FieldMappingData(new MappingData("getSectionList"), new MappingData("Ljava/uti/List;", "Ljava/util/List;"), false),
+				/* 3 */new FieldMappingData(new MappingData("getProfilingMap"), new MappingData("Ljava/util/Map;", "Ljava/util/Map;"), false),
+				/* 4 */new FieldMappingData(new MappingData("getSectionName"), new MappingData("Ljava/lang/String;", "Ljava/lang/String;"), false) };
 	}
 	
 	@Override
-public boolean accept() {
-		ClassMappingData hook = hookMap.getClassByRefactoredName("Profiler");
+	public boolean accept() {
+		ClassMappingData hook = (ClassMappingData) hookMap.getClassByRefactoredName("Profiler");
 		if (hook == null)
 			return false;
 		return hook.getObfuscatedName().equals(cn.name);
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "client/profiler/IProfiler"));
-		addMethodHook(methodHooks[0].buildObfMin(startEndMin));
-		for(MethodNode m : methods(cn, startEndMin.desc)) {
+	public InterfaceMappingData run() {
+		addMethod(methodHooks[0].buildObfMethod(startEndMin));
+		for (MethodNode m : InsnUtil.methods(cn, startEndMin.desc)) {
 			if (m.name.equals(startEndMin.name)) {
-				InsnVector<MethodInsnNode> vector = new InsnVector<MethodInsnNode>(m, MethodInsnNode.class);
-				MethodInsnNode end = vector.getInsn(0);
-				MethodInsnNode start = vector.getInsn(1);
-				addMethodHook(methodHooks[1].buildObfMin(end));
-				addMethodHook(methodHooks[2].buildObfMin(start));
+				InstructionVector vector = new InstructionVector(Arrays.asList(m.instructions.toArray()), false, new InstructionFilter() {
+					@Override
+					public boolean accept(AbstractInsnNode t) {
+						return t instanceof MethodInsnNode;
+					}
+				});
+				MethodInsnNode end = (MethodInsnNode) vector.getAt(0);
+				MethodInsnNode start = (MethodInsnNode) vector.getAt(1);
+				addMethod(methodHooks[1].buildObfMethod(end));
+				addMethod(methodHooks[2].buildObfMethod(start));
 				findFields(end);
 			}
 		}
 		
-		all: for(MethodNode m : methods(cn, "()V")) {
+		all: for (MethodNode m : InsnUtil.methods(cn, "()V")) {
 			ListIterator<?> it = m.instructions.iterator();
 			while (it.hasNext()) {
 				AbstractInsnNode ain = (AbstractInsnNode) it.next();
 				if (ain instanceof MethodInsnNode) {
 					MethodInsnNode min = (MethodInsnNode) ain;
 					if (min.name.equals("clear")) {
-						addMethodHook(methodHooks[3].buildObfMn(m).identify());
+						addMethod(methodHooks[3].buildObfMethod(m));
 						break all;
 					}
 				}
 			}
 		}
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "client/profiler/IProfiler");
 	}
 	
 	private void findFields(MethodInsnNode min) {
-		for(MethodNode m : methods(cn)) {
+		for (MethodNode m : cn.methods()) {
 			if (m.name.equals(min.name) && m.desc.equals(min.desc)) {
-				InsnVector<FieldInsnNode> vector = new InsnVector<FieldInsnNode>(m, FieldInsnNode.class);
-				FieldInsnNode enabled = vector.getInsn(0);
-				FieldInsnNode ts = vector.getInsn(1);
-				FieldInsnNode sl = vector.getInsn(3);
-				FieldInsnNode pm = vector.getInsn(5);
-				FieldInsnNode sec = vector.getInsn(6);
+				InstructionVector vector = new InstructionVector(Arrays.asList(m.instructions.toArray()), false, new InstructionFilter() {
+					@Override
+					public boolean accept(AbstractInsnNode t) {
+						return t instanceof FieldInsnNode;
+					}
+				});
+				FieldInsnNode enabled = (FieldInsnNode) vector.getAt(0);
+				FieldInsnNode ts = (FieldInsnNode) vector.getAt(1);
+				FieldInsnNode sl = (FieldInsnNode) vector.getAt(3);
+				FieldInsnNode pm = (FieldInsnNode) vector.getAt(5);
+				FieldInsnNode sec = (FieldInsnNode) vector.getAt(6);
 				
-				addFieldHook(fieldHooks[0].buildObfFin(enabled));
-				addFieldHook(fieldHooks[1].buildObfFin(ts));
-				addFieldHook(fieldHooks[2].buildObfFin(sl));
-				addFieldHook(fieldHooks[3].buildObfFin(pm));
-				addFieldHook(fieldHooks[4].buildObfFin(sec));
+				addField(fieldHooks[0].buildObf(enabled));
+				addField(fieldHooks[1].buildObf(ts));
+				addField(fieldHooks[2].buildObf(sl));
+				addField(fieldHooks[3].buildObf(pm));
+				addField(fieldHooks[4].buildObf(sec));
 			}
 		}
 		
-		for(FieldNode f : fields(analysisMap.requestNode(hookMap.getClassByRefactoredName("Minecraft").getObfuscatedName()))) {
+		for (FieldNode f : getNode(hookMap.getClassByRefactoredName("Minecraft").getObfuscatedName()).fields()) {
 			if (f.desc.equals("L" + cn.name + ";")) {
-				MinecraftAnalyser mcAnalyser = (MinecraftAnalyser) analysers.get("Minecraft");
-				addMinecraftHook(mcAnalyser.getHooks()[27].buildObfFn(f));
+				MinecraftAnalyser mcAnalyser = (MinecraftAnalyser) AnalyserCache.contextGet("Minecraft");
+				mcAnalyser.addField(mcAnalyser.getFieldHooks()[27].buildObf(f));
 				break;
 			}
 		}

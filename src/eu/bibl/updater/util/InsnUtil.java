@@ -76,4 +76,15 @@ public final class InsnUtil {
 			}
 		});
 	}
+	
+	public static AbstractInsnNode getNext(AbstractInsnNode ain, int opcode) {
+		while (ain != null) {
+			if (opcode == ain.getOpcode())
+				return ain;
+			ain = ain.getNext();
+			if (opcode == ain.getOpcode())
+				return ain;
+		}
+		return ain;
+	}
 }

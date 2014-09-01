@@ -17,7 +17,7 @@ public class ChatComponentAnalyser extends Analyser {
 	
 	@Override
 	public boolean accept() {
-		ClassMappingData owner = (ClassMappingData) hookMap.getClassByOfuscatedName(cn.name);
+		ClassMappingData owner = (ClassMappingData) hookMap.getClassByObfuscatedName(cn.name);
 		if (owner == null)
 			return false;
 		return owner.getRefactoredName().equals("ChatComponent");

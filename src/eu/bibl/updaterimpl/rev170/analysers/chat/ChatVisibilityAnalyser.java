@@ -1,4 +1,15 @@
 package eu.bibl.updaterimpl.rev170.analysers.chat;
+
+import org.objectweb.asm.Opcodes;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.analyse.AnalyserCache;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class ChatVisibilityAnalyser extends Analyser {
 	
 	public ChatVisibilityAnalyser(ClassContainer container, HookMap hookMap) {
@@ -6,15 +17,14 @@ public class ChatVisibilityAnalyser extends Analyser {
 	}
 	
 	@Override
-public boolean accept() {
-		return ((cn.access & ACC_ENUM) != 0) && containsLdc(cn, "FULL");
+	public boolean accept() {
+		return ((cn.access & Opcodes.ACC_ENUM) != 0) && InsnUtil.containsLdc(cn, "FULL");
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "chat/IChatVisibility"));
-		
-		MinecraftAnalyser analyser = (MinecraftAnalyser) analysers.get("Minecraft");
-		addMinecraftHook(analyser.getHooks()[9].buildObfFn(fields(cn, "[L" + cn.name + ";").get(0)));
+	public InterfaceMappingData run() {
+		MinecraftAnalyser analyser = (MinecraftAnalyser) AnalyserCache.contextGet("Minecraft");
+		analyser.addField(analyser.getFieldHooks()[9].buildObf(InsnUtil.fields(cn, "[L" + cn.name + ";").get(0)));
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "chat/IChatVisibility");
 	}
 }
