@@ -1,9 +1,12 @@
 package eu.bibl.updaterimpl.rev170.analysers.nbt;
+
+import eu.bibl.banalysis.analyse.Analyser;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+
 public abstract class NBTAnalyser extends Analyser {
 	
-	public static String MinecraftAnalyser.INTERFACES = "eu/bibl/mc/accessors/";
-	
-	public NBTAnalyser(String name) {
-		super(name);
+	public NBTAnalyser(String name, ClassContainer container, HookMap hookMap) {
+		super(name, container, hookMap);
 	}
 }

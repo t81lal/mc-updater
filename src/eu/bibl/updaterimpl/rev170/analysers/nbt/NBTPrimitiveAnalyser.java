@@ -1,4 +1,10 @@
 package eu.bibl.updaterimpl.rev170.analysers.nbt;
+
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class NBTPrimitiveAnalyser extends NBTAnalyser {
 	
 	public NBTPrimitiveAnalyser(ClassContainer container, HookMap hookMap) {
@@ -6,12 +12,12 @@ public class NBTPrimitiveAnalyser extends NBTAnalyser {
 	}
 	
 	@Override
-public boolean accept() {
-		return Access.isAbstract(cn.access) && cn.superName.equals(hookMap.getClassByRefactoredName("NBTBase").getObfuscatedName());
+	public boolean accept() {
+		return ((cn.access & ACC_ABSTRACT) != 0) && cn.superName.equals(hookMap.getClassByRefactoredName("NBTBase").getObfuscatedName());
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "nbt/INBTPrimitive", MinecraftAnalyser.INTERFACES + "nbt/INBTBase"));
+	public InterfaceMappingData run() {
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "nbt/INBTPrimitive");
 	}
 }

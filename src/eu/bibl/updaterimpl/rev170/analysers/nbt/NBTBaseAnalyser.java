@@ -1,4 +1,21 @@
 package eu.bibl.updaterimpl.rev170.analysers.nbt;
+
+import java.util.HashMap;
+
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.TypeInsnNode;
+
+import eu.bibl.banalysis.storage.CallbackMappingData;
+import eu.bibl.banalysis.storage.ClassMappingData;
+import eu.bibl.banalysis.storage.HookMap;
+import eu.bibl.banalysis.storage.InterfaceMappingData;
+import eu.bibl.banalysis.storage.MappingData;
+import eu.bibl.banalysis.storage.classes.ClassContainer;
+import eu.bibl.updater.util.InsnUtil;
+import eu.bibl.updaterimpl.rev170.analysers.MinecraftAnalyser;
+
 public class NBTBaseAnalyser extends NBTAnalyser {
 	
 	private static final HashMap<Integer, String> NBT_SUBS = new HashMap<Integer, String>();
@@ -21,38 +38,41 @@ public class NBTBaseAnalyser extends NBTAnalyser {
 	
 	public NBTBaseAnalyser(ClassContainer container, HookMap hookMap) {
 		super("NBTBase", container, hookMap);
-		methodHooks = new CallbackMappingData[] { new CallbackMappingData("getID", "()I", "()I"), new CallbackMappingData("write", "(Ljava/io/DataOutput;)V", "(Ljava/io/DataOutput;)V"), new CallbackMappingData("read", "") };
+		methodHooks = new CallbackMappingData[] {
+				new CallbackMappingData(new MappingData("getID"), new MappingData("()I", "()I"), null, null, false),
+				new CallbackMappingData(new MappingData("write"), new MappingData("(Ljava/io/DataOutput;)V", "(Ljava/io/DataOutput;)V"), null, null, false),
+				new CallbackMappingData(new MappingData("read"), new MappingData(""), null, null, false) };
 	}
 	
 	@Override
-public boolean accept() {
-		return containsLdc(cn, "INT[]");
+	public boolean accept() {
+		return InsnUtil.containsLdc(cn, "INT[]");
 	}
 	
 	@Override
-public InterfaceMappingData run() {
-		classHook.setInterfaceHook(new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "nbt/INBTBase"));
-		for(MethodNode m : methods(cn, "(B)L" + cn.name + ";")) {
-			if (Access.isAbstract(m.access))
+	public InterfaceMappingData run() {
+		for (MethodNode m : InsnUtil.methods(cn, "(B)L" + cn.name + ";")) {
+			if (!((m.access & ACC_ABSTRACT) != 0))
 				continue;
 			HashMap<Integer, TypeInsnNode> tins = getTypeInsns(m.instructions.getFirst());
-			for(Integer num : tins.keySet()) {
-				hookMap.addClass(new ClassMappingData(tins.get(num).desc, NBT_SUBS.get(num)));
+			for (Integer num : tins.keySet()) {
+				hookMap.addClass(new ClassMappingData(tins.get(num).desc, NBT_SUBS.get(num), null));
 			}
 		}
-		for(MethodNode m : methods(cn)) {
+		for (MethodNode m : cn.methods()) {
 			if (m.name.equals("hashCode")) {
 				MethodInsnNode min = (MethodInsnNode) m.instructions.getFirst().getNext();
-				addMethodHook(methodHooks[0].buildObfMin(min));
-			} else
-				if (m.desc.equals("(Ljava/io/DataOutput;)V")) {
-					addMethodHook(methodHooks[1].buildObfMn(m));
-				} else {
-					if (m.desc.startsWith("(Ljava/io/DataInput;I")) {
-						addMethodHook(methodHooks[2].buildObfMn(m).buildRefacDesc(m.desc));
-					}
+				addMethod(methodHooks[0].buildObfMethod(min));
+			} else if (m.desc.equals("(Ljava/io/DataOutput;)V")) {
+				addMethod(methodHooks[1].buildObfMethod(m));
+			} else {
+				if (m.desc.startsWith("(Ljava/io/DataInput;I")) {
+					methodHooks[2].getMethodDesc().setRefactoredName(m.desc);
+					addMethod(methodHooks[2].buildObfMethod(m));
 				}
+			}
 		}
+		return new InterfaceMappingData(MinecraftAnalyser.INTERFACES + "nbt/INBTBase");
 	}
 	
 	private HashMap<Integer, TypeInsnNode> getTypeInsns(AbstractInsnNode ain) {
